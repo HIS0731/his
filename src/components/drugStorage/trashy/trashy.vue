@@ -8,7 +8,7 @@
       </div>
     </el-popover>
     <div class="headerBt">
-      <el-button size="small"><router-link to="addTrashy">添加消耗信息</router-link></el-button>
+      <router-link to="addTrashy"><el-button size="small">添加消耗信息</el-button></router-link>
       <el-button size="small" type="danger"  v-popover:popover5>删除全部</el-button>
     </div>
     <el-table :data="trashyDrug">
@@ -93,7 +93,11 @@
       handleDelete (index, row) {
         console.log(index, row);
         // mark 实际上，应该使用post方法传数据
-        this.$http.get('../static/Storage.json', index, {emulateJSON: true}).then(function (response) {
+        this.$message({
+          message: '传给后台的信息是消息的id' + this.trashyDrug[index].id,
+          type: 'success'
+        });
+        this.$http.get('../static/Storage.json', this.trashyDrug[index].id, {emulateJSON: true}).then(function (response) {
           this.trashyDrug.splice(index, 1);
         }, function () {
           this.$message.error('后台接口有误,修改后台接口既可！');

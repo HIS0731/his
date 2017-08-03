@@ -18,7 +18,7 @@
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="onSubmit">添加</el-button>
-        <el-button>取消</el-button>
+        <el-button @click="goback">取消</el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -49,6 +49,9 @@
         }, function () {
           this.$message.error('后台接口有误,修改后台接口既可！');
         });
+      },
+      goback () {
+        history.go(-1);
       }
     }
   };

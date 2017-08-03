@@ -9,7 +9,7 @@
       </el-form-item>
       <el-form-item label="进药时间">
         <el-col :span="11">
-          <el-date-picker type="date" placeholder="选择日期" v-model="form.date1" style="width: 100%;"></el-date-picker>
+          <el-date-picker type="date" placeholder="选择日期" v-model="date1" style="width: 100%;"></el-date-picker>
         </el-col>
         <el-col class="line" :span="2">-</el-col>
         <el-col :span="11">
@@ -23,7 +23,7 @@
         <el-input v-model.trim="form.species"></el-input>
       </el-form-item>
       <el-form-item label="生产日期">
-        <el-date-picker type="date" placeholder="选择日期" v-model="form.productionData" style="width: 100%;"></el-date-picker>
+        <el-date-picker readOnly="true" type="date" placeholder="选择日期" v-model="form.productionData" style="width: 100%;"></el-date-picker>
       </el-form-item>
       <el-form-item label="规格">
         <el-input v-model.trim="form.specification"></el-input>
@@ -37,7 +37,7 @@
       <el-form-item label="总价">
         {{form.totalPrices}}
       </el-form-item>
-      <el-form-item>
+      <el-form-item label="储存温度">
         <el-select v-model.trim="form.temperature" placeholder="请选择储存温度">
           <el-option label="常温" value="01"></el-option>
           <el-option label="冷藏" value="02"></el-option>
@@ -52,7 +52,7 @@
       <el-form-item label="仓库员">
         <el-input v-model.trim="form.warehouseman"></el-input>
       </el-form-item>
-      <el-form-item>
+      <el-form-item label="进药方式">
         <el-select v-model.trim="form.pattern" placeholder="请选择进药方式">
           <el-option label="网上订货" value="01"></el-option>
           <el-option label="到厂家进货" value="02"></el-option>
@@ -63,10 +63,6 @@
         <el-button @click="resetForm('form')">重置</el-button>
       </el-form-item>
     </el-form>
-    <div class="tips" v-show="iconTog">
-      不能为空或者时间输入有误！
-      <i class="el-icon-circle-cross icon" @click="iconToggle"></i>
-    </div>
   </div>
 </template>
 
@@ -74,7 +70,7 @@
   export default {
     data () {
       return {
-        iconTog: false,
+        date1: '',
         form: {
           name: '',
           manufacturers: '',
@@ -86,7 +82,6 @@
           qualityOfficer: '',
           warehouseman: '',
           pattern: '',
-          date1: '',
           date2: '',
           species: '',
           productionData: '',
@@ -96,20 +91,18 @@
       };
     },
     methods: {
-      // 输入验证
-      verification () {
-        if (this.form.name && this.form.manufacturers && this.form.amount && this.form.unitPrice && this.form.temperature && this.form.handlers && this.form.qualityOfficer && this.form.warehouseman) {
-          this.iconTog = false;
-          return true;
-        } else {
-          this.iconTog = true;
-          return false;
-        }
-      },
       // 提交进药数据vue-resource
       submitForm () { // mark
-        if (this.verification()) {
+        if (!this.form.name || !this.form.manufacturers || !this.form.amount || !this.form.unitPrice || !this.form.temperature || !this.form.handlers || !this.form.qualityOfficer || !this.form.warehouseman || !this.form.pattern || !this.form.date2 || !this.form.species || !this.form.productionData || !this.form.specification || !this.form.dosageForm) {
+          this.$message.error('不能为空！');
+        } else {
+          this.form.date2 = this.form.date2.getFullYear() + '-' + this.form.date2.getMonth() + '-' + this.form.date2.getDay() + ' ' + this.form.date2.getHours() + ':' + this.form.date2.getMinutes() + ':' + this.form.date2.getSeconds();
+          this.form.productionData = this.form.productionData.getFullYear() + '-' + this.form.productionData.getMonth();
           console.log(this.form);
+          this.$message({
+            message: '传给后台的信息是用户编辑的对象' + JSON.stringify(this.form),
+            type: 'success'
+          });
           this.$http.post('../static/putInStorage.json', this.form, {emulateJSON: true}).then(function (response) {
             console.log(response.body);
             this.resetForm();
@@ -120,6 +113,7 @@
         }
       },
       resetForm () {
+        this.date1 = '';
         this.form = {
           name: '',
           manufacturers: '',
@@ -138,9 +132,6 @@
           specification: '',
           dosageForm: ''
         };
-      },
-      iconToggle () { // 计算属性
-        this.iconTog = !this.iconTog;
       }
     },
     computed: {
@@ -165,19 +156,4 @@
 <style lang="stylus-loader" rel="stylesheet/stylus">
   .putInStorage
     max-width:800px
-    .tips
-      padding:8px 16px
-      color: #fff
-      opacity: 1
-      transition: opacity .2s
-      background-color: #ff4949
-      margin: 20px 0 0
-      width: 100%
-      font-weight: 400
-      border-radius:5px
-      box-sizing:border-box
-      font-size:15px
-      .icon
-        float:right
-        cursor:pointer
 </style>
