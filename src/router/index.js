@@ -23,7 +23,14 @@ export default new Router({
     { path: '/checkDrugStorage', name: 'checkDrugStorage', component: checkDrugStorage },
     { path: '/stockRemoval', name: 'stockRemoval', component: stockRemoval },
     { path: '/trashy', name: 'trashy', component: trashy },
-    { path: '/addTrashy', name: 'addTrashy', component: addTrashy },
+    {
+      path: '/addTrashy',
+      component: addTrashy,
+      name: 'addTrashy',
+      beforeEnter: (to, from, next) => {
+        next();
+      }
+    },
     {path: '*', redirect: '/home'}
   ]
 });

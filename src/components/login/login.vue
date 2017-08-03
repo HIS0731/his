@@ -30,6 +30,10 @@
     methods: {
       onSubmit () {
         console.log('submit!');
+        sessionStorage.setItem('easeHis', 'Tom');
+        console.log(this.router);
+        location.reload();
+        // this.router.push('/home'); // mark
       }
     }
   };
