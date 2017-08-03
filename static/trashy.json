@@ -1,0 +1,84 @@
+{
+  "trashyDrug": [
+    {
+      "id": "05",
+      "name": "头孢克肟片",
+      "manufacturers": "白云山制药总厂",
+      "amount": "10",
+      "handlers":"黄处",
+      "trashy":"超出有效期限"
+    },
+    {
+      "id": "09",
+      "name": "注射用益气复脉",
+      "manufacturers": "白云山制药总厂",
+      "amount": "4",
+      "handlers":"康维强",
+      "trashy":"丢失"
+    },
+    {
+      "id": "10",
+      "name": "注射用益气复脉",
+      "manufacturers": "天津天士力制药公司",
+      "amount": "50",
+      "handlers":"黄处",
+      "trashy":"丢失"
+    },
+    {
+      "id": "11",
+      "name": "注射用益气复脉",
+      "manufacturers": "天津天士力制药公司",
+      "amount": "2",
+      "handlers":"黄处",
+      "trashy":"丢失"
+    },
+    {
+      "id": "12",
+      "name": "注射用益气复脉",
+      "manufacturers": "天津天士力制药公司",
+      "amount": "50",
+      "handlers":"康维强",
+      "trashy":"丢失"
+    },
+    {
+      "id": "13",
+      "name": "头孢克肟片",
+      "manufacturers": "白云山制药总厂",
+      "amount": "7",
+      "handlers":"黄处",
+      "trashy":"超出有效期限"
+    },
+    {
+      "id": "14",
+      "name": "注射用益气复脉",
+      "manufacturers": "白云山制药总厂",
+      "amount": "50",
+      "handlers":"康维强",
+      "trashy":"丢失"
+    },
+    {
+      "id": "15",
+      "name": "注射用益气复脉",
+      "manufacturers": "天津天士力制药公司",
+      "amount": "50",
+      "handlers":"黄处",
+      "trashy":"丢失"
+    },
+    {
+      "id": "16",
+      "name": "注射用益气复脉",
+      "manufacturers": "天津天士力制药公司",
+      "amount": "50",
+      "handlers":"黄处",
+      "trashy":"丢失"
+    },
+    {
+      "id": "17",
+      "name": "注射用益气复脉",
+      "manufacturers": "天津天士力制药公司",
+      "amount": "50",
+      "handlers":"康维强",
+      "trashy":"丢失"
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "drug": [
+    {
+      "name": "头孢克肟片",
+      "manufacturers": "白云山制药总厂",
+      "amount": "200",
+      "handlers":"黄处",
+      "temperature":"01",
+      "qualityOfficer":"林安徽",
+      "warehouseman":"梁尚",
+      "pattern":"01",
+      "species":"西药",
+      "productionData":"Mon Aug 14 2017 00:00:00 GMT+0800 (中国标准时间)",
+      "specification":"0.65g",
+      "dosageForm":"瓶装",
+      "date1":"Tue Aug 01 2017 00:00:00 GMT+0800 (中国标准时间)",
+      "date2":"Tue Aug 01 2017 15:58:09 GMT+0800 (中国标准时间)"
+    },
+    {
+      "name": "注射用益气复脉",
+      "manufacturers": "天津天士力制药公司",
+      "amount": "100",
+      "handlers":"黄处",
+      "temperature":"02",
+      "qualityOfficer":"林安徽",
+      "warehouseman":"梁尚",
+      "pattern":"01",
+      "species":"西药",
+      "productionData":"Mon Aug 14 2017 00:00:00 GMT+0800 (中国标准时间)",
+      "specification":"",
+      "dosageForm":"片狀",
+      "date1":"Tue Aug 01 2017 00:00:00 GMT+0800 (中国标准时间)",
+      "date2":"Tue Aug 01 2017 15:58:09 GMT+0800 (中国标准时间)"
+    },
+    {
+      "name": "注射用益气复脉",
+      "manufacturers": "天津天士力制药公司",
+      "amount": "100",
+      "handlers":"黄处",
+      "temperature":"02",
+      "qualityOfficer":"林安徽",
+      "warehouseman":"梁尚",
+      "pattern":"01",
+      "species":"西药",
+      "productionData":"Mon Aug 14 2017 00:00:00 GMT+0800 (中国标准时间)",
+      "specification":"",
+      "dosageForm":"片狀",
+      "date1":"Tue Aug 01 2017 00:00:00 GMT+0800 (中国标准时间)",
+      "date2":"Tue Aug 01 2017 15:58:09 GMT+0800 (中国标准时间)"
+    },
+    {
+      "name": "注射用益气复脉",
+      "manufacturers": "天津天士力制药公司",
+      "amount": "100",
+      "handlers":"黄处",
+      "temperature":"02",
+      "qualityOfficer":"林安徽",
+      "warehouseman":"梁尚",
+      "pattern":"01",
+      "species":"西药",
+      "productionData":"Mon Aug 14 2017 00:00:00 GMT+0800 (中国标准时间)",
+      "specification":"",
+      "dosageForm":"片狀",
+      "date1":"Tue Aug 01 2017 00:00:00 GMT+0800 (中国标准时间)",
+      "date2":"Tue Aug 01 2017 15:58:09 GMT+0800 (中国标准时间)"
+    },
+    {
+      "name": "注射用益气复脉",
+      "manufacturers": "天津天士力制药公司",
+      "amount": "100",
+      "handlers":"黄处",
+      "temperature":"02",
+      "qualityOfficer":"林安徽",
+      "warehouseman":"梁尚",
+      "pattern":"01",
+      "species":"西药",
+      "productionData":"Mon Aug 14 2017 00:00:00 GMT+0800 (中国标准时间)",
+      "specification":"",
+      "dosageForm":"片狀",
+      "date1":"Tue Aug 01 2017 00:00:00 GMT+0800 (中国标准时间)",
+      "date2":"Tue Aug 01 2017 15:58:09 GMT+0800 (中国标准时间)"
+    }
+  ]
+}
+
+

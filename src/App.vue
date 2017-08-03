@@ -81,9 +81,10 @@
               <span slot="title">药库系统</span>
             </template>
             <el-menu-item-group>
-              <el-menu-item index="6-1">进药</el-menu-item>
-              <el-menu-item index="6-2">出药</el-menu-item>
-              <el-menu-item index="6-3">质管员</el-menu-item>
+              <el-menu-item index="6-1"><router-link to="drugStorage">进药</router-link></el-menu-item>
+              <el-menu-item index="6-2"><router-link to="checkDrugStorage">查看药库</router-link></el-menu-item>
+              <el-menu-item index="6-3"><router-link to="stockRemoval">出药</router-link></el-menu-item>
+              <el-menu-item index="6-3"><router-link to="trashy">浪费的药物</router-link></el-menu-item>
             </el-menu-item-group>
           </el-submenu>
           <el-submenu index="7">
@@ -142,7 +143,6 @@
     components: {
       'v-header': header
     }
-
   };
 
 </script>
@@ -162,6 +162,7 @@
     .app-body
       .menu
         position:fixed
+        z-index:1000
         height:100%
         width:230px
         transition: all 1s
