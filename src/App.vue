@@ -64,15 +64,17 @@
               <span slot="title">
                 <i class="icon-chineseMedicine"></i>中药房
               </span>
-              <el-menu-item index="5-1">药师判断是否合理</el-menu-item>
-              <el-menu-item index="5-2">药的种类</el-menu-item>
+              <el-menu-item index="5-1"><router-link to="prescriptionManageC">处理处方</router-link></el-menu-item>
+              <el-menu-item index="5-2"><router-link to="drugInfosC">药品查询</router-link></el-menu-item>
+              <el-menu-item index="5-3"><router-link to="drugApplyC">申请药物补给</router-link></el-menu-item>
             </el-menu-item-group>
             <el-menu-item-group>
               <span slot="title">
                 <i class="icon-WesternMedicine"></i>西药房
               </span>
-              <el-menu-item index="5-3">药师判断是否合理</el-menu-item>
-              <el-menu-item index="5-4">药的种类</el-menu-item>
+              <el-menu-item index="5-4"><router-link to="prescriptionManageW">处理处方</router-link></el-menu-item>
+              <el-menu-item index="5-5"><router-link to="drugInfosW">药品查询</router-link></el-menu-item>
+              <el-menu-item index="5-6"><router-link to="drugApplyW">申请药物补给</router-link></el-menu-item>
             </el-menu-item-group>
           </el-submenu>
           <el-submenu index="6">
@@ -92,10 +94,9 @@
               <span slot="title">患者</span>
             </template>
             <el-menu-item-group>
-              <el-menu-item index="7-1"><router-link to="addPatient">增加患者</router-link></el-menu-item>
-              <el-menu-item index="7-2"><router-link to="hasPatient">查看患者列表信息</router-link></el-menu-item>
-              <el-menu-item index="7-3"><router-link to="addRegistered">查看患者挂号列表信息</router-link></el-menu-item>
-              <el-menu-item index="7-4"><router-link to="hospitalized">建立住院患者档案</router-link></el-menu-item>
+              <el-menu-item index="7-1">增加患者</el-menu-item>
+              <el-menu-item index="7-2">编辑患者信息</el-menu-item>
+              <el-menu-item index="7-3">删除患者</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
           <el-submenu index="8">
