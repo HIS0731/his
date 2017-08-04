@@ -88,23 +88,23 @@
         console.log(index);
         this.dialogVisible = true;
         this.drugdetails = this.tableData[index];
-      }
+      },
       // 把数据表格导出到excel表
-      // handleDownload () {
-      //   var vm = this;
+      handleDownload () {
+        var vm = this;
 
-      //   require.ensure([], () => {
-      //     const { export_json_to_excel } = require('vendor/Export2Excel');
-      //     const tHeader = ['序号', '类别', '药品名称', 'OTC标志', '规格', '剂型', '厂家', '库存（件）', '单价（元）'];
-      //     const filterVal = ['index', 'type', 'drugname', 'OTC', 'specification', 'form', 'vender', 'quantity', 'price'];
-      //     const tableData = vm.tableData;
-      //     const data = vm.formatJson(filterVal, tableData);
-      //     export_json_to_excel(tHeader, data, '药房药物信息列表excel');
-      //   });
-      // },
-      // formatJson (filterVal, jsonData) {
-      //   return jsonData.map(v => filterVal.map(j => v[j]));
-      // }
+        require.ensure([], () => {
+          const { export_json_to_excel } = require('vendor/Export2Excel');
+          const tHeader = ['序号', '类别', '药品名称', 'OTC标志', '规格', '剂型', '厂家', '库存（件）', '单价（元）'];
+          const filterVal = ['index', 'type', 'drugname', 'OTC', 'specification', 'form', 'vender', 'quantity', 'price'];
+          const tableData = vm.tableData;
+          const data = vm.formatJson(filterVal, tableData);
+          export_json_to_excel(tHeader, data, '药房药物信息列表excel');
+        });
+      },
+      formatJson (filterVal, jsonData) {
+        return jsonData.map(v => filterVal.map(j => v[j]));
+      }
     }
 };
 </script>

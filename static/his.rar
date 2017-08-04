@@ -1,0 +1,16 @@
+{
+	"staffFlowlist": [
+	  {"id":"20147481","leave":"2017-7-15","reason":"无","name":"李红","sex":"女","date":"2014-8-1","degree":"本科","major":"临床医学","profession":"主治医师","office":"外科"},
+	  {"id":"20124125","leave":"2014-9-3","reason":"无","name":"黄英","sex":"女","date":"2012-4-5","degree":"大专","major":"护理学","profession":"护士","office":"护士室"},
+    {"id":"20174129","leave":"2015-8-15","reason":"无","name":"罗子君","sex":"女","date":"2017-6-18","degree":"本科","major":"骨科","profession":"主任","office":"骨科"},
+    {"id":"20155122","leave":"2016-7-23","reason":"无","name":"唐颖","sex":"男","date":"2015-8-19","degree":"博士","major":"心理学","profession":"心理医生","office":"精神科"},
+    {"id":"20138411","leave":"2017-2-1","reason":"无","name":"高瑞","sex":"男","date":"2013-3-20","degree":"硕士","major":"临床医学","profession":"主治医师","office":"急诊"},
+    {"id":"20155222","leave":"2016-12-24","reason":"无","name":"刘颖睿","sex":"男","date":"2015-4-19","degree":"博士","major":"心理学","profession":"心里解说员","office":"精神科"},
+    {"id":"20137132","leave":"2014-12-1","reason":"无","name":"梁毅","sex":"男","date":"2013-6-20","degree":"硕士","major":"临床医学","profession":"助手","office":"急诊"},
+    {"id":"20124122","leave":"2016-6-8","reason":"无","name":"王博","sex":"男","date":"2012-6-4","degree":"研究生","major":"中医","profession":"主治医师","office":"妇科"},
+    {"id":"20148142","leave":"2017-7-5","reason":"无","name":"李涂锌","sex":"男","date":"2014-3-1","degree":"硕士","major":"临床医学","profession":"主任","office":"胸心外科"},
+    {"id":"20121202","leave":"2013-7-26","reason":"无","name":"秦森","sex":"女","date":"2012-2-21","degree":"本科","major":"口腔医学","profession":"主治医师","office":"口腔科"},
+    {"id":"20161232","leave":"2017-8-3","reason":"无","name":"王英","sex":"女","date":"2016-5-15","degree":"研究生","major":"药学","profession":"教授","office":"  普外科"}
+  ]
+      
+}

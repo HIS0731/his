@@ -23,8 +23,9 @@
               <el-menu-item index="2-2"><router-link to="hasNurse">已存在护士信息</router-link></el-menu-item>
             </el-menu-item-group>
             <el-menu-item-group title="日常工作以及其他">
-              <el-menu-item index="2-3">轮班</el-menu-item>
-              <el-menu-item index="2-4">人员流动信息</el-menu-item>
+              <el-menu-item index="2-3"><router-link to="shift">轮班</router-link></el-menu-item>
+              <el-menu-item index="2-5"><router-link to="turnOver">人员流动信息</router-link></el-menu-item>
+              <el-menu-item index="2-6"><router-link to="complainInfo">查看投诉信息</router-link></el-menu-item>
             </el-menu-item-group>
           </el-submenu>
           <el-submenu index="3">
@@ -34,13 +35,13 @@
             </template>
             <el-menu-item-group>
               <span slot="title">医生人员信息管理</span>
-              <el-menu-item index="3-1">增加医生信息</el-menu-item>
-              <el-menu-item index="3-2">删除医生信息</el-menu-item>
-              <el-menu-item index="3-3">编辑医生信息</el-menu-item>
+              <el-menu-item index="3-1"><router-link to="addDoctor">增加医生信息</router-link></el-menu-item>
+              <el-menu-item index="3-2"><router-link to="editDoctor">编辑医生信息</router-link></el-menu-item>
             </el-menu-item-group>
             <el-menu-item-group title="日常工作以及其他">
-              <el-menu-item index="3-4">轮班</el-menu-item>
-              <el-menu-item index="3-5">人员流动信息</el-menu-item>
+              <el-menu-item index="3-3"><router-link to="shiftDoctor">轮班</router-link></el-menu-item>
+              <el-menu-item index="3-4"><router-link to="staffFlow">人员流动信息</router-link></el-menu-item>
+              <el-menu-item index="3-5"><router-link to="officeComplaints">科室投诉信息</router-link></el-menu-item>
             </el-menu-item-group>
           </el-submenu>
           <el-submenu index="4">
@@ -83,9 +84,10 @@
               <span slot="title">药库系统</span>
             </template>
             <el-menu-item-group>
-              <el-menu-item index="6-1">进药</el-menu-item>
-              <el-menu-item index="6-2">出药</el-menu-item>
-              <el-menu-item index="6-3">质管员</el-menu-item>
+              <el-menu-item index="6-1"><router-link to="drugStorage">进药</router-link></el-menu-item>
+              <el-menu-item index="6-2"><router-link to="checkDrugStorage">查看药库</router-link></el-menu-item>
+              <el-menu-item index="6-3"><router-link to="stockRemoval">出药</router-link></el-menu-item>
+              <el-menu-item index="6-3"><router-link to="trashy">浪费的药物</router-link></el-menu-item>
             </el-menu-item-group>
           </el-submenu>
           <el-submenu index="7">
@@ -94,9 +96,10 @@
               <span slot="title">患者</span>
             </template>
             <el-menu-item-group>
-              <el-menu-item index="7-1">增加患者</el-menu-item>
-              <el-menu-item index="7-2">编辑患者信息</el-menu-item>
-              <el-menu-item index="7-3">删除患者</el-menu-item>
+              <el-menu-item index="7-1"><router-link to="addPatient">增加患者</router-link></el-menu-item>
+              <el-menu-item index="7-2"><router-link to="hasPatient">查看患者列表信息</router-link></el-menu-item>
+              <el-menu-item index="7-3"><router-link to="addRegistered">查看患者挂号列表信息</router-link></el-menu-item>
+              <el-menu-item index="7-4"><router-link to="hospitalized">建立住院患者档案</router-link></el-menu-item>
             </el-menu-item-group>
           </el-submenu>
           <el-submenu index="8">
@@ -105,10 +108,10 @@
               <span slot="title">医院基本信息</span>
             </template>
             <el-menu-item-group>
-              <el-menu-item index="8-1">医院基本介绍</el-menu-item>
-              <el-menu-item index="8-2">医生护士概况</el-menu-item>
-              <el-menu-item index="8-3">今周患者就诊数量统计</el-menu-item>
-              <el-menu-item index="8-4">患者反馈</el-menu-item>
+              <el-menu-item index="8-1"><router-link to="hisIntroduction">医院基本介绍</router-link></el-menu-item>
+              <el-menu-item index="8-2"><router-link to="staffIntroduction">医生护士概况</router-link></el-menu-item>
+              <el-menu-item index="8-3"><router-link to="patientCount">今周患者就诊数量统计</router-link></el-menu-item>
+              <el-menu-item index="8-4"><router-link to="patientFeedback">患者反馈</router-link></el-menu-item>
             </el-menu-item-group>
           </el-submenu>
         </el-menu>

@@ -1,0 +1,74 @@
+{
+	"table": [
+	   {
+        "name": "张慧云",
+        "number": "1101号",
+        "age": "25",
+        "sex": "女",
+        "department": "妇科",
+        "position": "护士",
+        "processor": "邓莹莹",
+        "address": "上海市普陀区真北路",
+        "hiredate": "2015-09-01",
+        "resignation_time": "2017-06-20",
+        "resignation_reason": "其他",
+        "seniority": "2年"
+     },
+     {
+        "name": "何梦晨",
+        "number": "2101号",
+        "age": "30",
+        "sex": "女",
+        "department": "儿科",
+        "position": "主管护师",
+        "processor": "邓莹莹",
+        "address": "上海市普陀区真北路",
+        "hiredate": "2011-09-01",
+        "resignation_time": "2017-02-20",
+        "resignation_reason": "其他",
+        "seniority": "6年"
+     },
+     {
+        "name": "梁玉琪",
+        "number": "3101号",
+        "age": "28",
+        "sex": "女",
+        "department": "助产科",
+        "position": "护师",
+        "processor": "邓莹莹",
+        "address": "上海市普陀区真北路",
+        "hiredate": "2013-09-01",
+        "resignation_time": "2017-09-20",
+        "resignation_reason": "其他",
+        "seniority": "4年"
+     },
+     {
+        "name": "苏雪瑶",
+        "number": "4101号",
+        "age": "27",
+        "sex": "女",
+        "department": "急诊科",
+        "position": "副主任护师",
+        "processor": "邓莹莹",
+        "address": "上海市普陀区真北路",
+        "hiredate": "2010-09-01",
+        "resignation_time": "2017-04-18",
+        "resignation_reason": "其他",
+        "seniority": "7年"
+     },
+     {
+        "name": "黎钰丹",
+        "number": "5101号",
+        "age": "34",
+        "sex": "女",
+        "department": "外科",
+        "position": "主任护师",
+        "processor": "邓莹莹",
+        "address": "上海市普陀区真北路",
+        "hiredate": "2008-09-01",
+        "resignation_time": "2017-03-18",
+        "resignation_reason": "其他",
+        "seniority": "9年"
+     }
+	]
+}
