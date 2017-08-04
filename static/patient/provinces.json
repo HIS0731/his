@@ -1,0 +1,94 @@
+{
+  "provinces": [{
+    "value": "shanxi",
+    "label": "山西省"
+  },{
+    "value": "liaoning",
+    "label": "辽宁省"
+  },{
+    "value": "jilin",
+    "label": "吉林省"
+  },{
+    "value": "heilongjiang",
+    "label": "黑龙江省"
+  },{
+    "value": "jiangsu",
+    "label": "江苏省"
+  },{
+    "value": "zhejiang",
+    "label": "浙江省"
+  },{
+    "value": "anhui",
+    "label": "安徽省"
+  },{
+    "value": "fujian",
+    "label": "福建省"
+  },{
+    "value": "jiangxi",
+    "label": "江西省"
+  },{
+    "value": "shandong",
+    "label": "山东省"
+  },{
+    "value": "henan",
+    "label": "河南省"
+  },{
+    "value": "hebei",
+    "label": "河北省"
+  },{
+    "value": "hubei",
+    "label": "湖北省"
+  },{
+    "value": "hunan",
+    "label": "湖南省"
+  },{
+    "value": "guangdong",
+    "label": "广东省"
+  },{
+    "value": "hainan",
+    "label": "海南省"
+  },{
+    "value": "sichuang",
+    "label": "四川省"
+  },{
+    "value": "guizhou",
+    "label": "贵州省"
+  },{
+    "value": "yunnan",
+    "label": "云南省"
+  },{
+    "value": "shanxi",
+    "label": "陕西省"
+  },{
+    "value": "gansu",
+    "label": "甘肃省"
+  },{
+    "value": "qinghai",
+    "label": "青海省"
+  },{
+    "value": "taiwan",
+    "label": "台湾省"
+  },{
+    "value": "neimenggu",
+    "label": "内蒙古自治区"
+  },{
+    "value": "guangxi",
+    "label": "广西壮族自治区"
+  },{
+    "value": "xizang",
+    "label": "西藏自治区"
+  },{
+    "value": "ningxia",
+    "label": "宁夏回族自治区"
+  },{
+    "value": "xinjiang",
+    "label": "新疆维吾尔族自治区"
+  },{
+    "value": "xianggan",
+    "label": "香港特别行政区"
+  },{
+    "value": "aomen",
+    "label": "澳门特别行政区"
+  }]
+
+}
