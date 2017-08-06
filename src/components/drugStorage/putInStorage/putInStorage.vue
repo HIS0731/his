@@ -1,10 +1,10 @@
 <template>
   <div class="putInStorage">
-    <el-form ref="form" :model="form" label-width="80px">
-      <el-form-item label="药品名称">
+    <el-form ref="form" :model="form" label-width="80px"  :rules="rules">
+      <el-form-item label="药品名称" prop="name">
         <el-input v-model.trim="form.name"></el-input>
       </el-form-item>
-      <el-form-item label="数目">
+      <el-form-item label="数目" prop="amount">
         <el-input v-model.trim.number="form.amount" type="number"></el-input>
       </el-form-item>
       <el-form-item label="进药时间">
@@ -16,43 +16,43 @@
           <el-time-picker type="fixed-time" placeholder="选择时间" v-model="form.date2" style="width: 100%;"></el-time-picker>
         </el-col>
       </el-form-item>
-      <el-form-item label="厂家">
-        <el-input v-model.trim="form.manufacturers"></el-input>
+      <el-form-item label="厂家" prop="manufacturers">
+        <el-input v-model.trim="form.manufacturers" ></el-input>
       </el-form-item>
-      <el-form-item label="种类">
+      <el-form-item label="种类" prop="species">
         <el-input v-model.trim="form.species"></el-input>
       </el-form-item>
       <el-form-item label="生产日期">
         <el-date-picker readOnly="true" type="date" placeholder="选择日期" v-model="form.productionData" style="width: 100%;"></el-date-picker>
       </el-form-item>
-      <el-form-item label="规格">
+      <el-form-item label="规格"  prop="specification">
         <el-input v-model.trim="form.specification"></el-input>
       </el-form-item>
-      <el-form-item label="剂型">
+      <el-form-item label="剂型"  prop="dosageForm">
         <el-input v-model.trim="form.dosageForm"></el-input>
       </el-form-item>
-      <el-form-item label="单价">
+      <el-form-item label="单价"  prop="unitPrice">
         <el-input v-model.trim.number="form.unitPrice" type="number"></el-input>
       </el-form-item>
       <el-form-item label="总价">
         {{form.totalPrices}}
       </el-form-item>
-      <el-form-item label="储存温度">
+      <el-form-item label="储存温度"  prop="temperature">
         <el-select v-model.trim="form.temperature" placeholder="请选择储存温度">
           <el-option label="常温" value="01"></el-option>
           <el-option label="冷藏" value="02"></el-option>
         </el-select>
       </el-form-item>
-      <el-form-item label="经手人">
+      <el-form-item label="经手人"  prop="handlers">
         <el-input v-model.trim="form.handlers"></el-input>
       </el-form-item>
-      <el-form-item label="质管员">
+      <el-form-item label="质管员"  prop="qualityOfficer">
         <el-input v-model.trim="form.qualityOfficer"></el-input>
       </el-form-item>
-      <el-form-item label="仓库员">
+      <el-form-item label="仓库员"  prop="warehouseman">
         <el-input v-model.trim="form.warehouseman"></el-input>
       </el-form-item>
-      <el-form-item label="进药方式">
+      <el-form-item label="进药方式"  prop="pattern">
         <el-select v-model.trim="form.pattern" placeholder="请选择进药方式">
           <el-option label="网上订货" value="01"></el-option>
           <el-option label="到厂家进货" value="02"></el-option>
@@ -87,6 +87,41 @@
           productionData: '',
           specification: '',
           dosageForm: ''
+        },
+        rules: {
+          name: [
+            { required: true, message: '请输入药品名称', trigger: 'blur' }
+          ],
+          amount: [
+            { required: true, message: '请输入药品数目', trigger: 'blur' }
+          ],
+          manufacturers: [
+            { required: true, message: '请输入厂家', trigger: 'blur' }
+          ],
+          species: [
+            { required: true, message: '请输入药品种类', trigger: 'blur' }
+          ],
+          specification: [
+            { required: true, message: '请输入药品规格', trigger: 'blur' }
+          ],
+          dosageForm: [
+            { required: true, message: '请输入药品剂型', trigger: 'blur' }
+          ],
+          unitPrice: [
+            { required: true, message: '请输入药品单价', trigger: 'blur' }
+          ],
+          handlers: [
+            { required: true, message: '请输入药品经手人', trigger: 'blur' }
+          ],
+          qualityOfficer: [
+            { required: true, message: '请输入药品质管员', trigger: 'blur' }
+          ],
+          warehouseman: [
+            { required: true, message: '请输入药品仓库员', trigger: 'blur' }
+          ],
+          pattern: [
+            { required: true, message: '请输入药品进药方式', trigger: 'blur' }
+          ]
         }
       };
     },
