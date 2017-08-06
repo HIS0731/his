@@ -96,7 +96,7 @@
                 <span slot="title">患者</span>
               </template>
               <el-menu-item-group>
-                <el-menu-item index="7-1" v-if="type === '01'"><router-link to="addPatient">增加患者</router-link></el-menu-item>
+                <el-menu-item index="7-1" v-if="type === '01'  || type === '04'"><router-link to="addPatient">增加患者</router-link></el-menu-item>
                 <el-menu-item index="7-2"><router-link to="hasPatient">查看患者列表信息</router-link></el-menu-item>
                 <el-menu-item index="7-3"><router-link to="addRegistered">查看患者挂号列表信息</router-link></el-menu-item>
                 <el-menu-item index="7-4" v-if="type === '01' || type === '02'"><router-link to="hospitalized">建立住院患者档案</router-link></el-menu-item>
