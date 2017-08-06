@@ -73,7 +73,7 @@
           return callback(new Error('此处值不能为空！'));
         }
         setTimeout(() => {
-          if (/^\d+$/.test(value) === false) {
+          if (!Number.isInteger(value)) {
             callback(new Error('请输入数字值！'));
           } else {
             callback();

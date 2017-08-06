@@ -1,0 +1,77 @@
+<template>
+  <div class="">
+    <el-table :data="doctorlist" border style="width: 100%;">
+      <el-table-column fixed prop="index" label="序号" width="100">
+        <template scope="scope">
+          {{scope.$index}}
+        </template>
+      </el-table-column>
+      <el-table-column fixed prop="name" label="姓名" width="150">
+      </el-table-column>
+      <el-table-column fixed prop="sex" label="性别" width="150"> 
+      </el-table-column>
+      <el-table-column fixed prop="date" label="入职日期" width="150"> 
+      </el-table-column>
+      <el-table-column fixed prop="degree" label="学历" width="150"> 
+      </el-table-column>
+      <el-table-column fixed prop="major" label="专业" width="150"> 
+      </el-table-column>
+      <el-table-column fixed prop="profession" label="职称" width="150"> 
+      </el-table-column>
+      <el-table-column fixed prop="office" label="科室" width="150"> 
+      </el-table-column>
+      <el-table-column fixed="right" prop="operate" label="操作" width="150"> 
+        <template scope="scope">
+          <el-button @click="dialogTableVisible = true" type="text" size="small">编辑</el-button>
+          <el-button @click.native.prevent="delectDoctor(scope.$index, doctorlist)" type="text" size="small">删除</el-button>
+        </template>
+      </el-table-column>     
+    </el-table>
+    <el-dialog title="医生信息修改" :visible.sync="dialogTableVisible">
+      <el-table :data="doctorlist" border style="width: 100%;heigh:200" >
+        <el-table-column property="name" label="姓名" width="150"></el-table-column>
+        <el-table-column property="sex" label="性别"></el-table-column>
+        <el-table-column property="date" label="入职日期"></el-table-column>
+        <el-table-column property="degree" label="学历"></el-table-column>
+        <el-table-column property="major" label="专业"></el-table-column>
+        <el-table-column property="profession" label="职称"></el-table-column>
+        <el-table-column property="office" label="科室"></el-table-column>
+      </el-table>
+      <div slot="footer" class="dialog-footer">
+          <el-button @click="dialogTableVisible = false">取 消</el-button>
+          <el-button type="primary" @click="dialogTableVisible = false">确 定</el-button>
+      </div>
+    </el-dialog>
+  </div>
+
+</template>
+
+<script type="text/ecmascript-6">
+    export default {
+      data () {
+        return {
+          doctorlist: [],
+          dialogTableVisible: false
+        };
+      },
+      methods: {
+        edictDoctor () {
+          alert(11);
+        },
+        delectDoctor (index, rows) {
+          rows.splice(index, 1);
+        }
+      },
+      created () {
+        this.$http.get('../../static/doctor.json').then((response) => {             // mark
+          this.doctorlist = response.body.doctorlist;
+        }, response => {
+          // error callback
+          alert('数据请求失败');
+        });
+      }
+    };
+</script>
+
+<style lang="stylus-loader" rel="stylesheet/stylus">
+</style>

@@ -1,0 +1,34 @@
+{
+  "user": [
+    {
+      "name": "root",
+      "password": "root",
+      "type": "01"
+    },
+    {
+      "name": "doctor",
+      "password": "doctor",
+      "type": "02"
+    },
+    {
+      "name": "nurse",
+      "password": "nurse",
+      "type": "03"
+    },
+    {
+      "name": "checkstand",
+      "password": "checkstand",
+      "type": "04"
+    },
+    {
+      "name": "pharmacist",
+      "password": "pharmacist",
+      "type": "05"
+    },
+    {
+      "name": "pharmacy",
+      "password": "pharmacy",
+      "type": "06"
+    }
+  ]
+}
