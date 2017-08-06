@@ -116,7 +116,7 @@
             </el-submenu>
           </el-menu>
         </div>
-        <div class="content" @mouseover="isCollapse=true">
+        <div class="content" @mouseover="navColse"">
           <v-header></v-header>
           <div class="tagcontent">
             <transition name="HISshow">
@@ -126,7 +126,6 @@
         </div>
       </div>
     </div>
-
   </div>
 
 </template>
@@ -134,21 +133,20 @@
 <script type="text/ecmascript-6">
   import header from './components/header/header.vue';
   import login from './components/login/login.vue';
-
+  //  mapGetters获取信息  mapActions提交动作
+  import {mapGetters, mapActions} from 'vuex';
   export default {
     name: 'app',
     data () {
       return {
-        isCollapse: true,
         userLogin: '',
         type: ''
       };
     },
-    methods: {
-      navToggle () {
-        this.isCollapse = !this.isCollapse;
-      }
-    },
+    methods: mapActions([
+      'navToggle',
+      'navColse'
+    ]),
     created: function () {
       if (sessionStorage.getItem('easeHis')) {
         this.userLogin = true;
@@ -161,8 +159,10 @@
     components: {
       'v-header': header,
       login
-    }
-
+    },  // 获取
+    computed: mapGetters([
+      'isCollapse'
+    ])
   };
 
 </script>
