@@ -44,14 +44,14 @@
         <li v-for="item in home.introduce.pharmacy">
           {{item}}
         </li>
-      </ul> 
-     
+      </ul>
+
       <h4>药库系统</h4>
       <ul>
         <li v-for="item in home.introduce.drugStorage">
           {{item}}
         </li>
-      </ul> 
+      </ul>
       <h4>患者模块</h4>
        <ul>
         <li v-for="item in home.introduce.patient">
@@ -100,7 +100,10 @@
         console.log(this.home.projectTeam.groupLeader);
       }, response => {
         // error callback
-        alert('数据请求失败');
+        this.$message({
+          message: '数据请求失败',
+          type: 'error'
+        });
       });
     }
   };

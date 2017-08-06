@@ -12,7 +12,7 @@
           <router-link to="home"><el-dropdown-item>首页</el-dropdown-item></router-link>
           <el-dropdown-item>修改密码</el-dropdown-item>
           <el-dropdown-item>个人主页</el-dropdown-item>
-          <el-dropdown-item>退出登录</el-dropdown-item>
+          <a @click="userLog"><el-dropdown-item>退出登录</el-dropdown-item></a>
         </el-dropdown-menu>
       </el-dropdown>
     </header>
@@ -22,8 +22,18 @@
   export default {
     data () {
       return {
-        userName: 'mingming'
+        userName: ''
       };
+    },
+    created: function () {
+      this.userName = sessionStorage.getItem('easeHis');
+    },
+    methods: {
+      userLog () {
+        sessionStorage.removeItem('easeHis');
+        this.userName = '请登录';
+        location.reload();
+      }
     }
   };
 </script>
