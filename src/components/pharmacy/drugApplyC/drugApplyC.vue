@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="drugApplyC">
     <el-form label-width="120px" :model="applytable" :rules="rules" ref="applyform" class="apply-form">
       <h4 class="applytable">药物补给申请表</h4>
       <p class="radio-p">
@@ -221,35 +221,35 @@
 </script>
 
 <style lang="stylus-loader" rel="stylesheet/stylus">
-  .apply-form
+  .drugApplyC .apply-form
     width: 100%
-  .applytable
+  .drugApplyC .apply-form .applytable
     display: block
     line-height: 30px
     text-align: center
     font-size: 20px
     font-weight: bold
     margin: 0 auto
-  .radio-p
+  .drugApplyC .apply-form .radio-p
     line-height: 80px
     text-align: center
-  .el-form-item
+  .drugApplyC .apply-form .el-form-item
     display: inline-block
     width: 25%
     padding-left: 40px
     padding-right: 40px
-  .el-select
+  .drugApplyC .apply-form .el-select
     width: 100%
-  .submit
+  .drugApplyC .apply-form .submit
     margin-top: 20px
     text-align: center
-  .tips
+  .drugApplyC .tips
     display: block
     padding-left: 95px
     margin-top: 20px
     margin-bottom: 20px
     color: #FF4949
-  .insufficientTable
+  .drugApplyC .insufficientTable
     width: 85%
     margin: 0 auto
 </style>

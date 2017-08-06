@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="drugInfosW">
     <!-- 搜索条件 -->
     <div class="filter-container">
       <el-input placeholder="药品名">
@@ -110,19 +110,13 @@
 </script>
 
 <style lang="stylus-loader" rel="stylesheet/stylus">
-  .filter-container
+  .drugInfosW .filter-container
     padding-bottom:30px
     .el-input
       width: 400px
-  .page
-    width: 100%
-    .el-pagination
-      width: 50%
-      margin: 0 auto
-      padding-top:30px
-  .el-table-column
+  .drugInfosW .el-table-column
     font-weight: bold
-  .drugdetail
+  .drugInfosW .drugdetail
     h5
       display: inline-block
       width: 100px

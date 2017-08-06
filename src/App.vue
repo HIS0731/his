@@ -51,7 +51,7 @@
               </template>
               <el-menu-item-group>
                 <span slot="title">挂号收银</span>
-                <el-menu-item index="4-1">挂号</el-menu-item>
+                <el-menu-item index="4-1"><router-link to="register">挂号</router-link></el-menu-item>
                 <el-menu-item index="4-2">查询之前挂号信息</el-menu-item>
                 <el-menu-item index="4-3">删除挂号信息</el-menu-item>
               </el-menu-item-group>

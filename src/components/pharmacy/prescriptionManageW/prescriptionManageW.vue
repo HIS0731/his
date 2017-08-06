@@ -1,12 +1,12 @@
 <template>
-  <div class="prescriptionCManageC">
+  <div class="prescriptionManageW">
     <!-- 搜索条件 -->
     <div class="filter-container">
       <el-input placeholder="患者姓名">
       </el-input>
       <el-button type="primary" icon="search">搜索</el-button>
     </div>    
-    <el-table :data="prescriptionC">
+    <el-table :data="prescriptionW">
       <el-table-column type="expand">
         <template scope="props">
           <el-form label-position="left" inline class="form-expand">
@@ -24,7 +24,7 @@
               <span>{{ props.row.symptoms }}</span>
             </el-form-item>
             <hr class="hr">
-            <h5 class="prescriptionC-title">R</h5>
+            <h5 class="prescriptionW-title">R</h5>
             <template>
               <el-table :data="props.row.prescription.drug" style="width: 80%; margin: 0 auto;">
                 <el-table-column prop="sort" label="药品分类" width="100">
@@ -59,8 +59,8 @@
       </el-table-column>
       <el-table-column label="操作" width="210">
         <template scope="scope">
-          <el-button type="primary" @click="refuseprescriptionC(scope.$index)">驳回药方</el-button>
-          <el-button type="primary" @click="acceptprescriptionC(scope.$index)">出药</el-button>
+          <el-button type="primary" @click="refuseprescriptionW(scope.$index)">驳回药方</el-button>
+          <el-button type="primary" @click="acceptprescriptionW(scope.$index)">出药</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -71,51 +71,51 @@
   export default {
     data () {
       return {
-        prescriptionC: [],
+        prescriptionW: [],
         drugs: []
       };
     },
     mounted () {
-      let prescriptionCThis = this;
+      let prescriptionWThis = this;
 
-      prescriptionCThis.$http.get('../../static/patientList.json').then((response) => {
+      prescriptionWThis.$http.get('../../static/patientList.json').then((response) => {
         // 测试语句，测试是否能获取response
-        console.log(prescriptionCThis.prescriptionC, response);
+        console.log(prescriptionWThis.prescriptionW, response);
         // 把json接口获取的数据赋给当前对象
-        prescriptionCThis.prescriptionC = response.data.tableData;
+        prescriptionWThis.prescriptionW = response.data.tableData;
       }, response => {
         // error callback
         alert('数据请求失败');
       });
-      prescriptionCThis.$http.get('../../static/drugs.json').then((response) => {
+      prescriptionWThis.$http.get('../../static/drugs.json').then((response) => {
         // 把json接口获取的数据赋给当前对象
-        prescriptionCThis.drugs = response.data.tableData;
+        prescriptionWThis.drugs = response.data.tableData;
       }, response => {
         // error callback
         alert('数据请求失败');
       });
     },
     methods: {
-      refuseprescriptionC: function (index) {
+      refuseprescriptionW: function (index) {
         // 这里应该有个操作可以提醒医生他的处方被驳回了
         this.$message({
-          message: '已通知' + this.prescriptionC[index].doctor + '医生，处方被驳回！',
+          message: '已通知' + this.prescriptionW[index].doctor + '医生，处方被驳回！',
           type: 'success'
         });
       },
-      acceptprescriptionC: function (index) {
+      acceptprescriptionW: function (index) {
         // 这里应该获取当前登陆的账户名，将其赋值给this.prescriptionC[index].pharmacist，从而获取当前操作的审核药师
         // 这里假装当前登陆的账户名是 “唐静”，暂时写死数据为该名字
-        this.prescriptionC[index].pharmacist = '唐静';
+        this.prescriptionW[index].pharmacist = '唐静';
         this.$message({
-          message: '该处方已被' + this.prescriptionC[index].pharmacist + '审核药师处理！',
+          message: '该处方已被' + this.prescriptionW[index].pharmacist + '审核药师处理！',
           type: 'success'
         });
         // mark!!! 这里需要遍历数组，比较药品名称，修改药品库存：库存-出药数量
         for (let i = 0; i < this.drugs.length; i++) {
-          for (let j = 0; j < this.prescriptionC[index].prescription.drug.length; j++) {
-            if (this.drugs[i].drugname === this.prescriptionC[index].prescription.drug[j].drugname) {
-              this.drugs[i].quantity = this.drugs[i].quantity - this.prescriptionC[index].prescription.drug[j].quantity;
+          for (let j = 0; j < this.prescriptionW[index].prescription.drug.length; j++) {
+            if (this.drugs[i].drugname === this.prescriptionW[index].prescription.drug[j].drugname) {
+              this.drugs[i].quantity = this.drugs[i].quantity - this.prescriptionW[index].prescription.drug[j].quantity;
               // 提交数据到后台（暂时没有后台接口），后台用接收到的修改过的库存的值替换掉原来的库存值，所有应用到该库存的地方都会发生相应的修改
               // this.$http.post('', {drugs: 'this.drugs'}).then(response => {}, response => {});
               // 这里没有后台接口，无法把修改后的药品库存返回去，这里用打印到控制台的方式查看结果
@@ -129,11 +129,11 @@
 </script>
 
 <style lang="stylus-loader" rel="stylesheet/stylus">
-  .filter-container
+  .prescriptionManageW .filter-container
     padding-bottom:30px
     .el-input
       width: 400px  
-  .prescriptionCManageC
+  .prescriptionManageW
     .form-expand
       /* background: #99FF66 */
       width:80%
@@ -150,10 +150,10 @@
       .hr
         margin-top: -25px
         border-top: 1px solid #4A7C32
-      .prescriptionC-title
+      .prescriptionW-title
         font-size: 26px
         margin-left: 20px
-  .prescriptionCManageC .form-expand .el-form-item span
+  .prescriptionManageW .form-expand .el-form-item span
     display: block
     font-size: 15px
     font-weight: bold

@@ -129,7 +129,7 @@
 </script>
 
 <style lang="stylus-loader" rel="stylesheet/stylus">
-  .filter-container
+  .prescriptionCManageC .filter-container
     padding-bottom:30px
     .el-input
       width: 400px  
