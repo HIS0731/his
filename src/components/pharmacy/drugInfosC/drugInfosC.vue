@@ -19,7 +19,7 @@
       <el-table-column prop="form" label="剂型" width="100"></el-table-column>
       <el-table-column prop="expiry_date" label="有效期至" width="130"></el-table-column>
       <el-table-column prop="vender" label="厂家" width="238"></el-table-column>
-      <el-table-column prop="quantity" label="库存（件）" width="110"></el-table-column>
+      <el-table-column prop="quantity" label="库存（件/克）" width="110"></el-table-column>
       <el-table-column prop="price" label="单价（元）" width="110"></el-table-column>
       <el-table-column label="操作" width="90">
         <template scope="scope">
@@ -28,7 +28,7 @@
       </el-table-column>
     </el-table>
     <!-- 点击查看药物详细信息 -->
-    <el-dialog title="产品参数" :visible.sync="dialogVisible" :before-close="handleClose" :modal="true">
+    <el-dialog title="产品参数" :visible.sync="dialogVisible" :before-close="handleClose">
       <ul class="drugdetail">
         <li><h5>产品名称：</h5><span>{{drugdetails.productname}}</span></li>
         <li><h5>产品剂型:</h5><span>{{drugdetails.form}}</span></li>
@@ -60,17 +60,17 @@
       return {
         tableData: [],
         dialogVisible: false,
-        drugdetails: []
+        drugdetails: ''
       };
     },
     mounted () {
       let druginfosThis = this;
 
-      druginfosThis.$http.get('../../static/drugs.json', {params: {q: 1}}).then((response) => {
+      druginfosThis.$http.get('../../static/drugs.json').then((response) => {
         // 测试语句，测试是否能获取response
         console.log(druginfosThis.tableData, response);
         // 把json接口获取的数据赋给当前对象
-        druginfosThis.tableData = response.data.tableData;
+        druginfosThis.tableData = response.data.tableDataC;
       }, response => {
         // error callback
         alert('数据请求失败');

@@ -42,7 +42,7 @@
         <el-input v-model="applytable.applyoffices"></el-input>
       </el-form-item>      
       <el-form-item label="申请时间" prop="date">
-        <el-date-picker v-model="applytable.date" type="date" placeholder="选择日期" :picker-options="pickerOptions"></el-date-picker>
+        <el-date-picker v-model="applytable.date" type="date" placeholder="选择日期"></el-date-picker>
       </el-form-item>
       <p  class="submit">
         <el-button type="reset" @click="resetApply">重置申请</el-button>
@@ -130,12 +130,6 @@
             label: '注射液剂'
           }
         ],
-        // 日期表
-        pickerOptions: {
-          disabledDate (time) {
-            return time.getTime() < Date.now() - 8.64e7;
-          }
-        },
         // 保存申请药物补给表的数据
         applytable: {
           drugname: '',
@@ -194,7 +188,7 @@
             // 测试
             console.log(this.applytable);
             // 提交数据到后台（暂时没有后台接口）
-            // this.$http.post('', {applytable: 'applytable'}).then(response => {}, response => {});
+            // this.$http.post('', {applytable: 'this.applytable'}).then(response => {}, response => {});
           } else {
             console.log('提交失败!!');
             return false;
@@ -212,9 +206,9 @@
 
         drugapplyThis.$http.get('../../static/drugs.json', {params: {q: 1}}).then((response) => {
           // 把json接口获取的数据
-          for (let i = 0; i < response.data.tableData.length; i++) {
-            if (response.data.tableData[i].quantity < 10) {
-              drugapplyThis.insufficientTable.push(response.data.tableData[i]);
+          for (let i = 0; i < response.data.tableDataC.length; i++) {
+            if (response.data.tableDataC[i].quantity < 10) {
+              drugapplyThis.insufficientTable.push(response.data.tableDataC[i]);
             }
           }
         }, response => {

@@ -1,15 +1,15 @@
 <template>
   <div>
-    <el-form label-width="120px" class="apply-form" ref="applyform">
+    <el-form label-width="120px" :model="applytable" :rules="rules" ref="applyform" class="apply-form">
       <h4 class="applytable">药物补给申请表</h4>
       <p class="radio-p">
         <el-radio label="1" disabled>中药</el-radio>
         <el-radio label="2" v-model="applytable.checked">西药</el-radio>
       </p>
-      <el-form-item label="药品名称">
+      <el-form-item label="药品名称" prop="drugname">
         <el-input v-model="applytable.drugname"></el-input>
       </el-form-item>
-      <el-form-item label="OTC标志">
+      <el-form-item label="OTC标志" prop="otc_value">
         <el-select v-model="applytable.otc_value" placeholder="请选择">
           <el-option
             v-for="item in OTC"
@@ -19,7 +19,7 @@
           </el-option>
         </el-select>
       </el-form-item>
-      <el-form-item label="剂型">
+      <el-form-item label="剂型" prop="form_value">
         <el-select v-model="applytable.form_value" placeholder="请选择">
           <el-option
             v-for="f in form"
@@ -29,19 +29,19 @@
           </el-option>
         </el-select>
       </el-form-item>              
-      <el-form-item label="药品规格">
+      <el-form-item label="药品规格" prop="drugform">
         <el-input v-model="applytable.drugform"></el-input>
       </el-form-item>
-      <el-form-item label="数量（件）">
+      <el-form-item label="数量（件）" prop="drugquantity">
         <el-input v-model="applytable.drugquantity"></el-input>
       </el-form-item>
-      <el-form-item label="申请人">
+      <el-form-item label="申请人" prop="applyman">
         <el-input v-model="applytable.applyman"></el-input>
       </el-form-item>
-      <el-form-item label="申请科室">
+      <el-form-item label="申请科室" prop="applyoffices">
         <el-input v-model="applytable.applyoffices"></el-input>
       </el-form-item>      
-      <el-form-item label="申请时间">
+      <el-form-item label="申请时间" prop="date">
         <el-date-picker v-model="applytable.date" type="date" placeholder="选择日期"></el-date-picker>
       </el-form-item>
       <p  class="submit">
@@ -61,6 +61,25 @@
 <script type="text/ecmascript-6">
   export default {
     data () {
+      let validatevalue = (rule, value, callback) => {
+        if (value === '') {
+          callback(new Error('此处值不能为空！'));
+        } else {
+          callback();
+        }
+      };
+      let checkquantity = (rule, value, callback) => {
+        if (!value) {
+          return callback(new Error('此处值不能为空！'));
+        }
+        setTimeout(() => {
+          if (/^\d+$/.test(value) === false) {
+            callback(new Error('请输入数字值！'));
+          } else {
+            callback();
+          }
+        }, 1000);
+      };
       return {
         OTC: [
           {
@@ -123,29 +142,62 @@
           form_value: '',
           date: ''
         },
+        rules: {
+          drugname: [
+            {validator: validatevalue, trigger: 'blur'}
+          ],
+          drugform: [
+            {validator: validatevalue, trigger: 'blur'}
+          ],
+          drugquantity: [
+            {validator: checkquantity, trigger: 'blur'}
+          ],
+          applyoffices: [
+            {validator: validatevalue, trigger: 'blur'}
+          ],
+          applyman: [
+            {validator: validatevalue, trigger: 'blur'}
+          ],
+          checked: '1',
+          otc_value: [
+            {validator: validatevalue, trigger: 'click'}
+          ],
+          form_value: [
+            {validator: validatevalue, trigger: 'blur'}
+          ],
+          date: [
+            {validator: validatevalue, trigger: 'blur'}
+          ]
+        },
         // 药物库存不足表格
         insufficientTable: []
       };
     },
-    created () {                                // 在实例创建之后同步调用
-      // 保存当前vue实例的所有数据
-      this.defaultApplytable = JSON.parse(JSON.stringify(this.applytable));
+    mounted () {
+      this.getinsufficientData();
     },
     methods: {
       // 点击提交申请按钮执行
       submitApply: function () {
-        this.$notify({
-          message: '提交成功',
-          type: 'success'
+        this.$refs.applyform.validate((valid) => {
+          if (valid) {
+            this.$notify({
+              message: '提交成功',
+              type: 'success'
+            });
+            // 测试
+            console.log(this.applytable);
+            // 提交数据到后台（暂时没有后台接口）
+            // this.$http.post('', {applytable: 'this.applytable'}).then(response => {}, response => {});
+          } else {
+            console.log('提交失败!!');
+            return false;
+          }
         });
-        // 测试
-        console.log(this.applytable);
-        // 提交数据到后台（暂时没有后台接口）
-        // this.$http.post('', {applytable: 'applytable'}).then(response => {}, response => {});
       },
-      // 点击重置申请按钮清空表单
+      // 点击重置申请按钮执行
       resetApply: function () {
-        // 重置用ref绑定的表单对象applyform,resetFields()方法为elementui表单内置的
+        // 重置当前vue实例的所有数据
         this.$refs.applyform.resetFields();
       },
       // 获取库存不足10件的数据
@@ -154,9 +206,9 @@
 
         drugapplyThis.$http.get('../../static/drugs.json', {params: {q: 1}}).then((response) => {
           // 把json接口获取的数据
-          for (let i = 0; i < response.data.tableData.length; i++) {
-            if (response.data.tableData[i].quantity < 10) {
-              drugapplyThis.insufficientTable.push(response.data.tableData[i]);
+          for (let i = 0; i < response.data.tableDataW.length; i++) {
+            if (response.data.tableDataW[i].quantity < 10) {
+              drugapplyThis.insufficientTable.push(response.data.tableDataW[i]);
             }
           }
         }, response => {

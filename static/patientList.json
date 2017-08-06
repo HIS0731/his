@@ -1,0 +1,126 @@
+{
+  "tableData": [
+    {
+      "date": "2017-1-1",
+      "number": "20171101",
+      "name": "李丽",
+      "sex": "女",
+      "phone": 13414937050,
+      "age": 22,
+      "symptoms":"系统性红斑狼疮 狼疮性肾炎 （病情活动期）",
+      "disease":"内科",
+      "position":"尚志苑B2栋2楼",
+      "doctor": "王娟",
+      "pharmacist": "",
+      "prescription": {
+        "drug": [
+          {"sort": "", "drugname": "生地", "quantity": "20", "usage": ""},
+          {"sort": "", "drugname": "赤芍", "quantity": "15", "usage": ""},
+          {"sort": "", "drugname": "五味子", "quantity": "15", "usage": ""},
+          {"sort": "", "drugname": "怀牛膝", "quantity": "15", "usage": ""},
+          {"sort": "", "drugname": "苦参", "quantity": "15", "usage": ""},
+          {"sort": "", "drugname": "蒲公英", "quantity": "20", "usage": ""},
+          {"sort": "", "drugname": "紫花地丁", "quantity": "20", "usage": ""},
+          {"sort": "", "drugname": "花粉", "quantity": "15", "usage": ""},
+          {"sort": "", "drugname": "当归", "quantity": "15", "usage": ""},
+          {"sort": "", "drugname": "连翘", "quantity": "15", "usage": ""},
+          {"sort": "", "drugname": "黄芩", "quantity": "15", "usage": ""},
+          {"sort": "", "drugname": "甘草", "quantity": "10", "usage": ""}
+        ],        
+        "tips": "先将上药用适量水浸泡30分钟，再放文火上煎煮30分钟，每剂煎2次，将两次煎出的药液混合。每日1剂，早晚各服1次"
+      }
+    },{
+      "date": "2017-1-1",
+      "number": "20171102",
+      "name": "赵青",
+      "sex": "女",
+      "phone": 13414937051,
+      "age": 21,
+      "symptoms":"红斑，丘疹，伴或不伴糜烂，渗出",
+      "disease":" 皮肤科",
+      "position":"尚志苑B1栋2楼",
+      "doctor": "刘雯",
+      "pharmacist": "",
+      "prescription": {
+        "drug": [
+          {"sort": "", "drugname": "熟地", "quantity": "40", "usage": ""},
+          {"sort": "", "drugname": "山茱萸", "quantity": "10", "usage": ""},
+          {"sort": "", "drugname": "杞子", "quantity": "12", "usage": ""},
+          {"sort": "", "drugname": "淮山", "quantity": "20", "usage": ""},
+          {"sort": "", "drugname": "女贞子", "quantity": "15", "usage": ""},
+          {"sort": "", "drugname": "五味子", "quantity": "10", "usage": ""},
+          {"sort": "", "drugname": "丹皮", "quantity": "9", "usage": ""},
+          {"sort": "", "drugname": "麦冬", "quantity": "15", "usage": ""},
+          {"sort": "", "drugname": "大小消草", "quantity": "50", "usage": ""},
+          {"sort": "", "drugname": "夏枯草", "quantity": "14", "usage": ""},
+          {"sort": "", "drugname": "玄参", "quantity": "15", "usage": ""},
+          {"sort": "", "drugname": "生牡蛎", "quantity": "40", "usage": "（先煎）"},
+          {"sort": "", "drugname": "海蛤壳", "quantity": "40", "usage": "（先煎）"},
+          {"sort": "", "drugname": "甘草", "quantity": "6", "usage": ""},
+          {"sort": "", "drugname": "丹参", "quantity": "25", "usage": ""}
+        ],        
+        "tips": "水煎2次，2次合液，每日一剂，分3次服用。禁忌：忌鱼、牛肉、鸭肉、辛辣、烟、酒等刺激之品"
+      }   
+    },{
+      "date": "2017-1-4",
+      "number": "20171401",
+      "name": "钱虎",
+      "sex": "男",
+      "phone": 13414937052,
+      "age": 23,
+      "symptoms":"阑尾炎",
+      "disease":"外科",
+      "position":"尚志苑C栋2楼",
+      "doctor": "李星",
+      "pharmacist": "",
+      "prescription": {
+        "drug": [
+          {"sort": "", "drugname": "银花", "quantity": "10", "usage": ""},
+          {"sort": "", "drugname": "连翘", "quantity": "12", "usage": ""},
+          {"sort": "", "drugname": "黄芩", "quantity": "9", "usage": ""},
+          {"sort": "", "drugname": "生地", "quantity": "9", "usage": ""},
+          {"sort": "", "drugname": "玄参", "quantity": "9", "usage": ""},
+          {"sort": "", "drugname": "生甘草", "quantity": "6", "usage": ""},
+          {"sort": "", "drugname": "大黄", "quantity": "10", "usage": ""},
+          {"sort": "", "drugname": "紫花地丁", "quantity": "12", "usage": ""},
+          {"sort": "", "drugname": "大小消草", "quantity": "50", "usage": ""},
+          {"sort": "", "drugname": "野菊花", "quantity": "9", "usage": ""},
+          {"sort": "", "drugname": "蒲公英", "quantity": "9", "usage": ""},
+          {"sort": "", "drugname": "冬瓜子", "quantity": "30", "usage": ""}
+        ],        
+        "tips": "水煎服，每日1剂"
+      }       
+    },{
+      "date": "2017-1-5",
+      "number": "20171501",
+      "name": "曾雪花",
+      "sex": "女",
+      "phone": 13414937053,
+      "age": 23,
+      "symptoms":"慢性牙髓炎",
+      "disease":"牙科",
+      "position":"尚志苑C栋3楼",
+      "doctor": "李兴华",
+      "pharmacist": "",
+      "prescription": {
+        "drug": [
+          {"sort": "", "drugname": "生地", "quantity": "20", "usage": ""},
+          {"sort": "", "drugname": "元参", "quantity": "20", "usage": ""},
+          {"sort": "", "drugname": "生石膏", "quantity": "15", "usage": ""},
+          {"sort": "", "drugname": "升麻", "quantity": "2", "usage": ""},
+          {"sort": "", "drugname": "细辛", "quantity": "2", "usage": ""},
+          {"sort": "", "drugname": "槐花", "quantity": "10", "usage": ""},
+          {"sort": "", "drugname": "丹皮", "quantity": "9", "usage": ""},
+          {"sort": "", "drugname": "地骨皮", "quantity": "10", "usage": ""},
+          {"sort": "", "drugname": "黄芩", "quantity": "10", "usage": ""},
+          {"sort": "", "drugname": "川芎", "quantity": "6", "usage": ""},
+          {"sort": "", "drugname": "白芷", "quantity": "6", "usage": ""},
+          {"sort": "", "drugname": "荆芥", "quantity": "9", "usage": ""},
+          {"sort": "", "drugname": "防风", "quantity": "3", "usage": ""},
+          {"sort": "", "drugname": "甘草", "quantity": "3", "usage": ""}
+        ],
+        "tips": "水煎服，每日1剂，日服2次"
+      }      
+    }
+  ]
+}
