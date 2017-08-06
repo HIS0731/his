@@ -34,6 +34,8 @@ import hisIntroduction from '@/components/introduction/hisIntroduction/hisIntrod
 import staffIntroduction from '@/components/introduction/staffIntroduction/staffIntroduction';
 import patientCount from '@/components/introduction/patientCount/patientCount';
 import patientFeedback from '@/components/introduction/patientFeedback/patientFeedback';
+import Vuex from 'vuex';
+Vue.use(Vuex);
 Vue.use(Router);
 Vue.use(VueResource);
 Vue.use(ElementUI);

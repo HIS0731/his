@@ -1,19 +1,19 @@
 <template>
   <div class="addTrashy">
-    <el-form ref="form" :model="form" label-width="80px">
-      <el-form-item label="药品名称">
+    <el-form ref="form" :model="form" label-width="80px" :rules="rules">
+      <el-form-item label="药品名称" prop="name">
         <el-input v-model.trim="form.name"></el-input>
       </el-form-item>
-      <el-form-item label="数量">
+      <el-form-item label="数量" prop="amount">
         <el-input v-model.trim.number="form.amount" type="number"></el-input>
       </el-form-item>
-      <el-form-item label="确认人员">
+      <el-form-item label="确认人员" prop="handlers">
         <el-input v-model.trim="form.handlers"></el-input>
       </el-form-item>
-      <el-form-item label="原因">
+      <el-form-item label="原因" prop="trashy">
         <el-input v-model.trim="form.trashy" type="textarea"></el-input>
       </el-form-item>
-      <el-form-item label="进货厂家">
+      <el-form-item label="进货厂家"  prop="manufacturers">
         <el-input v-model.trim="form.manufacturers"></el-input>
       </el-form-item>
       <el-form-item>
@@ -33,6 +33,23 @@
           handlers: '',
           trashy: '',
           manufacturers: ''
+        },
+        rules: {
+          name: [
+            { required: true, message: '请输入药品名称', trigger: 'blur' }
+          ],
+          amount: [
+            { required: true, message: '请输入药品数目', trigger: 'blur' }
+          ],
+          handlers: [
+            { required: true, message: '请输入确认人员', trigger: 'blur' }
+          ],
+          manufacturers: [
+            { required: true, message: '请输入进货厂家', trigger: 'blur' }
+          ],
+          trashy: [
+            { required: true, message: '请输入报销原因', trigger: 'blur' }
+          ]
         }
       };
     },

@@ -96,7 +96,7 @@
                 <span slot="title">患者</span>
               </template>
               <el-menu-item-group>
-                <el-menu-item index="7-1" v-if="type === '01'"><router-link to="addPatient">增加患者</router-link></el-menu-item>
+                <el-menu-item index="7-1" v-if="type === '01'  || type === '04'"><router-link to="addPatient">增加患者</router-link></el-menu-item>
                 <el-menu-item index="7-2"><router-link to="hasPatient">查看患者列表信息</router-link></el-menu-item>
                 <el-menu-item index="7-3"><router-link to="addRegistered">查看患者挂号列表信息</router-link></el-menu-item>
                 <el-menu-item index="7-4" v-if="type === '01' || type === '02'"><router-link to="hospitalized">建立住院患者档案</router-link></el-menu-item>
@@ -116,7 +116,7 @@
             </el-submenu>
           </el-menu>
         </div>
-        <div class="content" @mouseover="isCollapse=true">
+        <div class="content" @mouseover="navColse"">
           <v-header></v-header>
           <div class="tagcontent">
             <transition name="HISshow">
@@ -126,7 +126,6 @@
         </div>
       </div>
     </div>
-
   </div>
 
 </template>
@@ -134,21 +133,20 @@
 <script type="text/ecmascript-6">
   import header from './components/header/header.vue';
   import login from './components/login/login.vue';
-
+  //  mapGetters获取信息  mapActions提交动作
+  import {mapGetters, mapActions} from 'vuex';
   export default {
     name: 'app',
     data () {
       return {
-        isCollapse: true,
         userLogin: '',
         type: ''
       };
     },
-    methods: {
-      navToggle () {
-        this.isCollapse = !this.isCollapse;
-      }
-    },
+    methods: mapActions([
+      'navToggle',
+      'navColse'
+    ]),
     created: function () {
       if (sessionStorage.getItem('easeHis')) {
         this.userLogin = true;
@@ -161,8 +159,10 @@
     components: {
       'v-header': header,
       login
-    }
-
+    },  // 获取
+    computed: mapGetters([
+      'isCollapse'
+    ])
   };
 
 </script>

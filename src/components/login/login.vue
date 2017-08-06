@@ -6,8 +6,9 @@
           <el-form-item>
             <el-input v-model.trim="form.name"></el-input>
           </el-form-item>
-          <el-form-item>
-            <el-input v-model="form.password" type="password"></el-input>
+          <el-form-item @keyup.enter.native="onSubmit">
+            <el-input v-model="form.password" type="password" class="inputpsw"></el-input>
+            <!--mark-->
           </el-form-item>
           <el-form-item>
             <el-button type="primary" @click="onSubmit">登录</el-button>

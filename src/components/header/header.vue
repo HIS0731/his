@@ -63,6 +63,4 @@
       color:#1f2d3d
       &::hover
        color: #48576a
-
-
 </style>
