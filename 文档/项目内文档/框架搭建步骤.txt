@@ -1,0 +1,246 @@
+ES6
+nodejs
+webpack
+git
+vue基础
+vue form\v-for\v-if,v-if-else.v-else\v-on\v-bind\v-model的重点练习
+vue component
+vue resource
+vue router
+vue-cli
+ElementUI
+ESlint
+stylui
+
+
+
+/***********  github发布步骤：  **************/
+
+1.	完成注册和登录
+2.	点击头像——your profile -- Repositories -- new -- Repository 		name（存储库、项目名）-- 勾上Initialize  		README
+3.	点击Upload files，把需要上传的文件拖动到上传区域，然后提交
+4.	回到项目主页--点击setting--找到github pages（source）--选择master 	  branch --save 
+5.	再次找到github pages，下面多一个地址，直接复制地址打开即可。
+  
+
+
+
+/************* git的安装与命令  ********************/
+
+1.	在github上发布了项目之后，可以使用git的命令在命令窗口即时上传更新	 你所修改过的内容，或者拿github上别人的项目到自己电脑上学习
+2.	所以这里第一步应该是安装git
+3.	点击git安装包，选择安装位置最好和你的项目是同一个盘（应为有人安装	 在不同于项目文件夹的盘无法识别git命令）
+4.	安装完成之后，在打算放置你项目的文件夹里右击鼠标，点击git bash here
+5.	然后按住shift和鼠标右键，点击“在此打开命令行窗口”
+6.	第一步：输入 git clone + 你在github上发布的项目的地址链接/			你想要拿下来的别人的项目的地址链接  								（这一步执行完后会在当前文件夹中出现克隆下来的项目（文件夹））
+7.	如果是想修改自己的项目，然后上传到github上去更新自己的项目，就可以接着下面去做
+8.	第二步：去修改自己的项目
+9.	第三步： 输入 git pull, 去更新以下项目（这是团队合作时才需要，因为可能别人也做了修改，我们在作出修改时，应该先更新别人的修改，得到最新的一个版本后才去做自己的修改，保持和其他成员同步）
+10.	第四步：输入 git add . (添加文件)
+11.	第五步：输入 git commit -m "这里是写自己的注释，可以不写，但最好就是写" （-m是指提交到主干，这条命令是在本地提交）
+12.	第五步可能会出现要你告诉github你是谁，这时候输入：congif --global user.email "这里填写你注册github的邮箱"
+13.	第六步：输入 git push ,提交推送。
+14.	完成啦，可以去github上看看是否有更新！
+
+
+
+
+ 
+/***********  什么是nodejs  **************/ 
+
+1.	Node 是一个服务器程序。node.js其实和 Apache 或 Tomcat一样相当于一个服务器
+2.	Node.js是一个Javascript运行环境，能够使得javascript脱离浏览器运行，可以用来做服务器，也可以用来像批处理一	 样执行某些任务。
+3.	在前端开发里一般是用来执行编译 CSS 预编译语言、预编译、压缩、混淆 			JS、压缩图片、reload、deploy 	 等工程化任务，常用的平台有 Grunt 和 Gulp。
+4.	AngularJS做前端，NodeJS做服务端，MongoDB做数据库。NodeJS是一个代码库，方便只会js的人做站。
+5.	Node.js是用C++编写的，是Javascript的运行环境，也就是说你可以编写系统级或者服务器端的Javascript代码，交给N	 ode.js来解释执行。Apache 和 Tomcat 																		也都是web服务器。Apache主要是用C编写的，可以编译php；Tomcat主要是用Java编写的，可以编译java。
+6.	为什么服务器上要编译js ／php／java 呢？因为有些网页的复杂功能(业务逻辑等等)是用这些语言写的，将这些语言编	 写的代码放在云服务器，然后通过云服务器上的Node.js／Apache／Tomcat来进行编译执行。
+7.	node是一个平台，在这个平台上用JavaScript语言写应用。类似：java是一个平台，在这个平台上用java语言写应用。
+
+
+
+
+/***********  什么是babel  **************/
+
+1.	JavaScript在不断的发展，各种新的标准和提案层出不穷，但是由于浏览器的多样性，
+	导致可能几年之内都无法广泛普及.
+2.	babel可以让你提前使用这些语言特性，他是一种用途很多的javascript编译器，他把最新版的javascript编译成当下可	 以执行的版本
+3.	简言之，利用babel就可以让我们在当前的项目中随意的使用这些新最新的es6，甚至es7的语法。
+4.	说白了,就是把各种javascript千奇百怪的语言统统专为浏览器可以认识的语言。
+
+
+
+
+/***********  什么是webpack  **************/
+
+1.	WebPack可以看做是模块打包机：它做的事情是，分析你的项目结构，找到JavaScript模块以及其它的一些浏览器不能直接运行的拓展语言（Scss，TypeScript等），并将其打包为合适的格式以供浏览器使用。
+2.	Webpack的工作方式是：把你的项目当做一个整体，通过一个给定的主文件（如：index.js），Webpack将从这个文件开始找到你的项目的所有依赖文件，使用loaders处理它们，最后打包为一个浏览器可识别的JavaScript文件。
+3.	在webpack看来一切都是模块！这就是它不可不说的优点，包括你的JavaScript代码，也包括CSS和fonts以及图片等等等 ，只有通过合适的loaders，它们都可以被当做模块被处理。
+
+
+
+
+/***********  webpack的安装：  **************/
+
+1.	在nodejs已经安装的前提下
+2.	选择地点新建一个关于webpack的文件夹
+3.	打开文件夹，按住shift键，同时按下鼠标右键
+4.	选择“在此处打开命令行窗口”
+5.	输入“npm init”,提示输入名字，可以任意定义，但注意两点：一定要小写，而且不能用webpack，webpack是官方已经用了的（这时候已经生成了node_modules文件夹和一个package-lock.json文件）
+6.	输入“npm install --save-dev webpack”
+7.	输入npm -v 出现版本号的话说明安装成功
+8.	去新建的文件夹里的node_modules文件夹里看看是否已经有webpack文件夹了，有了说明成功了（这时候根目录也会多了	 一个package.json文件）
+
+/***********  安装完webpack后，使用webpack来打包js模块： *************/
+
+1.	新建一个项目
+2.	在项目里新建一个html文件，在里面引入下面会自动生成的编译文件bundle.js文件。
+3.	新建一个module.js文件，作为模块文件
+4.	新建一个样式文件style.css文件
+5.	新建一个entry.js文件，作为入口文件，在里面import进来module.js文件里的对外接口和style.css文件，之后就可以写一些想要执行的语句
+6.	创建一个配置文件webpack.config.js文件，在里面写好入口和出口的配置信息
+7.	在命令行窗口执行语句：webpack
+8.	这个执行过程会自动调用webpack.config.js文件编译生成bundle.js文件
+9.	大功告成啦，快去看看最终结果是否正确吧！
+   （可以通过npm install style-loader css-loader来安装这两个加载器）
+
+
+
+
+/***********  node和webpack的关系  **************/
+
+1.	因为webpack在执行打包压缩的时候是依赖nodejs的，没有nodejs就不能使用webpack
+2.	npm只是nodejs的一个模块。npm 是 nodejs 的包管理工具，用于管理依赖。
+
+
+
+
+
+/*****************************************************************/
+分清楚 库，框架，构建工具、 插件的作用。
+你只需要引用或者调用，就可以直接用，并不会对你做太多约束。那么这种大部分都称之为库。如jQuery
+需要按照他的标准构建文件结构或者文件夹结构或者代码书写方式那么这东西可以称之为框架，一般框架都是多种组合在一起的。如React+gulp 或者 jQuery mobile
+解决开发过程中重复或者需要自动化智能化完成事情，也就是构建工具。如grunt和gulp
+基于 库，框架，工具，提供的补充优化的模块就叫做插件。 
+
+
+
+/***********   vue-cli的安装：  **************/
+
+$ npm install -g vue-cli
+$ vue init webpack my-project
+$ cd my-project
+$ npm install
+$ npm run dev
+
+1.在nodejs的环境下， 安装了vue-cli之后就集成安装了webpack、vue库、router库（可以去package.json文件中查看，如果没有找到需要安装的库，那就去安装）
+2. 每次修改你的项目或者浏览项目效果时要做的只是运行编译你的项目：npm run dev
+3. 但是要使用vue的ajax功能，需要另外安装vue-resource
+4. 安装方法：npm install vue-resource -S
+5. 在项目的main.js文件里导入vue-resource库：
+	import VueResource from 'vue-resource';
+	Vue.use(VueResource);
+6. 使用方法：（post是线上开发时用的，get是本地开发用的。有后端一起合作项目时就需要用到下面的参数列表，那是传递给后台的数据。仅前端开发时可以省略掉，因为没有后台数据）
+	this.$http.post("http://localhost/test.php",{name:"zhangsan"},{emulateJSON:true}).then(
+            function (res) {
+                // 处理成功的结果
+                alert(res.body);
+            },function (res) {
+            // 处理失败的结果
+            }
+        );
+
+
+
+
+/***********  Vuex的安装：  **************/
+
+1. npm install vuex --save
+2. 导入：
+	import Vuex from 'vuex'
+	Vue.use(Vuex)
+
+
+
+
+/***********  ElementUI的安装： **************/
+
+1. npm i element-ui -S
+2. 引入：
+	在 main.js 中写入以下内容：
+		import ElementUI from 'element-ui'
+		import 'element-ui/lib/theme-default/index.css'
+		Vue.use(ElementUI)
+
+
+
+ 
+/***********  ESlint的安装： **************/
+
+1. EsLint帮助我们检查Javascript编程时的语法错误。比如：在Javascript应用中，你很难找到你漏泄的变量或者方法。
+   EsLint能够帮助我们分析JS代码，找到bug并确保一定程度的JS语法书写的正确性。
+2. npm install eslint --save-dev（本地安装）
+3. 安装和使用参考：http://eslint.cn/docs/user-guide/getting-started
+   参考：http://www.cnblogs.com/hahazexia/p/6393212.html
+
+
+
+
+
+/*********** stylus的安装： **************/
+
+1. stylus是一个css预处理框架。来自node社区，主要用来给node项目进行css预处理支持
+   stylus文件后缀是 .styl
+2. 安装：npm install --save-dev stylus
+3. 自动化编译
+	1 
+
+新建example文件夹
+
+	2 新建demo.stly文件
+	3 
+新建/example/dist文件夹
+
+	4 打开命令行界面
+输入 
+   		stylus -w demo.styl -o dist
+
+	5 -w 是自动监视文件 -o 是将编译后的CSS文件输出到指定文件中
+
+	6 在demo.styl里面写内容，保存即可
+
+。
+4. 参考：http://wiki.jikexueyuan.com/project/harp-doc/Stylus.html
+	http://www.zhangxinxu.com/jq/stylus/selectors.php
+
+
+/*********** 把表格导出到excel表的插件安装： **************/ 
+1. npm install -S file-saver xlsx
+2. npm install -D script-loader
+（安装即可，不用引用）
+3. 项目中新建一个文件夹：（vendor---名字任取），里面放置两个文件Blob.js和 Export2Excel.js。百度可下载。
+4. 在.vue文件中写这两个方法：其中list是表格的内容
+　　　　export2Excel() {
+　　　　　　require.ensure([], () => {
+　　　　　　　　const { export_json_to_excel } = require('../../vendor/Export2Excel');
+　　　　　　　　const tHeader = ['序号', 'IMSI', 'MSISDN', '证件号码', '姓名'];
+　　　　　　　　const filterVal = ['ID', 'imsi', 'msisdn', 'address', 'name'];
+　　　　　　　　const list = this.tableData;
+　　　　　　　　const data = this.formatJson(filterVal, list);
+　　　　　　　　export_json_to_excel(tHeader, data, '列表excel');
+　　　　　　})
+　　　　},
+　　　　formatJson(filterVal, jsonData) {
+　　　　　　return jsonData.map(v => filterVal.map(j => v[j]))
+　　　　}
+5. 注：如果webpack报解析错误：
+	在build----webpack.base.conf.js中resolve的alias加入 'vendor': path.resolve(__dirname, '../src/vendor'),即可解决。alias是配置别名
+
+6. Blob.js和 Export2Excel.js文件：链接: http://pan.baidu.com/s/1nvSdw85 密码: 5qhi
+
+
+
+
+
+
+
+

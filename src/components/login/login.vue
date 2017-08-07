@@ -14,7 +14,7 @@
             <el-button type="primary" @click="onSubmit">登录</el-button>
           </el-form-item>
         </el-form>
-        <p class="tips">本系统有六个测试的用户角色为root、doctor、nurse、checkstand、pharmacist、pharmacy，
+        <p class="tips">本系统有六个测试的用户账号为root、doctor、nurse、checkstand、pharmacist、pharmacy，
           密码为各自用户名，例如root用户的密码为root。其中最高权限是root用户</p>
       </div>
     </div>
@@ -52,8 +52,8 @@
             if (this.user[i].name === this.form.name && this.user[i].password === this.form.password) {
               sessionStorage.setItem('easeHis', this.form.name);
               sessionStorage.setItem('easeHisType', this.user[i].type);
-              location.reload();
-              console.log('hello');
+              this.$router.push({path: 'home'});
+              return;
             }
           }
           this.tips = '密码不正确！';
@@ -62,7 +62,6 @@
             type: 'warning'
           });
         }, response => {
-          // error callback
           this.$message({
             message: '数据请求失败',
             type: 'error'

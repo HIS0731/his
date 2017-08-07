@@ -32,7 +32,7 @@
       userLog () {
         sessionStorage.removeItem('easeHis');
         this.userName = '请登录';
-        location.reload();
+        this.$router.push({path: 'login'});
       }
     }
   };
