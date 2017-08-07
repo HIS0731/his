@@ -1,5 +1,5 @@
 <template>
-  <div class="innnerApp" v-if="">
+  <div class="innnerApp">
     <div class="app-body">
       <div class="menu" :class="{ smallNav: isCollapse }">
         <el-menu default-active="1-4-1" class="el-menu-vertical-demo"  :collapse="isCollapse"  theme="dark">
@@ -127,20 +127,23 @@
 </template>
 <script type="text/ecmascript-6">
   import header from '../header/header.vue';
-  //  mapGetters获取信息  mapActions提交动作
-  import {mapGetters, mapActions} from 'vuex';
   export default {
     name: 'app',
     data () {
       return {
+        isCollapse: true,
         userLogin: '',
         type: ''
       };
     },
-    methods: mapActions([
-      'navToggle',
-      'navColse'
-    ]),
+    methods: {
+      navToggle () {
+        this.isCollapse = !this.isCollapse;
+      },
+      navColse () {
+        this.isCollapse = true;
+      }
+    },
     created: function () {
       if (sessionStorage.getItem('easeHis')) {
         this.userLogin = true;
@@ -152,13 +155,8 @@
     },
     components: {
       'v-header': header
-    },  // 获取
-    computed: mapGetters([
-      'isCollapse'
-    ])
+    }
   };
 </script>
 
-<style lang="stylus-loader" rel="stylesheet/stylus">
-
-</style>
+<style lang="stylus-loader" rel="stylesheet/stylus"></style>
