@@ -34,41 +34,40 @@
     },
     methods: {
       onSubmit () {
-        if (this.form.name && this.form.password) {
-          this.$http.get('../static/userLogin.json').then((response) => {             // mark
-            this.user = response.body.user;
-          }, response => {
-            // error callback
-            this.$message({
-              message: '数据请求失败',
-              type: 'error'
-            });
-          });
-          for (var i = 0; i < this.user.length; i++) {
-            console.log(this.user[i]);
-            if (this.user[i].name === this.form.name && this.user[i].password === this.form.password) {
-              sessionStorage.setItem('easeHis', this.form.name);
-              sessionStorage.setItem('easeHisType', this.user[i].type);
-              location.reload();
-            }
-          }
-
-          this.tips = '密码不正确！';
-          this.$message({
-            message: this.tips,
-            type: 'warning'
-          });
-        } else {
+        if (!this.form.name || !this.form.password) {
           if (!this.form.name) {
             this.tips = '用户名不能为空！';
-          } else if (!this.form.password) {
+          } else {
             this.tips = '密码不能为空！';
           }
           this.$message({
             message: this.tips,
             type: 'warning'
           });
+          return;
         }
+        this.$http.get('../static/userLogin.json').then((response) => {             // mark
+          this.user = response.body.user;
+          for (var i = 0; i < this.user.length; i++) {
+            if (this.user[i].name === this.form.name && this.user[i].password === this.form.password) {
+              sessionStorage.setItem('easeHis', this.form.name);
+              sessionStorage.setItem('easeHisType', this.user[i].type);
+              location.reload();
+              console.log('hello');
+            }
+          }
+          this.tips = '密码不正确！';
+          this.$message({
+            message: this.tips,
+            type: 'warning'
+          });
+        }, response => {
+          // error callback
+          this.$message({
+            message: '数据请求失败',
+            type: 'error'
+          });
+        });
       }
     }
   };
