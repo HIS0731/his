@@ -1,13 +1,130 @@
 <template>
   <div class="staffIntroduction">
-    医生护士基本概况
+    <el-tabs v-model="activeName2" type="card" @tab-click="handleClick">
+      <el-tab-pane label="医师介绍" name="first">
+        <span class="title"><em>门诊查询</em></span>
+        <div class="input">
+          <el-input size="mini" type="text" placeholder="科室查询" v-model="input" style="width:150px"></el-input>
+          <el-input size="mini" type="text" placeholder="医师查询" v-model="input" style="width:150px"></el-input>
+          <el-input size="mini" type="text" placeholder="疾病查询" v-model="input" style="width:150px"></el-input>
+          <el-button size="mini" type="primary" @click="Onsubmit">查询</el-button>
+        </div>
+        <div class="table">
+           <el-table ref="multipleTable" :data="table" border tooltip-effect="dark"  style="width: 100%" @selection-change="handleSelectionChange">
+              <el-table-column type="expand">
+                <template scope="props">
+                  <el-form label-position="left" inline class="demo-table-expand">
+                    <el-form-item label="详细信息:">
+                      <span>{{ props.row.message }}</span>
+                    </el-form-item>
+                  </el-form>
+                </template>
+              </el-table-column>
+              <el-table-column label="序号" width="50" >
+                <template scope="scope">{{ scope.$index }}</template>
+              </el-table-column>
+              <el-table-column prop="name" label="医师姓名"  width="120" ></el-table-column>
+              <el-table-column prop="sex" label="性别" show-overflow-tooltip width="70"></el-table-column>
+              <el-table-column prop="age" label="年龄" sortable show-overflow-tooltip width="100"></el-table-column>
+              <el-table-column prop="position" label="职称" show-overflow-tooltip width="150"></el-table-column>
+              <el-table-column prop="department" label="科室" show-overflow-tooltip></el-table-column>
+               <el-table-column prop="area" label="地点" show-overflow-tooltip></el-table-column>
+              <el-table-column prop="special" label="特长" show-overflow-tooltip></el-table-column>
+              <el-table-column align="center" label="电话预约">
+                <template scope="scope">
+                  <img src="../logo/phone.icon.jpg" width="20" height="20">
+                  <el-button size="small" @click="handleOrder(scope.$index)">电话预约</el-button>
+                  <!-- <el-button size="small" type="danger" @click="handleDelete(scope.$index, scope.row)">删除</el-button> -->
+                </template>
+              </el-table-column>
+           </el-table>
+        </div>       
+      </el-tab-pane>
+      <el-tab-pane label="护士介绍" name="second">
+        <span class="title"><em>门诊查询</em></span>
+        <div class="input">
+          <el-input size="mini" type="text" placeholder="科室查询" v-model="input" style="width:150px"></el-input>
+          <el-input size="mini" type="text" placeholder="护士查询" v-model="input" style="width:150px"></el-input>
+          <el-input size="mini" type="text" placeholder="病房查询" v-model="input" style="width:150px"></el-input>
+          <el-button size="mini" type="primary" @click="Onsubmit">查询</el-button>
+        </div> 
+         <div class="table2">
+           <el-table ref="multipleTable" :data="table2" border tooltip-effect="dark"  style="width: 100%" @selection-change="handleSelectionChange">
+              <el-table-column type="expand">
+                <template scope="props">
+                  <el-form label-position="left" inline class="demo-table-expand">
+                    <el-form-item label="详细信息:">
+                      <span>{{ props.row.message }}</span>
+                    </el-form-item>
+                  </el-form>
+                </template>
+              </el-table-column>
+              <el-table-column label="序号" width="50" >
+                <template scope="scope">{{ scope.$index }}</template>
+              </el-table-column>
+              <el-table-column prop="name" label="护士姓名"  width="120" ></el-table-column>
+              <el-table-column prop="sex" label="性别" show-overflow-tooltip width="70"></el-table-column>
+              <el-table-column prop="age" label="年龄" sortable show-overflow-tooltip width="100"></el-table-column>
+              <el-table-column prop="position" label="职称" show-overflow-tooltip width="150"></el-table-column>
+              <el-table-column prop="department" label="科室" show-overflow-tooltip></el-table-column>
+               <el-table-column prop="area" label="地点" show-overflow-tooltip></el-table-column>
+              <el-table-column prop="special" label="特长" show-overflow-tooltip></el-table-column>
+              <el-table-column align="center" label="电话预约">
+                <template scope="scope">
+                  <img src="../logo/phone.icon.jpg" width="20" height="20">
+                  <el-button size="small" @click="handleEdit(scope.$index)">电话预约</el-button>
+                </template>
+              </el-table-column>
+           </el-table>
+        </div>       
+      </el-tab-pane>
+    </el-tabs>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
-  export default {};
+  export default {
+    data () {
+      return {
+        activeName2: 'first',
+        input: '',
+        table: [],
+        table2: []
+      };
+    },
+    methods: {
+      handleClick (tab, event) {
+        console.log(tab, event);
+      },
+      Onsubmit () {
+        alert('提交成功!');
+      },
+      handleOrder () {
+        alert('正在拨打...');
+      }
+    },
+    created () {
+      this.$http.get('../static/staffIntroduction.json').then((response) => {             // mark
+        this.table = response.body.table;
+        this.table2 = response.body.table2;
+        this.message = response.body.message;
+        console.log(this.table);
+        console.log(this.table2);
+      }, response => {
+        // error callback
+        alert('数据请求失败');
+      });
+    }
+  };
 </script>
 
 <style lang="stylus-loader" rel="stylesheet/stylus">
-  
+  .title
+    float:left
+  .input
+    margin-left:100px
+  .table
+    margin-top:50px
+  .table2
+    margin-top:50px
 </style>

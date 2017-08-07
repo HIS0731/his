@@ -53,10 +53,10 @@
         <el-card class="box-card">
           <div slot="header" class="clearfix">
             <span style="line-height: 36px;">非手术科室</span>
-            <el-button style="float: right;" type="primary">操作按钮</el-button>
+            <el-button style="float: right;" type="primary" @click="check1">查看更多</el-button>
           </div>
-          <div v-for="o in 4" :key="o" class="text item">
-            {{'列表内容 ' + o }}
+          <div v-for="o in items1" :key="o" class="text item">
+            {{ o }}
           </div>
         </el-card>
       </div>
@@ -64,10 +64,10 @@
         <el-card class="box-card">
           <div slot="header" class="clearfix">
             <span style="line-height: 36px;">手术科室</span>
-            <el-button style="float: right;" type="primary">操作按钮</el-button>
+            <el-button style="float: right;" type="primary" @click="check2">查看更多</el-button>
           </div>
-          <div v-for="o in 4" :key="o" class="text item">
-            {{'列表内容 ' + o }}
+          <div v-for="o in items2" :key="o" class="text item">
+            {{ o }}
           </div>
         </el-card>
       </div>
@@ -75,10 +75,10 @@
         <el-card class="box-card">
           <div slot="header" class="clearfix">
             <span style="line-height: 36px;">诊断相关科室</span>
-            <el-button style="float: right;" type="primary">操作按钮</el-button>
+            <el-button style="float: right;" type="primary" @click="check3">查看更多</el-button>
           </div>
-          <div v-for="o in 4" :key="o" class="text item">
-            {{'列表内容 ' + o }}
+          <div v-for="o in items3" :key="o" class="text item">
+            {{ o }}
           </div>
         </el-card>
       </div>
@@ -88,8 +88,51 @@
         <img src="../logo/AnYi.logo.jpg" width="50px" height="50px">
         <span class="span_font">医院文化</span>
       </div>
+      <div class="culture">
+        <span style="font-size:20px;color:#75604F">“协和精神”——严谨、求精、勤奋、奉献</span>
+        <p style="text-indent:4em">
+          “严谨、求精、勤奋、奉献”协和精神是协和的核心价值观，是协和医院文化精髓。协和文化以崇尚科学、崇尚知识、专业态度和专业精神为其思想内核，又具有深厚的人文特征，表现方式凝重、内敛、不张扬、戒浮躁，重视口碑效应。具体体现在协和人身上就是科学严谨的作风、浓厚的人文传统与学术的包容性。正如董炳琨老院长所说，协和精神，追求其渊源，则是两大主意识流汇合的结晶。一是忠于科学的事业精神，一是忠于人民的奉献精神。<br/></p>
+        <p style="text-indent:4em">协和精神体现在每一位协和人的思想和行为中，通过耳濡目染、言传身教，代代相传。纪念老一辈协和人，就是继承协和的光荣传统。多年来医院从不间断举办各种纪念大会、演讲比赛、青年志愿者等各种活动，强化对员工的协和精神教育，近年来医院大力加强院报、网站等文化载体建设，借助大众媒体，加强对协和精神、协和文化的传播。在协和文化指导下，医院文化的子文化——科室文化近年来也得到不断的丰富与发展。<br/></p>  
+        <p style="text-indent:4em">医院在医、教、研、管理各项活动中，以自己特定的方式蕴育、培养、积淀着协和精神、协和文化、协和人才。协和八十多年来形成的文化传统，凝聚了协和内部的各种力量，引领协和人向着以人为本、以病人为中心的目标和方向一往无前。</p>
+        <span style="font-size:20px;color:#75604F">协和三宝：教授、病案、图书馆</span>
+        <p style="text-indent:4em"> 协和有“三宝”，教授、病案、图书馆。协和的病案蕴藏着医院极为丰富和宝贵的临床资料，是协和人医疗技术、经验、临床思维过程的记录和结晶，也是医院开展教学和科研的基石。一些名人病历已成为宝贵的历史资料</p>
+        <span style="font-size:20px;color:#75604F">协和传统“三基三严”的由来</span>
+        <p style="text-indent:4em">962年，学校在《旧协和医学院教学工作经验初步总结》中，提出了著名的“三基、三严”原则。在学习上要重视“三基”即基础理论、基本知识、基本技能；在学习工作、科学研究上要强调“三严”，即严肃的态度、严格的要求、严密的方法。协和医院至今坚持以“三基、三严”为医学教育和人才培养的准则。</p>
+      </div>
+      <div class="culture">
+         <span style="font-size:20px;color:#75604F">百年协和内涵</span>
+         <p style="font-size:24px;margin-top:60px;">学术协和</p>
+         <p style="margin-top:20px">创新：尊重科学 创新为魂</p>
+         <p>争鸣：学术争鸣 开放包容</p>
+         <p>协作：国际视野 团队合作</p>
+         <p>引领：追求卓越 持续领先</p>
+         <p style="font-size:24px;margin-top:60px;">品质协和 </p>
+         <p style="margin-top:20px">精益：精湛医术 优质服务</p>
+         <p>效率：高效低耗 执行有力</p>
+         <p>智慧：数字医院 智慧医疗</p>
+         <p>洁静：整洁有序 美丽协和</p>
+         <p style="font-size:24px;margin-top:60px;">人文协和</p>
+         <p style="margin-top:20px">尊重：平等尊重 敬畏生命</p>
+         <p>人本：以人为本 人尽其才</p>
+      </div>
       </el-tab-pane>
     </el-tabs>
+
+    <div class="dialog1">
+      <el-dialog title="非手术科" :visible.sync="dialogVisible1" size="tiny" :before-close="handleClose">
+        <div v-for="i in dialog1" :key="i">{{ i }}</div>
+      </el-dialog>
+    </div>
+    <div class="dialog">
+      <el-dialog title="手术科" :visible.sync="dialogVisible2" size="tiny" :before-close="handleClose">
+        <div v-for="i in dialog2" :key="i">{{ i }}</div>
+      </el-dialog>
+    </div>
+    <div class="dialog">
+      <el-dialog title="诊断相关科室" :visible.sync="dialogVisible3" size="tiny" :before-close="handleClose">
+        <div v-for="i in dialog3" :key="i">{{ i }}</div>
+      </el-dialog>
+    </div>
   </div>
 </template>
 
@@ -97,12 +140,37 @@
   export default {
     data () {
       return {
-        activeName: 'first'
+        activeName: 'first',
+        dialogVisible1: false,
+        dialogVisible2: false,
+        dialogVisible3: false,
+        items1: ['内科学系', '心内科', '呼吸内科', '消化内科', '肾内科'],
+        items2: ['外科学系', '基本外科', '骨科', '心外科', '胸外科'],
+        items3: ['超声医学科', '病理科', '检验科', '放射科', '放射治疗科'],
+        dialog1: ['血液内科', '风湿免疫科', '感染内科', '普通内科', '肿瘤内科', '内科ICU', '内分泌科', '肠外肠内营养科', '重症医学科(ICU)', '儿科', '神经科', '心理医学科', '皮肤科', '变态（过敏）反应科', '急诊科', '中医科', '老年医学科'],
+        dialog2: ['泌尿外科', '神经外科', '血管外科', '整形美容外科', '乳腺外科', '肝脏外科', '妇产科', '眼科', '耳鼻喉科', '口腔科', '麻醉科'],
+        dialog3: ['核医学科', '营养科', '输血科', '药剂科', '病案科', '物理医学康复科', '疾病分类中心']
       };
     },
     methods: {
       handleClick (tab, event) {
         console.log(tab, event);
+      },
+      check1 () {
+        this.dialogVisible1 = true;
+      },
+      check2 () {
+        this.dialogVisible2 = true;
+      },
+      check3 () {
+        this.dialogVisible3 = true;
+      },
+      handleClose (done) {
+        this.$confirm('确认关闭？')
+          .then(_ => {
+            done();
+          })
+          .catch(_ => {});
       }
     }
   };
@@ -140,4 +208,11 @@
     clear: both
   .box-card
     width: 420px
+    background:green
+  .culture
+    margin:auto
+    margin-top:50px
+    width:500px 
+    padding-left:150px
+    float:left
 </style>
