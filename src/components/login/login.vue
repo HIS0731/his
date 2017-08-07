@@ -4,16 +4,18 @@
         <h2 class="title">安逸医院内部管理系统登录</h2>
         <el-form ref="form" :model="form" label-width="80px">
           <el-form-item>
-            <el-input v-model.trim="form.name"></el-input>
+            <el-input v-model.trim="form.name" placeholder="用户名"></el-input>
           </el-form-item>
           <el-form-item @keyup.enter.native="onSubmit">
-            <el-input v-model="form.password" type="password" class="inputpsw"></el-input>
+            <el-input v-model="form.password" type="password" class="inputpsw" placeholder="密码"></el-input>
             <!--mark-->
           </el-form-item>
           <el-form-item>
             <el-button type="primary" @click="onSubmit">登录</el-button>
           </el-form-item>
         </el-form>
+        <p class="tips">本系统有六个测试的用户角色为root、doctor、nurse、checkstand、pharmacist、pharmacy，
+          密码为各自用户名，例如root用户的密码为root。其中最高权限是root用户</p>
       </div>
     </div>
 </template>
@@ -90,5 +92,8 @@
       margin-right: 80px
     .el-button
       width:100%
-
+    .tips
+      color:#fff
+      font-size:12px
+      text-indent:2em
 </style>
