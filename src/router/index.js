@@ -79,14 +79,7 @@ export default new Router({
         { path: '/patientCount', name: 'patientCount', component: patientCount },
         { path: '/patientFeedback', name: 'patientFeedback', component: patientFeedback },
         { path: '/officeComplaints', name: 'officeComplaints', component: officeComplaints },
-        {
-          path: '/addTrashy',
-          component: addTrashy,
-          name: 'addTrashy',
-          beforeEnter: (to, from, next) => {
-            next();
-          }
-        },
+        { path: '/addTrashy', name: 'addTrashy', component: addTrashy },
         {path: '*', redirect: '/home'}
       ]
     },

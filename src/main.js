@@ -18,7 +18,6 @@ new Vue({
 router.beforeEach((to, from, next) => {
   console.log(to, from, to.path);
   if (to.path !== '/login' && !sessionStorage.getItem('easeHis')) {
-    next(false);
     this.$router.push({path: 'login'});
   } else if (to.path !== '/internal') {
     next();

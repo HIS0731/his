@@ -26,7 +26,11 @@
       };
     },
     created: function () {
-      this.userName = sessionStorage.getItem('easeHis');
+      if (sessionStorage.getItem('easeHis')) {
+        this.userName = sessionStorage.getItem('easeHis');
+      } else {
+        this.$router.push({path: 'login'});
+      }
     },
     methods: {
       userLog () {
