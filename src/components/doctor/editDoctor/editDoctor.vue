@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div class="editDoctor">
     <div class="search">
      <el-input @keyup.enter.native="" style="width: 200px;" placeholder="医生姓名" v-model="edictDoctor.name"></el-input>
      <el-button  type="primary" icon="search" @click="" v-model="edictDoctor.name">搜索</el-button>
@@ -99,6 +99,7 @@
           this.doctorlistedit = this.doctorlist[index];
         },
         delectDoctor (index, rows) {
+          console.log(rows[index]);
           rows.splice(index, 1);
         },
         updateDoctor () {
@@ -132,7 +133,7 @@
         }
       },
       created () {
-        this.$http.get('../../static/doctor.json').then((response) => {             // mark
+        this.$http.get('../../static/doctor/doctor.json').then((response) => {             // mark
           this.doctorlist = response.body.doctorlist;
         }, response => {
           // error callback
@@ -143,8 +144,6 @@
 </script>
 
 <style lang="stylus-loader" rel="stylesheet/stylus">
-.block
+.editDoctor .block
   position:absolute
-
-
 </style>

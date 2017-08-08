@@ -1,0 +1,16 @@
+{
+    "shiftList": [
+      {"date":"2014-8-1","dates":"大夜：00：00~8：00","name":"李秋子","sex":"女","office":"外科","number":"13437884546","attendance":"迟到","signatory":"杨森"},
+      {"date":"2012-4-5","dates":"早班：6:00~17:00","name":"黄英","sex":"女","office":"护士室","number":"13437884547","attendance":"病假","signatory":"杨森"},
+    {"date":"2017-6-18","dates":"日班：10：00~21：00","name":"罗子君","sex":"女","office":"骨科","number":"13437884548","attendance":"工作时间","signatory":"杨森"},
+    {"date":"2015-8-19","dates":"小夜：16：00~00：00","name":"唐颖","sex":"男","office":"精神科","number":"13437884549","attendance":"加班","signatory":"杨森"},
+    {"date":"2013-3-20","dates":"日班：10：00~21：00","name":"高毅","sex":"男","office":"急诊","number":"13437884550","attendance":"早退","signatory":"杨森"},
+    {"date":"2015-8-19","dates":"日班：10：00~21：00","name":"唐颖","sex":"男","office":"精神科","number":"13437884551","attendance":"婚假","signatory":"杨森"},
+    {"date":"2013-3-20","dates":"大夜：00：00~8：00","name":"高毅","sex":"男","office":"急诊","number":"13437884552","attendance":"病假","signatory":"杨森"},
+    {"date":"2012-6-4","dates":"早班：6:00~17:00","name":"王博","sex":"男","office":"妇科","number":"13437884553","attendance":"工作时间","signatory":"杨森"},
+    {"date":"2014-3-1","dates":"大夜：00：00~8：00","name":"李涂锌","sex":"男","office":"胸心外科","number":"13437884554","attendance":"加班","signatory":"杨森"},
+    {"date":"2012-2-21","dates":"早班：6:00~17:00","name":"秦森","sex":"女","office":"口腔科","number":"13437884555","attendance":"工作时间","signatory":"杨森"},
+    {"date":"2016-5-15","dates":"大夜：00：00~8：00","name":"王英","sex":"女","office":"  普外科","number":"13437884556","attendance":"加班","signatory":"杨森"}
+  ]
+      
+}

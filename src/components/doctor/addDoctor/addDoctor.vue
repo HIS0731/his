@@ -1,5 +1,5 @@
 <template>
-    <div class="">
+    <div class="addDoctor">
       <el-form ref="form" :model="form" :rules="rules" label-width="80px" class="demo-ruleForm">
         <el-form-item label="姓名" prop="name">
           <el-input v-model="form.name"></el-input>
@@ -10,7 +10,7 @@
         </el-form-item>
         <el-form-item label="入职日期" prop="date">
           <el-col :span="11">
-            <el-date-picker type="date" placeholder="选择日期" v-model="form.date" style="width: 100%;"></el-date-picker>
+            <el-date-picker type="date" placeholder="选择日期" v-model="form.date" ></el-date-picker>
           </el-col>
         </el-form-item>
         <el-form-item label="学历" prop="degree">
@@ -98,6 +98,6 @@
 </script>
 
 <style lang="stylus-loader" rel="stylesheet/stylus">
-.el-input
+.addDoctor .el-input
   width:384px
 </style>

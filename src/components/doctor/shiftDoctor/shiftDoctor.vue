@@ -1,45 +1,175 @@
 <template>
-  <div class="shift">
-    <el-table :data="doctorlist" border style="width: auto;">
-      <el-table-column fixed label="时段" width="165" type="text">
-       
+  <div class="shiftDoctor">
+    <div class="search">
+     <el-input  style="width: 200px;" placeholder="医生姓名"></el-input>
+     <el-button  type="primary" icon="search" @click="">搜索</el-button>
+    </div>
+    <el-table :data="shiftList" border style="width: 100%;">
+      <el-table-column fixed prop="date" label="轮班日期" width="120">
+        <template scope="scope">
+          {{scope.row.date}}
+        </template> 
       </el-table-column>
-      <el-table-column fixed v-model="doctorlist.name" label="姓名" width="165">
+      <el-table-column fixed prop="dates" label="时段" width="200">
       </el-table-column>
-      <el-table-column fixed v-model="doctorlist.sex" label="性别" width="165"> 
+      <el-table-column fixed prop="index" label="序号" width="80">
+        <template scope="scope">
+          {{scope.$index}}
+        </template>
       </el-table-column>
-      <el-table-column fixed v-model="doctorlist.date" label="入职日期" width="165"> 
+      <el-table-column fixed prop="name" label="姓名" width="120">
       </el-table-column>
-      <el-table-column fixed v-model="doctorlist.degree" label="学历" width="165"> 
+      <el-table-column fixed prop="sex" label="性别" width="120"> 
       </el-table-column>
-      <el-table-column fixed v-model="doctorlist.major" label="专业" width="165"> 
+      <el-table-column fixed prop="office" label="科室" width="120"> 
       </el-table-column>
-      <el-table-column fixed v-model="doctorlist.profession" label="职称" width="165"> 
+      <el-table-column fixed prop="number" label="电话" width="130"> 
       </el-table-column>
-      <el-table-column fixed v-model="doctorlist.office" label="科室" width="180"> 
-      </el-table-column>    
+      <el-table-column fixed prop="attendance" label="出勤情况" width="120"> 
+      </el-table-column>
+      <el-table-column fixed prop="signatory" label="主任签名" width="120"> 
+      </el-table-column>
+      <el-table-column fixed="right" prop="operate" label="操作" width="120"> 
+        <template scope="scope">
+          <el-button @click.native.prevent="edictDoctor(scope.$index, shiftList)" type="text" size="small">编辑</el-button>
+          <el-button @click.native.prevent="delectDoctor(scope.$index, shiftList)" type="text" size="small">删除</el-button>
+        </template>
+      </el-table-column>     
     </el-table>
+    <el-dialog title="轮班信息修改" :visible.sync="dialogFormVisible">
+
+      <el-form>
+        <el-form-item label="轮班日期" prop="date" :label-width="formLabelWidth">
+            <el-date-picker type="date" placeholder="选择日期" v-model="form.date" style="width: 100%;"></el-date-picker>
+        </el-form-item>
+        <el-form-item label="时段" :label-width="formLabelWidth">
+          <el-select v-model="form.dates" placeholder="请选择" style="width: 100%;">
+            <el-option label="早班：6:00~17:00" name="lessMorning" value="早班：6:00~17:00"></el-option>
+            <el-option label="日班：10：00~21：00" name="Morning" value="日班：10：00~21：00"></el-option>
+            <el-option label="小夜：16：00~00：00" name="lessNinght" value="小夜：16：00~00：00"></el-option>
+            <el-option label="大夜：00：00~8：00" name="Ninght" value="大夜：00：00~8：00"></el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="姓名" :label-width="formLabelWidth">
+          <el-input v-model="form.name" auto-complete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="性别"  :label-width="formLabelWidth">
+          <el-radio class="radio" v-model="form.sex" label="男">男</el-radio>
+          <el-radio class="radio" v-model="form.sex" label="女">女</el-radio>
+        </el-form-item>
+        <el-form-item label="科室"  :label-width="formLabelWidth">
+          <el-input v-model="form.office" auto-complete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="电话" :label-width="formLabelWidth">
+          <el-input v-model="form.number" auto-complete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="出勤情况" :label-width="formLabelWidth">
+          <el-select v-model="form.attendance" placeholder="请选择" style="width: 100%;">
+            <el-option label="迟到" name="late" value="迟到"></el-option>
+            <el-option label="早退" name="early" value="早退"></el-option>
+            <el-option label="工作时间" name="bework" value="工作时间"></el-option>
+            <el-option label="加班" name="overtime" value="加班"></el-option>
+            <el-option label="病假" name="sickleave" value="病假"></el-option>
+            <el-option label="公休" name="generalholiday" value="公休"></el-option>
+            <el-option label="其他" name="others" value="其他"></el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="主任签名"  :label-width="formLabelWidth">
+          <el-input v-model="form.signatory" auto-complete="off"></el-input>
+        </el-form-item>
+
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <!-- <el-button @click="resetForm('form')">重 置</el-button> -->
+        <!-- <el-button type="primary"  @click="submitForm(index,row)">确 定</el-button> -->
+      </div>
+    </el-dialog>
+    <div class="block">
+      <span class="demonstration">调整每页显示条数</span>
+      <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page.sync="currentPage" :page-sizes="[10, 20, 30, 40]" :page-size="10" layout="sizes, prev, pager, next" :total="100">
+      </el-pagination>
+    </div>
   </div>
+
 </template>
 
 <script type="text/ecmascript-6">
     export default {
       data () {
         return {
-          doctorlist: [{
-            'name': '',
-            'sex': '',
-            'date': '',
-            'degree': '',
-            'major': '',
-            'profession': '',
-            'office': ''
-          }]
+          shiftList: [],
+          // 将一行数据存储在form里
+          Index: '',
+          form: [],
+          dialogFormVisible: false,
+          formLabelWidth: '60px',
+          currentPage: 5
         };
       },
+      methods: {
+        edictDoctor (index, rows) {
+          // console.log(index, row);
+          this.dialogFormVisible = true;
+          // this.form = row;
+          console.log(rows[index]);
+          this.form = rows[index];
+          this.form = JSON.parse(JSON.stringify(rows[index]));
+          this.Index = index;
+          // rows[index] = this.form;
+        },
+        delectDoctor (index, rows) {
+          console.log(rows);
+          rows.splice(index, 1);
+        },
+        updateDoctor () {
+          this.dialogFormVisible = false;
+          // mark 实际应该用get
+          console.log(this.form.date);
+          let year = this.form.date.getFullYear();
+          let month = this.form.date.getMonth() + 1;
+          let day = this.form.date.getDate();
+          let dateFormat = year + '-' + month + '-' + day;
+        //   // console.log(this.doctorlistedit);
+          this.form.date = dateFormat;
+        },
+        //   // this.$http.get('../../static/doctor.json', this.doctorlistedit).then(function () {
+        //   this.doctorlist[this.Index] = this.doctorlistedit;
+        //   this.$message({
+        //     message: '轮班信息修改成功',
+        //     type: 'success'
+        //   });
+        // },
+        // submitForm (index,) {
+        //   this.updateDoctor();
+        //   console.log('修改的', this.form);
+        //   this.shiftList[this.Index] = this.form;
+          // this.updateDoctor();
+          // this.$refs[formName].validate((valid) => {
+          //   if (valid) {
+          //     this.$message({
+          //       message: '轮班信息修改成功',
+          //       type: 'success'
+          //     });
+          //     this.dialogFormVisible = false;
+          //   } else {
+          //     this.$message.error('医生信息修改失败');
+          //     return false;
+          //   }
+          // });
+        // resetForm (formName) {
+        //   this.$refs[formName].resetFields();
+        //   alert(99);
+        // },
+        handleSizeChange (val) {
+          console.log(`每页 ${val} 条`);
+        },
+        handleCurrentChange (val) {
+          console.log(`当前页: ${val}`);
+        }
+      },
       created () {
-        this.$http.get('../../static/doctor.json').then((response) => {             // mark
-          this.doctorlist = response.body.doctorlist;
+        this.$http.get('../../static/doctor/shiftList.json').then((response) => {             // mark
+          this.shiftList = response.body.shiftList;
         }, response => {
           // error callback
           alert('数据请求失败');
@@ -49,6 +179,8 @@
 </script>
 
 <style lang="stylus-loader" rel="stylesheet/stylus">
-.shift
-  margin:auto
+.shiftDoctor .block
+  position:absolute
+
+
 </style>
