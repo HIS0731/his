@@ -4,10 +4,10 @@
         <h2 class="title">安逸医院内部管理系统登录</h2>
         <el-form ref="form" :model="form" label-width="80px">
           <el-form-item>
-            <el-input v-model.trim="form.name" placeholder="用户名"></el-input>
+            <el-input v-model.trim="form.name" placeholder="用户名" @keyup.enter.native="nextInput"></el-input>
           </el-form-item>
           <el-form-item @keyup.enter.native="_login">
-            <el-input v-model="form.password" type="password" class="inputpsw" placeholder="密码"></el-input>
+            <el-input id="psw" v-model="form.password" type="password" class="inputpsw" placeholder="密码"></el-input>
           </el-form-item>
           <el-form-item>
             <el-button type="primary" @click="_login">登录</el-button>
@@ -71,6 +71,9 @@
             type: 'error'
           });
         });
+      },
+      nextInput () {
+        document.querySelector('#psw input').focus();
       }
     }
   };
@@ -85,11 +88,13 @@
       padding:25px 30px
       border-radius: 20px
       .title
-        font-size: 30px
+        font-size: 35px
         text-align: center
-        line-height: 80px
-        height: 80px
-        color: #fff
+        color: rgba(0,0,0,0.3)
+        font-weight: 900
+        text-shadow: 2px 2px 1px #fff
+        margin-bottom: 40px
+        padding: 20px 0 10px 0
     .el-form-item__content
       margin-right: 80px
     .el-button
@@ -98,4 +103,8 @@
       color:#fff
       font-size:12px
       text-indent:2em
+    .el-input
+      input
+        background-color: rgba(0,0,0,0.1)
+        color: #fff
 </style>
