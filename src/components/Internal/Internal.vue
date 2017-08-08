@@ -158,4 +158,7 @@
   };
 </script>
 
-<style lang="stylus-loader" rel="stylesheet/stylus"></style>
+<style lang="stylus-loader" rel="stylesheet/stylus">
+.innnerApp
+  background-color:#fff
+</style>
