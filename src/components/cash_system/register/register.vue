@@ -24,13 +24,13 @@
       <p v-else></p>
       <el-form-item label="科室">
         <el-select v-model="department_value" placeholder="请选择科室">
-          <el-option v-for="items in register.department" :label="items.text " :value="items.value">
+          <el-option v-for="items in register.department" :key="items.value" :label="items.text " :value="items.value">
           </el-option>
         </el-select>
       </el-form-item>
       <el-form-item label="就诊医生" prop="doctor_value" class="register-certificate">
         <el-select v-model="register.doctor_value" placeholder="请选择就诊医生">
-          <el-option v-for="items in register.doctor" :label="items.name " :value="items.id">
+          <el-option v-for="items in register.doctor" :key="items.id" :label="items.name " :value="items.id">
           </el-option>
         </el-select>
       </el-form-item>

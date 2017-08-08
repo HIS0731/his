@@ -23,7 +23,7 @@
       <el-table-column label="操作" width="180">
         <template scope="scope">
           <el-button type="primary" class="btn" @click="checkDetail(scope.$index)">查看</el-button>
-          <el-button type="primary" class="btn" @click="deleteDetail(scope.$index,patients)">删除</el-button>
+          <el-button type="danger" class="btn" @click="deleteDetail(scope.$index,patients)">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
