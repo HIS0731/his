@@ -4,7 +4,8 @@
   </div>
 </template>
 
-<script type="text/ecmascript-6"></script>
+<script type="text/ecmascript-6">
+</script>
 
 <style lang="stylus-loader" rel="stylesheet/stylus">
   @import "./common/stylus/icon.styl"

@@ -114,7 +114,7 @@
           </el-submenu>
         </el-menu>
       </div>
-      <div class="content" @mouseover="navColse"">
+      <div class="content" @mouseover="navColse">
       <v-header></v-header>
       <div class="tagcontent">
         <transition name="HISshow">

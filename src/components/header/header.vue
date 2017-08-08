@@ -3,7 +3,7 @@
       <el-dropdown>
         <el-button>
           <div class="wapper">
-            <span>{{userName}}</span>
+            <span>{{easeHis}}</span>
             <img id="userPic"src="//2.gravatar.com/avatar/767fc9c115a1b989744c755db47feb60?s=132&d=wavatar" alt="user" height="40">
             <i class="el-icon-caret-bottom"></i>
           </div>
@@ -19,23 +19,22 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import {mapGetters, mapActions} from 'vuex';
+  // 引入vuex中各个模块的actions
   export default {
-    data () {
-      return {
-        userName: ''
-      };
-    },
+    // 获取
+    computed: mapGetters([
+      'easeHis'
+    ]),
     created: function () {
-      if (sessionStorage.getItem('easeHis')) {
-        this.userName = sessionStorage.getItem('easeHis');
-      } else {
+      if (!sessionStorage.getItem('easeHis')) {
         this.$router.push({path: 'login'});
       }
     },
     methods: {
+      ...mapActions({setUserInfo: 'setSignOut'}),  // 本组件注册VUEX输出的actions中的setSignOut方法
       userLog () {
-        sessionStorage.removeItem('easeHis');
-        this.userName = '请登录';
+        this.setUserInfo(this.form);
         this.$router.push({path: 'login'});
       }
     }

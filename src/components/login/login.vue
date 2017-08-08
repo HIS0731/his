@@ -6,12 +6,11 @@
           <el-form-item>
             <el-input v-model.trim="form.name" placeholder="用户名"></el-input>
           </el-form-item>
-          <el-form-item @keyup.enter.native="onSubmit">
+          <el-form-item @keyup.enter.native="_login">
             <el-input v-model="form.password" type="password" class="inputpsw" placeholder="密码"></el-input>
-            <!--mark-->
           </el-form-item>
           <el-form-item>
-            <el-button type="primary" @click="onSubmit">登录</el-button>
+            <el-button type="primary" @click="_login">登录</el-button>
           </el-form-item>
         </el-form>
         <p class="tips">本系统有六个测试的用户账号为root、doctor、nurse、checkstand、pharmacist、pharmacy，
@@ -21,19 +20,24 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import {mapActions} from 'vuex'; // 引入vuex中各个模块的actions
   export default {
+    name: 'login',
     data () {
       return {
         tips: '',
         form: {
           name: '',
-          password: ''
+          password: '',
+          type: ''
         },
         user: ''
       };
     },
     methods: {
-      onSubmit () {
+      ...mapActions({setUserInfo: 'setUserInfo'}),  // 本组件注册VUEX输出的actions中的setUserInfo方法
+      // 用户登录
+      _login () {
         if (!this.form.name || !this.form.password) {
           if (!this.form.name) {
             this.tips = '用户名不能为空！';
@@ -46,12 +50,12 @@
           });
           return;
         }
-        this.$http.get('../static/userLogin.json').then((response) => {             // mark
+        this.$http.get('../static/userLogin.json').then((response) => {
           this.user = response.body.user;
           for (var i = 0; i < this.user.length; i++) {
             if (this.user[i].name === this.form.name && this.user[i].password === this.form.password) {
-              sessionStorage.setItem('easeHis', this.form.name);
-              sessionStorage.setItem('easeHisType', this.user[i].type);
+              this.form.type = this.user[i].type;
+              this.setUserInfo(this.form);
               this.$router.push({path: 'home'});
               return;
             }
