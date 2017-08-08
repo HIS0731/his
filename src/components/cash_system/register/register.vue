@@ -141,7 +141,7 @@
     watch: {
       department_value: function () {
         let registerThis = this;
-        registerThis.$http.get('../../static/doctor.json').then((response) => {
+        registerThis.$http.get('../../static/doctor/doctor.json').then((response) => {
           // 把json接口获取的数据赋给当前对象
           console.log('dsf', this.department_value);
           for (let i = 0; i < response.data.doctorlist.length; i++) {

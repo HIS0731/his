@@ -50,8 +50,7 @@
             <el-menu-item-group>
               <span slot="title">挂号收银</span>
               <el-menu-item index="4-1"><router-link to="register">挂号</router-link></el-menu-item>
-              <el-menu-item index="4-2"><router-link to="registerinfos">查询之前挂号信息</router-link></el-menu-item>
-              <el-menu-item index="4-3">删除挂号信息</el-menu-item>
+              <el-menu-item index="4-2"><router-link to="registerManage">管理挂号信息</router-link></el-menu-item>
             </el-menu-item-group>
           </el-submenu>
           <el-submenu index="5" v-if="type === '01' || type === '05'">
