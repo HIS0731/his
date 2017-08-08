@@ -100,7 +100,10 @@
         alert('提交成功!');
       },
       handleOrder () {
-        alert('正在拨打...');
+        this.$message({
+          message: '正在预约...',
+          type: 'success'
+        });
       }
     },
     created () {
