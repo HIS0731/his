@@ -137,16 +137,16 @@
 </script>
 
 <style lang="stylus-loader" rel="stylesheet/stylus">
-  .title
+  .patientCount .title
     p
       font-size:24px
       text-align:center
       margin-bottom:50px
-  .tableCount
+  .patientCount .tableCount
     float:left
     padding-bottom:50px
     padding-left:20px
-  .button
+  .patientCount .button
     float:right
     margin-right:150px
     margin-top:220px

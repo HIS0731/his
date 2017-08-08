@@ -121,12 +121,12 @@
 </script>
 
 <style lang="stylus-loader" rel="stylesheet/stylus">
-  .title
+  .staffIntroduction .title
     float:left
-  .input
+  .staffIntroduction .input
     margin-left:100px
-  .table
+  .staffIntroduction .table
     margin-top:50px
-  .table2
+  .staffIntroduction .table2
     margin-top:50px
 </style>

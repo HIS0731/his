@@ -279,19 +279,19 @@
 </script>
 
 <style lang="stylus-loader" rel="stylesheet/stylus">
-  .title
+  .patientFeedback .title
     font-size:24px
     margin-left:300px
-  .form
+  .patientFeedback .form
      margin-top:80px
   .patientFeedback
     height:920px
     width:1000px
     margin:auto
     border:1px solid black
-  .checkbox
+  .patientFeedback .checkbox
     padding-bottom:50px
-  .question
+  .patientFeedback .question
     padding-right:100px
 
 </style>

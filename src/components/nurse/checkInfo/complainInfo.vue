@@ -30,27 +30,6 @@
       prop="phone"
       label="联系方式">
     </el-table-column>
-   <!--  <el-table-column
-      prop="rate"
-      label="五星评分">
-      <template scope="scope">
-      <label>医疗服务</label>
-       <el-rate
-       v-model="value1"
-       show-text>
-       </el-rate>
-       <label>医疗质量</label>
-       <el-rate
-       v-model="value2"
-       show-text>
-       </el-rate>
-       <label>医院卫生水平</label>
-       <el-rate
-       v-model="value3"
-       show-text>
-       </el-rate>
-      </template>
-    </el-table-column> -->
     <el-table-column align="center" label="操作">
       <template scope="scope">
         <el-button size="small" @click="dialogVisible = true">回复</el-button>
@@ -73,9 +52,6 @@
   export default {
     data () {
       return {
-        // value1: null,
-        // value2: null,
-        // value3: null,
         table: [],
         dialogVisible: false,
         textarea: ''
@@ -106,12 +82,9 @@
 </script>
 
 <style lang="stylus-loader" rel="stylesheet/stylus">
-  .title
+  .checkInfo .title
     p
       font-size:24px
       text-align:center
       margin-bottom:50px
-  .item
-    margin-top: 10px;
-    margin-right: 40px;
 </style>

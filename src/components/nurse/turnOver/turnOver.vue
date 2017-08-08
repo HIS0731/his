@@ -212,7 +212,7 @@
 </script>
 
 <style lang="stylus-loader" rel="stylesheet/stylus">
-  .title
+  .turnOver .title
     p
       font-size:24px
       text-align:center
@@ -226,7 +226,7 @@
     margin-right:0
     margin-bottom:0
     width: 50%
-  .replyBtn
+  .turnOver .replyBtn
     float:right
     padding-bottom:80px
 </style>

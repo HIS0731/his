@@ -110,10 +110,13 @@ export default {
       this.timeFormat();
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          alert('提交成功!！');
+          this.$message({
+            message: '提交成功！',
+            type: 'success'
+          });
           console.log(this.ruleForm);
         } else {
-          alert('提交失败!!');
+          this.$message.error('提交失败，请重新填写！');
           return false;
         }
       });

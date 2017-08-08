@@ -271,11 +271,11 @@
 </script>
 
 <style lang="stylus-loader" rel="stylesheet/stylus">
-  .title
+  .shift .title
     p
       font-size:24px
       text-align:center
       margin-bottom:50px
-  .filter-container
+  .shift .filter-container
       margin-bottom:20px
 </style>

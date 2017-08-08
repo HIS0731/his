@@ -10,7 +10,7 @@
         </el-select>
         <el-button class="filter-item" type="primary" icon="search">搜索</el-button>
         <el-button class="filter-item" type="primary" @click="handelCreate"  icon="edit">添加</el-button>
-        <el-button class="filter-item" type="primary" @click="handleDelAll"  icon="edit">批量删除</el-button>
+       <!--  <el-button class="filter-item" type="primary" @click="handleDelAll"  icon="edit">批量删除</el-button> -->
         <el-button class="filter-item" type="primary" icon="document" @click="handleDownload">导出</el-button>
       </div>
 
@@ -42,7 +42,7 @@
 
       <div class="pagination-container">
          <el-pagination @size-change="handleSizeChange"
-      @current-change="handleCurrentChange" :current-page="currPage" :page-sizes="[7,10,20,30]" :page-size="10" layout="total, sizes, prev, pager, next, jumper" :total="80">
+      @current-change="handleCurrentChange"  :page-sizes="[7,10,20,30]" :page-size="10" layout="total, sizes, prev, pager, next, jumper" :total="80">
          </el-pagination>
       </div>  
 
@@ -113,7 +113,6 @@
             </el-radio-group>
           </el-form-item>
           <el-form-item label="入职时间">
-            <!-- <el-input v-model="tableEdit.date"></el-input> -->
             <el-col :span="11">
               <el-form-item prop="date">
               <el-date-picker type="date" placeholder="选择日期" v-model="tableEdit.date"></el-date-picker>
@@ -135,17 +134,7 @@ export default {
   data () {
     return {
       table: [],
-      tableEdit: [
-        // name: '',
-        // address: '',
-        // age: '',
-        // position: '',
-        // profession: '',
-        // department: '',
-        // education: '',
-        // sex: '',
-        // date: ''
-      ],
+      tableEdit: [],
       total: null,
       listLoading: true,
       listQuery: {

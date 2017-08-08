@@ -1,7 +1,5 @@
 <template>
   <div class="hisIntroduction">
-    <!-- 医院基本介绍 -->
-    
     <el-tabs v-model="activeName" @tab-click="handleClick">
       <el-tab-pane label="医院简介" name="first">
       <div class="theme">
@@ -177,39 +175,39 @@
 </script>
 
 <style lang="stylus-loader" rel="stylesheet/stylus">
-  .span_font
+  .hisIntroduction .span_font
     font-size:24px
     color:blue
-  .introduction
+  .hisIntroduction .introduction
     width:700px
     height:550px
     float:left
     position:relative
     margin-top:50px
-  .picture-display
+  .hisIntroduction .picture-display
     float:right
     width:600px
     height:500px
-  .picture-display ul li
+  .hisIntroduction .picture-display ul li
     float:left
     margin-top:50px
-  .card
+  .hisIntroduction .card
     float:left
     margin-top:50px
     padding-left:20px
-  .text
+  .hisIntroduction .text
     font-size:14px
-  .item
+  .hisIntroduction .item
     padding:18px 0
-  .clearfix:before, .clearfix:after
+  .hisIntroduction .clearfix:before, .clearfix:after
     display: table
     content: ""
-  .clearfix:after
+  .hisIntroduction .clearfix:after
     clear: both
-  .box-card
+  .hisIntroduction .box-card
     width: 420px
     background:green
-  .culture
+  .hisIntroduction .culture
     margin:auto
     margin-top:50px
     width:500px 
