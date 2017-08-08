@@ -250,7 +250,7 @@ export default {
     },
     handleSelectionChange (val) {
       this.multipleSelection = val;
-    }
+    },
     handleDownload () {
       var vm = this;
       require.ensure([], () => {
@@ -264,7 +264,7 @@ export default {
     },
     formatJson (filterVal, jsonData) {
       return jsonData.map(v => filterVal.map(j => v[j]));
-    },
+    }
   }
 };
 
