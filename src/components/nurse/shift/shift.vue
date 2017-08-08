@@ -11,15 +11,20 @@
       </el-select>
       <el-button class="filter-item" type="primary" icon="search">搜索</el-button>
       <el-button class="filter-item" type="primary" @click="handelCreate"  icon="edit">添加</el-button>
-      <el-button class="filter-item" type="primary" icon="document">导出</el-button>
+      <el-button class="filter-item" type="primary" icon="document" @click="handleDownload">导出</el-button>
     </div>
 
     <el-table v-if="table" :data="table" border style="width: 100%" height="400">
-    <el-table-column label="序号" width="120">
+    <el-table-column label="序号" width="120" fixed>
       <template scope="scope">{{ scope.$index }}</template>
     </el-table-column>
     <el-table-column
+      prop="date"
       fixed
+      label="日期"
+      width="120">
+    </el-table-column>
+    <el-table-column
       prop="time"
       label="时段"
       width="200">
@@ -47,12 +52,12 @@
     <el-table-column
       prop="attendence"
       label="出勤情况"
-      width="150" v-model="listQuery.type">
+      width="120" v-model="listQuery.type">
     </el-table-column>
     <el-table-column
       prop="signature"
       label="护士长签名"
-      width="150">
+      width="120">
     </el-table-column>
     <el-table-column align="center" label="操作">
       <template scope="scope">
@@ -66,6 +71,9 @@
         <el-form class="small-space" :model="form" label-position="left" label-width="70px" style='width: 400px; margin-left:50px;'>
           <el-form-item label="姓名">
             <el-input v-model="form.name"></el-input>
+          </el-form-item>
+          <el-form-item label="日期">
+            <el-input v-model="form.date"></el-input>
           </el-form-item>
           <el-form-item label="值班时间">
             <el-select v-model="form.time" placeholder="请选择值班时间">
@@ -158,6 +166,7 @@
         dialogFormEditVisible: false,
         form: {
           name: '',
+          date: '',
           time: '',
           phone: '',
           attendence: '',
@@ -194,6 +203,21 @@
         // this.tableEdit.date = dateFormat;
         // console.log(dateFormat);
         this.table[index] = this.tableEdit;
+      },
+      handleDownload () {
+        // 导出
+        var vm = this;
+        require.ensure([], () => {
+          const { export_json_to_excel } = require('vendor/Export2Excel');
+          const tHeader = ['日期', '时段', '姓名', '性别', '科室', '电话号码', '出勤情况', '护士长签名'];
+          const filterVal = ['date', 'time', 'name', 'sex', 'department', 'phone', 'attendence', 'signature'];
+          const table = vm.table;
+          const data = vm.formatJson(filterVal, table);
+          export_json_to_excel(tHeader, data, '安逸医院护士值班表excel');
+        });
+      },
+      formatJson (filterVal, jsonData) {
+        return jsonData.map(v => filterVal.map(j => v[j]));
       },
       handleDelete (index, row) {
         let vm = this;

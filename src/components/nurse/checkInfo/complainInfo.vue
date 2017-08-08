@@ -4,7 +4,7 @@
         <p>安逸医院论坛</p>
     </div>
 
-    <el-table :data="table" height="500" border style="width: 100%">
+    <el-table :data="table" height="480" border style="width: 100%">
     <el-table-column label="序号" width="100">
       <template scope="scope">{{ scope.$index }}</template>
     </el-table-column>

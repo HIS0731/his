@@ -11,7 +11,7 @@
         <el-button class="filter-item" type="primary" icon="search">搜索</el-button>
         <el-button class="filter-item" type="primary" @click="handelCreate"  icon="edit">添加</el-button>
         <el-button class="filter-item" type="primary" @click="handleDelAll"  icon="edit">批量删除</el-button>
-        <el-button class="filter-item" type="primary" icon="document">导出</el-button>
+        <el-button class="filter-item" type="primary" icon="document" @click="handleDownload">导出</el-button>
       </div>
 
       <el-table ref="multipleTable" :data="table" border tooltip-effect="dark"  style="width: 100%" @selection-change="handleSelectionChange">
@@ -30,7 +30,7 @@
       <el-table-column prop="date" label="入职时间" sortable show-overflow-tooltip></el-table-column>
       <el-table-column align="center" label="操作">
       <template scope="scope">
-      	<el-button size="small" @click="handleEdit(scope.$index)">编辑</el-button>
+      	<el-button size="small" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
         <el-button size="small" type="danger" @click="handleDelete(scope.$index, scope.row)">删除</el-button>
       </template>
       </el-table-column>
@@ -124,7 +124,6 @@
         <div slot="footer" class="dialog-footer">
           <el-button @click="dialogFormEditVisible = false">取 消</el-button>          
           <el-button type="primary" @click="handleEditSubmit">确 定</el-button>
-          <!-- <el-button type="primary" @click="resetEditForm('form')">重置</el-button> -->
         </div>
       </el-dialog>
     
@@ -136,7 +135,17 @@ export default {
   data () {
     return {
       table: [],
-      tableEdit: [],
+      tableEdit: [
+        // name: '',
+        // address: '',
+        // age: '',
+        // position: '',
+        // profession: '',
+        // department: '',
+        // education: '',
+        // sex: '',
+        // date: ''
+      ],
       total: null,
       listLoading: true,
       listQuery: {
@@ -181,10 +190,13 @@ export default {
     handleSelectionChange (val) {
       this.multipleSelection = val;
     },
-    handleEdit (index) {
+    handleEdit (index, row) {
       this.dialogFormEditVisible = true;
-      this.Index = index;
-      this.tableEdit = this.table[index];
+      // this.Index = index;
+      // this.tableEdit = this.table[index];
+      // this.tableEdit = JSON.parse(JSON.Stringify(this.index));
+      this.tableEdit = row;
+      // this.tableEdit = JSON.parse(JSON.Stringify(this.tableEdit.row));
     },
     handleEditSubmit (index) {
       this.dialogFormEditVisible = false;
@@ -202,10 +214,21 @@ export default {
       console.log('单个删除选择的row: ', index, '-----', row);
       vm.table.splice(index, 1);
     },
-    handleDelAll (index, row) {
-      let vm = this;
-      console.log('批量删除选择的row：', vm.multipleSelection);
-      vm.table.splice(index, 1);
+    handleDelAll () {
+      // let vm = this;
+      // console.log('批量删除选择的row：', vm.multipleSelection);
+      // vm.table.splice(index, 1);
+      // let arr = [];
+      // var len = this.proData.length;
+      // for (var i = 0; i < len; i++) {
+      //   if (this.selectArr.indexOf(i) >= 0) {
+      //     console.log(this.selectArr.indexOf(i));
+      //   } else {
+      //     arr.push(proData[i]);
+      //   }
+      // }
+      // this.proData = arr;
+      // this.selectArr = [];
     },
     handelCreate () {
       this.dialogFormVisible = true;
@@ -214,9 +237,21 @@ export default {
     // handleFilter () {
     //   // 姓名this.getList();
     // },
-    // handleDownload () {
-    //   // 导出
-    // },
+    handleDownload () {
+      // 导出
+      var vm = this;
+      require.ensure([], () => {
+        const { export_json_to_excel } = require('vendor/Export2Excel');
+        const tHeader = ['姓名', '地址', '性别', '年龄', '职称', '科室', '学历', '专业', '入职时间'];
+        const filterVal = ['name', 'address', 'sex', 'age', 'position', 'department', 'education', 'profession', 'date'];
+        const table = vm.table;
+        const data = vm.formatJson(filterVal, table);
+        export_json_to_excel(tHeader, data, '护士信息列表excel');
+      });
+    },
+    formatJson (filterVal, jsonData) {
+      return jsonData.map(v => filterVal.map(j => v[j]));
+    },
     handleSizeChange (val) {
       console.log(`每页 ${val} 条`);
     },

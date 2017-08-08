@@ -75,13 +75,14 @@ export default {
       rules: {
         name: [
           {required: true, message: '请输入名字', trigger: 'blur'},
-          {min: 3, max: 5, message: '长度在3到5个字符', trigger: 'blur'}
+          {min: 2, max: 5, message: '长度在3到5个字符', trigger: 'blur'}
         ],
         address: [
           {required: true, message: '请输入地址', trigger: 'blur'}
         ],
         age: [
-          {required: true, message: '请输入年龄', trigger: 'blur'}
+          {required: true, message: '请输入年龄', trigger: 'blur'},
+          {type: 'number', message: '年龄必须为数字值'}
         ],
         position: [
           {required: true, message: '请输入职称', trigger: 'blur'}
@@ -112,7 +113,7 @@ export default {
           alert('提交成功!');
           console.log(this.ruleForm);
         } else {
-          console.log('提交失败!!');
+          alert('提交失败!!');
           return false;
         }
       });

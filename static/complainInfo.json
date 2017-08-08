@@ -9,20 +9,69 @@
 		},
 		{
 			"complainant": "李小姐",
-			"type": "医疗服务",
+			"type": "医疗质量",
+			"date": "2017-08-02",
+			"content": "服务态度差",
+			"phone": "13418745228"
+		},
+		{
+			"complainant": "陈先生",
+			"type": "医疗环境",
+			"date": "2017-08-02",
+			"content": "服务态度差",
+			"phone": "13418745228"
+		},
+		{
+			"complainant": "谢女士",
+			"type": "医疗环境",
+			"date": "2017-08-02",
+			"content": "服务态度差",
+			"phone": "13418745228"
+		},
+		{
+			"complainant": "黄先生",
+			"type": "医疗环境",
 			"date": "2017-08-02",
 			"content": "服务态度差",
 			"phone": "13418745228"
 		},
 		{
 			"complainant": "张先生",
-			"type": "医疗服务",
+			"type": "医疗环境",
 			"date": "2017-08-02",
 			"content": "服务态度差",
 			"phone": "13418745228"
 		},
 		{
-			"complainant": "张先生",
+			"complainant": "吴小姐",
+			"type": "医疗环境",
+			"date": "2017-08-02",
+			"content": "服务态度差",
+			"phone": "13418745228"
+		},
+		{
+			"complainant": "周先生",
+			"type": "医疗环境",
+			"date": "2017-08-02",
+			"content": "服务态度差",
+			"phone": "13418745228"
+		},
+		{
+			"complainant": "吴小姐",
+			"type": "医疗环境",
+			"date": "2017-08-02",
+			"content": "服务态度差",
+			"phone": "13418745228"
+		},
+		{
+			"complainant": "吴小姐",
+			"type": "医疗环境",
+			"date": "2017-08-02",
+			"content": "服务态度差",
+			"phone": "13418745228"
+		},
+		{
+			"complainant": "梅小姐",
 			"type": "医疗服务",
 			"date": "2017-08-02",
 			"content": "服务态度差",
