@@ -126,6 +126,7 @@
 </script>
 
 <style lang="stylus-loader" rel="stylesheet/stylus">
+.drug
   .title
     padding:10px 0
     margin:30px 0 10px 0
