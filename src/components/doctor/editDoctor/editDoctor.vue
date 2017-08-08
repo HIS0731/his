@@ -1,8 +1,10 @@
 <template>
   <div class="editDoctor">
+    <span class="tittle">医生信息表</span>
     <div class="search">
-     <el-input @keyup.enter.native="" style="width: 200px;" placeholder="医生姓名" v-model="edictDoctor.name"></el-input>
-     <el-button  type="primary" icon="search" @click="" v-model="edictDoctor.name">搜索</el-button>
+     <el-input style="width: 200px;" placeholder="医生姓名"></el-input>
+     <el-button  type="primary" icon="search" @click="">搜索</el-button>
+     <el-button class="filter-item" type="primary" icon="document" @click="handleDownload">导出</el-button>
     </div>
     <el-table :data="doctorlist" border style="width: 100%;">
       <el-table-column fixed prop="index" label="序号" width="100">
@@ -29,8 +31,8 @@
       </el-table-column>
       <el-table-column fixed="right" prop="operate" label="操作" width="150"> 
         <template scope="scope">
-          <el-button @click.native.prevent="edictDoctor(scope.$index)" type="text" size="small">编辑</el-button>
-          <el-button @click.native.prevent="delectDoctor(scope.$index, doctorlist)" type="text" size="small">删除</el-button>
+          <el-button @click.native.prevent="edictDoctor(scope.$index)" type="primary" size="small">编辑</el-button>
+          <el-button @click.native.prevent="delectDoctor(scope.$index, doctorlist)" type="danger" size="small">删除</el-button>
         </template>
       </el-table-column>     
     </el-table>
@@ -92,6 +94,23 @@
         };
       },
       methods: {
+        // 导出信息表
+        handleDownload () {
+          // 导出
+          var vm = this;
+          require.ensure([], () => {
+            const { export_json_to_excel } = require('vendor/Export2Excel');
+            const tHeader = ['姓名', '性别', '入职日期', '学历', '专业', '职称', '科室'];
+            const filterVal = ['name', 'sex', 'date', 'degree', 'major', 'profession', 'office'];
+            const doctorlist = vm.doctorlist;
+            const data = vm.formatJson(filterVal, doctorlist);
+            export_json_to_excel(tHeader, data, '医生信息列表excel');
+          });
+        },
+        formatJson (filterVal, jsonData) {
+          return jsonData.map(v => filterVal.map(j => v[j]));
+        },
+        // 导出信息表
         edictDoctor (index) {
           // console.log(index, row);
           this.dialogFormVisible = true;
@@ -146,4 +165,12 @@
 <style lang="stylus-loader" rel="stylesheet/stylus">
 .editDoctor .block
   position:absolute
+.editDoctor .tittle
+  display:block
+  text-align: center
+  font-size:24px
+  font-weight:600
+  line-height:80px
+.editDoctor .search
+  margin-bottom:30px
 </style>

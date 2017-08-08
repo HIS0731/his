@@ -125,13 +125,13 @@
           this.complaintPatientList = response.body.complaintPatientList;
         }, response => {
           // error callback
-          alert('数据请求失败');
+          alert('1数据请求失败');
         });
-        this.$http.get('../../static/patient/registered.json').then((response) => {             // mark
+        this.$http.get('../../static/doctor/registered.json').then((response) => {             // mark
           this.patientList = response.body.tableData;
         }, response => {
           // error callback
-          alert('数据请求失败');
+          alert('2数据请求失败');
         });
       }
     };

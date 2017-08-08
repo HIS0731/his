@@ -1,5 +1,6 @@
 <template>
   <div class="shiftDoctor">
+    <span class="tittle">医生轮班信息表</span>
     <div class="search">
      <el-input  style="width: 200px;" placeholder="医生姓名"></el-input>
      <el-button  type="primary" icon="search" @click="">搜索</el-button>
@@ -29,10 +30,10 @@
       </el-table-column>
       <el-table-column fixed prop="signatory" label="主任签名" width="120"> 
       </el-table-column>
-      <el-table-column fixed="right" prop="operate" label="操作" width="120"> 
+      <el-table-column fixed="right" prop="operate" label="操作" width="180"> 
         <template scope="scope">
-          <el-button @click.native.prevent="edictDoctor(scope.$index, shiftList)" type="text" size="small">编辑</el-button>
-          <el-button @click.native.prevent="delectDoctor(scope.$index, shiftList)" type="text" size="small">删除</el-button>
+          <el-button @click.native.prevent="edictDoctor(scope.$index, shiftList)" type="primary" size="small">编辑</el-button>
+          <el-button @click.native.prevent="delectDoctor(scope.$index, shiftList)" type="danger" size="small">删除</el-button>
         </template>
       </el-table-column>     
     </el-table>
@@ -80,8 +81,8 @@
 
       </el-form>
       <div slot="footer" class="dialog-footer">
-        <!-- <el-button @click="resetForm('form')">重 置</el-button> -->
-        <!-- <el-button type="primary"  @click="submitForm(index,row)">确 定</el-button> -->
+        <el-button @click="resetForm('form')">重 置</el-button>
+        <el-button type="primary"  @click="submitForm('form')">确 定</el-button>
       </div>
     </el-dialog>
     <div class="block">
@@ -107,24 +108,28 @@
         };
       },
       methods: {
+        // 表格点击编辑触发的事件，进行修改
         edictDoctor (index, rows) {
           // console.log(index, row);
           this.dialogFormVisible = true;
           // this.form = row;
-          console.log(rows[index]);
+          console.log('tt', rows[index]);
           this.form = rows[index];
-          this.form = JSON.parse(JSON.stringify(rows[index]));
+          // 深拷贝
+          // this.form = JSON.parse(JSON.stringify(rows[index]));
           this.Index = index;
+          this.form2 = rows[index];
           // rows[index] = this.form;
         },
+        // 删除某行数据
         delectDoctor (index, rows) {
           console.log(rows);
           rows.splice(index, 1);
         },
+        // 事件格式转化
         updateDoctor () {
-          this.dialogFormVisible = false;
           // mark 实际应该用get
-          console.log(this.form.date);
+          console.log('修改时间格式', this.form.date);
           let year = this.form.date.getFullYear();
           let month = this.form.date.getMonth() + 1;
           let day = this.form.date.getDate();
@@ -139,22 +144,25 @@
         //     type: 'success'
         //   });
         // },
-        // submitForm (index,) {
-        //   this.updateDoctor();
-        //   console.log('修改的', this.form);
-        //   this.shiftList[this.Index] = this.form;
-          // this.updateDoctor();
-          // this.$refs[formName].validate((valid) => {
-          //   if (valid) {
-          //     this.$message({
-          //       message: '轮班信息修改成功',
-          //       type: 'success'
-          //     });
-          //     this.dialogFormVisible = false;
-          //   } else {
+        // Dialog 对话框 的确定按钮触发的事件
+        submitForm (formName) {
+          console.log('this.shiftList[this.Index]的数据', this.shiftList[this.Index]);
+          console.log('form.date的数据', this.form.date);
+          this.dialogFormVisible = false;
+          this.updateDoctor();
+          this.shiftList[this.Index] = this.form;
+          console.log('修改的form', this.form);
+          console.log('修改的shiftList', this.shiftList[this.Index]);
+          this.$message({
+            message: '轮班信息修改成功',
+            type: 'success'
+          });
+          // else {
           //     this.$message.error('医生信息修改失败');
           //     return false;
           //   }
+          // }
+        },
           // });
         // resetForm (formName) {
         //   this.$refs[formName].resetFields();
@@ -167,6 +175,7 @@
           console.log(`当前页: ${val}`);
         }
       },
+      // 获取json数据
       created () {
         this.$http.get('../../static/doctor/shiftList.json').then((response) => {             // mark
           this.shiftList = response.body.shiftList;
@@ -174,6 +183,7 @@
           // error callback
           alert('数据请求失败');
         });
+        // this.updateDoctor();
       }
     };
 </script>
@@ -181,6 +191,13 @@
 <style lang="stylus-loader" rel="stylesheet/stylus">
 .shiftDoctor .block
   position:absolute
-
+.shiftDoctor .tittle
+  display:block
+  text-align: center
+  font-size:24px
+  font-weight:600
+  line-height:80px
+.shiftDoctor .search
+  margin-bottom:30px
 
 </style>

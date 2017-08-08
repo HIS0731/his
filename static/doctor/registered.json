@@ -1,0 +1,43 @@
+{
+  "tableData": [{
+  "date": "2017-1-1",
+  "number": "201711",
+  "name": "王小",
+  "sex": "女",
+  "phone": 13414937050,
+  "age": 22,
+  "symptoms":"肚子疼",
+  "disease":"内科",
+  "position":"尚志苑B2栋2楼"
+},{
+  "date": "2017-1-1",
+  "number": "201712",
+   "name": "王小红",
+   "sex": "女",
+   "phone": 13414937051,
+   "age": 21,
+   "symptoms":"骨折",
+   "disease":"骨科",
+   "position":"尚志苑B1栋2楼"
+},{
+  "date": "2017-1-4",
+  "number": "201713",
+  "name": "王小虎",
+  "sex": "男",
+  "phone": 13414937052,
+  "age": 23,
+  "symptoms":"创口感染",
+  "disease":"外科",
+  "position":"尚志苑C栋2楼"
+},{
+  "date": "2017-1-5",
+  "number": "201714",
+  "name": "曾雪花",
+  "sex": "女",
+  "phone": 13414937053,
+  "age": 23,
+  "symptoms":"牙疼",
+  "disease":"牙科",
+  "position":"尚志苑C栋3楼"
+}]
+}
