@@ -5,11 +5,18 @@
       "number": "20171101",
       "name": "李丽",
       "sex": "女",
+      "region": "门诊",
+      "Name": "李四",
+      "Phone": "8337094",
+      "relation": "父女",
+      "illHistory": "没有",
+      "idCard": "440882199508132346",
       "phone": 13414937050,
       "age": 22,
-      "symptoms":"系统性红斑狼疮 狼疮性肾炎 （病情活动期）",
-      "disease":"内科",
-      "position":"尚志苑B2栋2楼",
+      "symptoms": "系统性红斑狼疮 狼疮性肾炎 （病情活动期）",
+      "disease": "内科",
+      "position": "尚志苑B2栋2楼",
+      "address": "广东省广州科技企业加速器",
       "doctor": "王娟",
       "pharmacist": "",
       "prescription": {
@@ -26,19 +33,26 @@
           {"sort": "", "drugname": "连翘", "quantity": "15", "usage": ""},
           {"sort": "", "drugname": "黄芩", "quantity": "15", "usage": ""},
           {"sort": "", "drugname": "甘草", "quantity": "10", "usage": ""}
-        ],        
-        "tips": "先将上药用适量水浸泡30分钟，再放文火上煎煮30分钟，每剂煎2次，将两次煎出的药液混合。每日1剂，早晚各服1次"
-      }
+        ], 
+          "tips": "先将上药用适量水浸泡30分钟，再放文火上煎煮30分钟，每剂煎2次，将两次煎出的药液混合。每日1剂，早晚各服1次"
+        }
     },{
       "date": "2017-1-1",
       "number": "20171102",
       "name": "赵青",
       "sex": "女",
+      "region": "门诊",
+      "Name": "赵四",
+      "Phone": "113414935080",
+      "relation": "父女",
+      "illHistory": "没有",
+      "idCard": "440882199508132346",
       "phone": 13414937051,
       "age": 21,
-      "symptoms":"红斑，丘疹，伴或不伴糜烂，渗出",
-      "disease":" 皮肤科",
-      "position":"尚志苑B1栋2楼",
+      "symptoms": "红斑，丘疹，伴或不伴糜烂，渗出",
+      "disease": "皮肤科",
+      "position": "尚志苑B1栋2楼",
+      "address": "广东省广州华南师范大学",
       "doctor": "刘雯",
       "pharmacist": "",
       "prescription": {
@@ -66,11 +80,18 @@
       "number": "20171401",
       "name": "钱虎",
       "sex": "男",
+      "region": "手术",
+      "Name": "钱明",
+      "Phone": "13414936979",
+      "relation": "父子",
+      "illHistory": "没有",
+      "idCard": "440882199508132346",
       "phone": 13414937052,
       "age": 23,
-      "symptoms":"阑尾炎",
-      "disease":"外科",
-      "position":"尚志苑C栋2楼",
+      "symptoms": "阑尾炎",
+      "disease": "外科",
+      "position": "尚志苑C栋2楼",
+      "address": "广东省广州华南师范大学",
       "doctor": "李星",
       "pharmacist": "",
       "prescription": {
@@ -89,17 +110,24 @@
           {"sort": "", "drugname": "冬瓜子", "quantity": "30", "usage": ""}
         ],        
         "tips": "水煎服，每日1剂"
-      }       
+      }          
     },{
       "date": "2017-1-5",
       "number": "20171501",
       "name": "曾雪花",
       "sex": "女",
+      "region": "门诊",
+      "Name": "李晓霞",
+      "Phone": "12314937050",
+      "relation": "母女",
+      "illHistory": "没有",
+      "idCard": "440882199508132346",
       "phone": 13414937053,
       "age": 23,
-      "symptoms":"慢性牙髓炎",
-      "disease":"牙科",
+      "symptoms": "慢性牙髓炎",
+      "disease": "牙科",
       "position":"尚志苑C栋3楼",
+      "address": "广东省湛江市寸金桥29号",
       "doctor": "李兴华",
       "pharmacist": "",
       "prescription": {
@@ -120,7 +148,7 @@
           {"sort": "", "drugname": "甘草", "quantity": "3", "usage": ""}
         ],
         "tips": "水煎服，每日1剂，日服2次"
-      }      
+      }
     }
   ]
 }

@@ -11,7 +11,15 @@
         <el-dropdown-menu slot="dropdown">
           <router-link to="home"><el-dropdown-item>首页</el-dropdown-item></router-link>
           <el-dropdown-item>修改密码</el-dropdown-item>
-          <el-dropdown-item>个人主页</el-dropdown-item>
+          <el-dropdown>
+            <span class="el-dropdown-link">个人主页<i class="el-icon-caret-bottom el-icon--right"></i></span>
+            <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item><router-link to="addPersonalDate">新建个人档案</router-link></el-dropdown-item>
+              <el-dropdown-item><router-link to="absenceRequest">申请休假</router-link></el-dropdown-item>
+              <el-dropdown-item><router-link to="departure">申请离职</router-link></el-dropdown-item>
+              <el-dropdown-item><router-link to="hasComplaints">查看投诉信息</router-link></el-dropdown-item>
+            </el-dropdown-menu>
+          </el-dropdown>
           <a @click="userLog"><el-dropdown-item>退出登录</el-dropdown-item></a>
         </el-dropdown-menu>
       </el-dropdown>

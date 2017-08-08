@@ -1,6 +1,5 @@
 <template>
-  <div>
-    <el-button @click="getTabelData">显示患者列表</el-button><br><br><br>
+  <div class="hasPatient">
     <div class="filter-container">
       <el-input v-model="input" placeholder="标题" style="width:195px;"></el-input>
       <el-select v-model="select" placeholder="类型" style="width:150px;">
@@ -14,24 +13,73 @@
       <el-button type="primary"><i class="el-icon-document el-icon--left"></i>导出</el-button>
     </div><br><br>
     <el-table :data="tableData" border style="width:100%;" @selection-change="handleSelectionChange">
-      <el-table-column type="selection" width="65"></el-table-column>
-      <el-table-column align="center" label='序号' width="100">
+      <el-table-column type="selection"></el-table-column>
+      <el-table-column align="center" label='序号'>
         <template scope="scope">
           {{scope.$index}}
         </template>
       </el-table-column>
-      <el-table-column label="日期" width="150" prop="date"></el-table-column>
-      <el-table-column label="名字" width="150" prop="name"></el-table-column>
-      <el-table-column label="性别" width="150" prop="sex"></el-table-column>
-      <el-table-column label="地址" width="250" prop="address"></el-table-column>
-      <el-table-column label="联系号码" width="150" prop="phone"></el-table-column>
-      <el-table-column label="年龄" width="150" prop="age"></el-table-column>
-      <el-table-column label="主治医生" width="150" prop="doctor"></el-table-column>
-     <el-table-column label="操作" fixed="right" width="150">
-      <template scope="scope">
-        <el-button @click="handleClick(scope.$index, scope.row)" type="text" size="small">查看</el-button>
-        <el-button type="text" size="small" @click="handleDelete(scope.$index, scope.row)">删除</el-button>
-      </template>
+      <el-table-column label="日期" prop="date"></el-table-column>
+      <el-table-column label="名字" prop="name"></el-table-column>
+      <el-table-column label="性别" prop="sex"></el-table-column>
+      <el-table-column label="年龄" prop="age"></el-table-column>
+      <el-table-column label="主治医生" prop="doctor"></el-table-column>
+      <el-table-column type="expand">
+        <template scope="props">
+          <el-form label-position="left" inline class="demo-table-expand">
+            <el-form-item label="建档日期">
+              <span>{{ props.row.date }}</span>
+            </el-form-item>
+            <el-form-item label="患者姓名">
+              <span>{{ props.row.name }}</span>
+            </el-form-item>
+            <el-form-item label="患者来源">
+              <span>{{ props.row.region }}</span>
+            </el-form-item>
+            <el-form-item label="身份证号">
+              <span>{{ props.row.idCard }}</span>
+            </el-form-item>
+            <el-form-item label="患者年龄">
+              <span>{{ props.row.age }}</span>
+            </el-form-item>
+            <el-form-item label="联系方式">
+              <span>{{ props.row.phone }}</span>
+            </el-form-item>
+            <el-form-item label="患者性别">
+              <span>{{ props.row.sex }}</span>
+            </el-form-item>
+            <el-form-item label="家庭地址">
+              <span>{{ props.row.address }}</span>
+            </el-form-item>
+            <el-form-item label="联系人姓名">
+              <span>{{ props.row.Name }}</span>
+            </el-form-item>
+            <el-form-item label="联系人号码">
+              <span>{{ props.row.Phone }}</span>
+            </el-form-item>
+            <el-form-item label="患者与联系人关系">
+              <span>{{ props.row.relation }}</span>
+            </el-form-item>
+            <el-form-item label="病症">
+              <span>{{ props.row.symptoms }}</span>
+            </el-form-item>
+            <el-form-item label="病史">
+              <span>{{ props.row.illHistory }}</span>
+            </el-form-item>
+            <el-form-item label="科室">
+              <span>{{ props.row.disease }}</span>
+            </el-form-item>
+            <el-form-item label="主治医生">
+              <span>{{ props.row.doctor }}</span>
+            </el-form-item>
+          </el-form>
+        </template>
+      </el-table-column>
+      <el-table-column label="操作" width="150">
+        <template scope="scope">
+          <el-button type="text" size="small" @click="handleEdit(scope.$index,scope.row)">编辑</el-button>
+          <el-button type="text" size="small" @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+        </template>
      </el-table-column>
     </el-table>
     <!-- 添加表单 -->
@@ -46,12 +94,6 @@
         <el-form-item label="性别">
           <el-input v-model="temp.sex"></el-input>
         </el-form-item>
-        <el-form-item label="地址">
-          <el-input v-model="temp.address"></el-input>
-        </el-form-item>
-        <el-form-item label="联系号码">
-          <el-input v-model="temp.phone"></el-input>
-        </el-form-item>
         <el-form-item label="年龄">
           <el-input v-model="temp.age"></el-input>
         </el-form-item>
@@ -62,6 +104,60 @@
       <div slot="footer" class="dialog-footer">
         <el-button @click="dialogFormVisible = false">取 消</el-button>
         <el-button type="primary" @click="handleCreateSubmit">确 定</el-button>
+      </div>
+    </el-dialog>
+    <!-- 编辑表单 -->
+    <el-dialog title="编辑表单" :visible.sync="dialogFormEditVisible">
+      <el-form class="small-space" :model="Edit" label-position="left" label-width="70px" style='width: 400px; margin-left:50px;'>
+        <el-form-item label="建档日期">
+          <el-input v-model="Edit.date"></el-input>
+        </el-form-item>
+        <el-form-item label="患者姓名">
+          <el-input v-model="Edit.name"></el-input>
+        </el-form-item>
+        <el-form-item label="患者来源">
+          <el-input v-model="Edit.region"></el-input>
+        </el-form-item>
+        <el-form-item label="身份证号">
+          <el-input v-model="Edit.idCard"></el-input>
+        </el-form-item>
+        <el-form-item label="患者年龄">
+          <el-input v-model="Edit.age"></el-input>
+        </el-form-item>
+        <el-form-item label="联系方式">
+          <el-input v-model="Edit.phone"></el-input>
+        </el-form-item>
+        <el-form-item label="患者性别">
+          <el-input v-model="Edit.sex"></el-input>
+        </el-form-item>
+        <el-form-item label="家庭地址">
+          <el-input v-model="Edit.address"></el-input>
+        </el-form-item>
+        <el-form-item label="联系人姓名">
+          <el-input v-model="Edit.Name"></el-input>
+        </el-form-item>
+        <el-form-item label="联系人号码">
+          <el-input v-model="Edit.Phone"></el-input>
+        </el-form-item>
+        <el-form-item label="患者与联系人关系">
+          <el-input v-model="Edit.relation"></el-input>
+        </el-form-item>
+        <el-form-item label="病症">
+          <el-input v-model="Edit.symptoms"></el-input>
+        </el-form-item>
+        <el-form-item label="病史">
+          <el-input v-model="Edit.illHistory"></el-input>
+        </el-form-item>
+        <el-form-item label="科室">
+          <el-input v-model="Edit.disease"></el-input>
+        </el-form-item>
+        <el-form-item label="主治医生">
+         <el-input v-model="Edit.doctor"></el-input>
+        </el-form-item>
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="dialogFormEditVisible = false">取 消</el-button>
+        <el-button type="primary" @click="handleEditSubmit">确 定</el-button>
       </div>
     </el-dialog>
   </div>
@@ -78,22 +174,53 @@ export default {
         date: '',
         name: '',
         sex: '',
-        address: '',
-        phone: '',
         age: '',
         doctor: ''
       },
+      Edit: [],
+        // date: '',
+        // name: '',
+        // region: '',
+        // idCard: '',
+        // age: '',
+        // phone: '',
+        // sex: '',
+        // address: '',
+        // Name: '',
+        // Phone: '',
+        // relation: '',
+        // symptoms: '',
+        // illHistory: '',
+        // disease: '',
+        // doctor: ''
+      // },
+      dialogFormEditVisible: false,
       dialogFormVisible: false,
       multipleSelection: []
     };
   },
-  // mounted() {
-  //   var vm = this;
-
-  //   vm.getList();
+  created () {
+    let me = this;
+    Vue.http.get('../../static/patientList.json').then(function (response) {
+      console.log(response);
+      console.log('这是我们需要的json数据', response.tableData);
+      // me.tableData = response.data.tableData;
+      me.tableData = response.body.tableData;
+    }, function (response) {
+      alert('请求失败了');
+    });
+  },
   methods: {
-    handleClick (index, rows) {
-      console.log(index, rows);
+    handleEdit (index, row) {
+      this.dialogFormEditVisible = true;
+      console.log('选择的条数：', index, '选择row属性：', row);
+      this.Edit = row;// 浅拷贝
+      // this.Edit = JSON.parse(JSON.stringify(row));
+      // 深度拷贝
+    },
+    handleEditSubmit () {
+      this.Edit;
+      this.dialogFormEditVisible = false;
     },
     handleDelete (index, row) {
       var vm = this;
@@ -113,8 +240,6 @@ export default {
         date: '',
         name: '',
         sex: '',
-        address: '',
-        phone: '',
         age: '',
         doctor: ''
       };
@@ -125,11 +250,11 @@ export default {
     },
     handleSelectionChange (val) {
       this.multipleSelection = val;
-    },
+    }
     // handleDownload () {
     //   var vm = this;
     //   require.ensure([], () => {
-    //     const { export_json_to_excel } = require('/vendor/Export2Excel');
+    //     const { export_json_to_excel } = require('vendor/Export2Excel');
     //     const tHeader = ['日期', '名字', '性别', '地址', '联系号码', '年龄', '主治医生'];
     //     const filterVal = ['date', 'name', 'sex', 'address', 'phone', 'age', 'doctor'];
     //     const tableData = vm.tableData;
@@ -137,16 +262,24 @@ export default {
     //     export_json_to_excel(tHeader, data, '导出的列表excel');
     //   });
     // },
-    getTabelData () {
-      let me = this;
-      Vue.http.get('../../static/patient/patientList.json').then(function (response) {
-        console.log(response);
-        console.log('这是我们需要的json数据', response.tableData);
-        me.tableData = response.data.tableData;
-      }, function (response) {
-        alert('请求失败了');
-      });
-    }
+    // formatJson(filterVal, jsonData) {
+    //   return jsonData.map(v => filterVal.map(j => v[j]))
+    // },
   }
 };
+
 </script>
+<style>
+.hasPatient .demo-table-expand {
+    font-size: 0;
+  }
+ .hasPatient .demo-table-expand label {
+    width: 90px;
+    color: #99a9bf;
+  }
+ .hasPatient .demo-table-expand .el-form-item {
+    margin-right: 0;
+    margin-bottom: 0;
+    width: 33%;
+  }
+</style>

@@ -18,8 +18,12 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-default/index.css';
 import addPatient from '@/components/patient/addPatient/addPatient';
 import hasPatient from '@/components/patient/hasPatient/hasPatient';
-import addRegistered from '@/components/patient/addRegistered/addRegistered';
-import hospitalized from '@/components/patient/hospitalized/hospitalized';
+import hasRegistered from '@/components/patient/hasRegistered/hasRegistered';
+import addHospitalized from '@/components/patient/addHospitalized/addHospitalized';
+import addPersonalDate from '@/components/header/homepage/addPersonalDate';
+import absenceRequest from '@/components/header/homepage/absenceRequest';
+import departure from '@/components/header/homepage/departure';
+import hasComplaints from '@/components/header/homepage/hasComplaints';
 import drugStorage from '@/components/drugStorage/putInStorage/putInStorage';
 import checkDrugStorage from '@/components/drugStorage/checkDrugStorage/checkDrugStorage';
 import stockRemoval from '@/components/drugStorage/stockRemoval/stockRemoval';
@@ -59,8 +63,12 @@ export default new Router({
         { path: '/registerinfos', name: 'registerinfos', component: registerinfos },
         { path: '/addPatient', name: 'addPatient', component: addPatient },
         { path: '/hasPatient', name: 'hasPatient', component: hasPatient },
-        { path: '/addRegistered', name: 'addRegistered', component: addRegistered },
-        { path: '/hospitalized', name: 'hospitalized', component: hospitalized },
+        { path: '/hasRegistered', name: 'hasRegistered', component: hasRegistered },
+        { path: '/addHospitalized', name: 'addHospitalized', component: addHospitalized },
+        { path: '/addPersonalDate', name: 'addPersonalDate', component: addPersonalDate },
+        { path: '/absenceRequest', name: 'absenceRequest', component: absenceRequest },
+        { path: '/hasComplaints', name: 'hasComplaints', component: hasComplaints },
+        { path: '/departure', name: 'departure', component: departure },
         { path: '/drugStorage', name: 'drugStorage', component: drugStorage },
         { path: '/checkDrugStorage', name: 'checkDrugStorage', component: checkDrugStorage },
         { path: '/stockRemoval', name: 'stockRemoval', component: stockRemoval },
