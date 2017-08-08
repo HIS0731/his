@@ -10,7 +10,7 @@
       <el-button type="primary" icon="search">搜索</el-button>
       <el-button type="primary" icon="edit" @click="handleCreate">添加</el-button>
       <el-button type="primary" icon="delete" @click="handleDelAll">批量删除</el-button>
-      <el-button type="primary"><i class="el-icon-document el-icon--left"></i>导出</el-button>
+      <el-button type="primary" @click="handleDownload"><i class="el-icon-document el-icon--left"></i>导出</el-button>
     </div><br><br>
     <el-table :data="tableData" border style="width:100%;" @selection-change="handleSelectionChange">
       <el-table-column type="selection"></el-table-column>
@@ -251,20 +251,20 @@ export default {
     handleSelectionChange (val) {
       this.multipleSelection = val;
     }
-    // handleDownload () {
-    //   var vm = this;
-    //   require.ensure([], () => {
-    //     const { export_json_to_excel } = require('vendor/Export2Excel');
-    //     const tHeader = ['日期', '名字', '性别', '地址', '联系号码', '年龄', '主治医生'];
-    //     const filterVal = ['date', 'name', 'sex', 'address', 'phone', 'age', 'doctor'];
-    //     const tableData = vm.tableData;
-    //     const data = vm.formatJson(filterVal, tableData);
-    //     export_json_to_excel(tHeader, data, '导出的列表excel');
-    //   });
-    // },
-    // formatJson(filterVal, jsonData) {
-    //   return jsonData.map(v => filterVal.map(j => v[j]))
-    // },
+    handleDownload () {
+      var vm = this;
+      require.ensure([], () => {
+        const { export_json_to_excel } = require('vendor/Export2Excel');
+        const tHeader = ['日期', '名字', '性别', '地址', '联系号码', '年龄', '主治医生'];
+        const filterVal = ['date', 'name', 'sex', 'address', 'phone', 'age', 'doctor'];
+        const tableData = vm.tableData;
+        const data = vm.formatJson(filterVal, tableData);
+        export_json_to_excel(tHeader, data, '导出的列表excel');
+      });
+    },
+    formatJson (filterVal, jsonData) {
+      return jsonData.map(v => filterVal.map(j => v[j]));
+    },
   }
 };
 
