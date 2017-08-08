@@ -130,8 +130,8 @@ export default {
   }
 };
 </script>
-<style>
-.departure .el-input, .el-input__inner {
+<style type="text/css">
+.departure .el-input, .departure .el-input__inner {
   width: 170px; 
   display: inline-block;
 }
@@ -140,7 +140,7 @@ export default {
   margin-right: 50px;
   display: inline-block;
 }
-.departure .el-checkbox, .el-checkbox__input {
+.departure .el-checkbox, .departure .el-checkbox__input {
     cursor: pointer;
     display: inline-block;
     position: relative;

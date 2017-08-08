@@ -122,8 +122,8 @@ export default {
   }
 };
 </script>
-<style>
-  .addPersonalDate .el-input, .el-input__inner {
+<style type="text/css">
+  .addPersonalDate .el-input, .addPersonalDate .el-input__inner {
     width: 170px;
     display: inline-block;
   }

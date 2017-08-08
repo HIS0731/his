@@ -288,7 +288,7 @@ export default {
 };
 </script>
 <style type="text/css">
-  .hospitalized .el-input, .el-input__inner {
+  .hospitalized .el-input,.hospitalized .el-input__inner {
     width: 195px;
     display: inline-block;
 }

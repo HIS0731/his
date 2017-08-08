@@ -1498,8 +1498,8 @@ export default {
 };
 </script>
 <!-- <script src="https://unpkg.com/vue"></script> -->
-<style lang="stylus-loader" rel="stylesheet/stylus">
-  .addPatient .el-input, .el-input__inner {
+<style type="text/css">
+  .addPatient .el-input, .addPatient .el-input__inner {
     display: inline-block;
     width: 192px;
   }

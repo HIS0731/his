@@ -269,7 +269,7 @@ export default {
 };
 
 </script>
-<style>
+<style type="text/css">
 .hasPatient .demo-table-expand {
     font-size: 0;
   }

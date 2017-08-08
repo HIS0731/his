@@ -127,8 +127,8 @@ export default {
   }
 };
 </script>
-<style>
-.absenceRequest .el-input, .el-input__inner {
+<style type="text/css">
+.absenceRequest .el-input, .absenceRequest .el-input__inner {
   width: 170px; 
   display: inline-block;
 }
@@ -137,7 +137,7 @@ export default {
   margin-right: 50px;
   display: inline-block;
 }
-.absenceRequest .el-checkbox, .el-checkbox__input {
+.absenceRequest .el-checkbox, .absenceRequest .el-checkbox__input {
     cursor: pointer;
     display: inline-block;
     position: relative;
