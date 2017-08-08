@@ -161,4 +161,5 @@
 <style lang="stylus-loader" rel="stylesheet/stylus">
 .innnerApp
   background-color:#fff
+  min-height: 800px
 </style>
