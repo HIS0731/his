@@ -10,7 +10,7 @@
           <el-button size="mini" type="primary" @click="Onsubmit">查询</el-button>
         </div>
         <div class="table">
-           <el-table ref="multipleTable" :data="table" border tooltip-effect="dark"  style="width: 100%" @selection-change="handleSelectionChange">
+           <el-table ref="multipleTable" :data="table" border tooltip-effect="dark"  style="width: 100%">
               <el-table-column type="expand">
                 <template scope="props">
                   <el-form label-position="left" inline class="demo-table-expand">
@@ -48,7 +48,7 @@
           <el-button size="mini" type="primary" @click="Onsubmit">查询</el-button>
         </div> 
          <div class="table2">
-           <el-table ref="multipleTable" :data="table2" border tooltip-effect="dark"  style="width: 100%" @selection-change="handleSelectionChange">
+           <el-table ref="multipleTable" :data="table2" border tooltip-effect="dark"  style="width: 100%">
               <el-table-column type="expand">
                 <template scope="props">
                   <el-form label-position="left" inline class="demo-table-expand">
@@ -96,7 +96,10 @@
         console.log(tab, event);
       },
       Onsubmit () {
-        alert('提交成功!');
+        this.$message({
+          message: '正在查询...',
+          type: 'success'
+        });
       },
       handleOrder () {
         this.$message({

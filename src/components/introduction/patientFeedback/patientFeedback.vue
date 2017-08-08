@@ -285,7 +285,7 @@
   .patientFeedback .form
      margin-top:80px
   .patientFeedback
-    height:920px
+    height:1000px
     width:1000px
     margin:auto
     border:1px solid black

@@ -141,13 +141,9 @@
     p
       font-size:24px
       text-align:center
-      margin-bottom:50px
-  .patientCount .tableCount
+      margin-bottom:20px
+ .patientCount .tableCount
     float:left
-    padding-bottom:50px
+    padding-bottom:20px
     padding-left:20px
-  .patientCount .button
-    float:right
-    margin-right:150px
-    margin-top:220px
 </style>
