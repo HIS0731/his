@@ -111,6 +111,9 @@
           <el-form-item label="姓名">
             <el-input v-model="tableEdit.name" placeholder="必填"></el-input>
           </el-form-item>
+          <el-form-item label="日期">
+            <el-input v-model="tableEdit.date" placeholder="必填"></el-input>
+          </el-form-item>
           <el-form-item label="值班时间">
             <el-select v-model="tableEdit.time" placeholder="请选择值班时间">
               <el-option label="早班 8：00-16：00" value="早班 8：00-16：00"></el-option>
@@ -147,7 +150,6 @@
          <div slot="footer" class="dialog-footer">
           <el-button @click="dialogFormEditVisible = false">取 消</el-button>          
           <el-button type="primary" @click="handleEditSubmit">确 定</el-button>
-          <!-- <el-button type="primary" @click="resetEditForm('form')">重置</el-button> -->
          </div>
       </el-dialog>
   </div>
@@ -188,20 +190,19 @@
     },
     methods: {
       handleEdit (index) {
-        // this.$router.push({path: './shiftEdit'});
         this.dialogFormEditVisible = true;
         this.Index = index;
         this.tableEdit = this.table[index];
       },
       handleEditSubmit (index) {
         this.dialogFormEditVisible = false;
-        // let oldDate = this.tableEdit.date;
-        // let year = new Date(oldDate).getFullYear();
-        // let month = new Date(oldDate).getMonth() + 1;
-        // let day = new Date(oldDate).getDate();
-        // let dateFormat = year + '-' + month + '-' + day;
-        // this.tableEdit.date = dateFormat;
-        // console.log(dateFormat);
+        let oldDate = this.tableEdit.date;
+        let year = new Date(oldDate).getFullYear();
+        let month = new Date(oldDate).getMonth() + 1;
+        let day = new Date(oldDate).getDate();
+        let dateFormat = year + '-' + month + '-' + day;
+        this.tableEdit.date = dateFormat;
+        console.log(dateFormat);
         this.table[index] = this.tableEdit;
       },
       handleDownload () {

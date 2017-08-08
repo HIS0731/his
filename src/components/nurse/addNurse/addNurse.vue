@@ -74,7 +74,7 @@ export default {
       },
       rules: {
         name: [
-          {required: true, message: '请输入名字', trigger: 'blur'},
+          {required: true, message: '请输入姓名', trigger: 'blur'},
           {min: 2, max: 5, message: '长度在3到5个字符', trigger: 'blur'}
         ],
         address: [
@@ -110,7 +110,7 @@ export default {
       this.timeFormat();
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          alert('提交成功!');
+          alert('提交成功!！');
           console.log(this.ruleForm);
         } else {
           alert('提交失败!!');

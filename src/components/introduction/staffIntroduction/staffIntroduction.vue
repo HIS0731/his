@@ -34,7 +34,6 @@
                 <template scope="scope">
                   <img src="../logo/phone.icon.jpg" width="20" height="20">
                   <el-button size="small" @click="handleOrder(scope.$index)">电话预约</el-button>
-                  <!-- <el-button size="small" type="danger" @click="handleDelete(scope.$index, scope.row)">删除</el-button> -->
                 </template>
               </el-table-column>
            </el-table>
@@ -72,7 +71,7 @@
               <el-table-column align="center" label="电话预约">
                 <template scope="scope">
                   <img src="../logo/phone.icon.jpg" width="20" height="20">
-                  <el-button size="small" @click="handleEdit(scope.$index)">电话预约</el-button>
+                  <el-button size="small" @click="handleOrder(scope.$index)">电话预约</el-button>
                 </template>
               </el-table-column>
            </el-table>
