@@ -68,12 +68,14 @@
 
       druginfosThis.$http.get('../../static/drugs.json').then((response) => {
         // 测试语句，测试是否能获取response
-        console.log(druginfosThis.tableData, response);
+        // console.log(druginfosThis.tableData, response);
         // 把json接口获取的数据赋给当前对象
         druginfosThis.tableData = response.data.tableDataW;
       }, response => {
         // error callback
-        alert('数据请求失败');
+        druginfosThis.$notify.error({
+          message: '数据请求失败'
+        });
       });
     },
     methods: {
@@ -85,7 +87,7 @@
       },
       // 查看药品详情参数
       checkDetail (index) {
-        console.log(index);
+        // console.log(index);
         this.dialogVisible = true;
         this.drugdetails = this.tableData[index];
       },

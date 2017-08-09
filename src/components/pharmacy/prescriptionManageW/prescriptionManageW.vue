@@ -85,14 +85,18 @@
         prescriptionWThis.prescriptionW = response.data.tableData;
       }, response => {
         // error callback
-        alert('数据请求失败');
+        prescriptionWThis.$notify.error({
+          message: '数据请求失败'
+        });
       });
       prescriptionWThis.$http.get('../../static/drugs.json').then((response) => {
         // 把json接口获取的数据赋给当前对象
-        prescriptionWThis.drugs = response.data.tableData;
+        prescriptionWThis.drugs = response.data.tableDataW;
       }, response => {
         // error callback
-        alert('数据请求失败');
+        prescriptionWThis.$notify.error({
+          message: '数据请求失败'
+        });
       });
     },
     methods: {

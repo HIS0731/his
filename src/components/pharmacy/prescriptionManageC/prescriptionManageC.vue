@@ -80,19 +80,23 @@
 
       prescriptionCThis.$http.get('../../static/patientList.json').then((response) => {
         // 测试语句，测试是否能获取response
-        console.log(prescriptionCThis.prescriptionC, response);
+        // console.log(prescriptionCThis.prescriptionC, response);
         // 把json接口获取的数据赋给当前对象
         prescriptionCThis.prescriptionC = response.data.tableData;
       }, response => {
         // error callback
-        alert('数据请求失败');
+        prescriptionCThis.$notify.error({
+          message: '数据请求失败'
+        });
       });
       prescriptionCThis.$http.get('../../static/drugs.json').then((response) => {
         // 把json接口获取的数据赋给当前对象
-        prescriptionCThis.drugs = response.data.tableData;
+        prescriptionCThis.drugs = response.data.tableDataC;
       }, response => {
         // error callback
-        alert('数据请求失败');
+        prescriptionCThis.$notify.error({
+          message: '数据请求失败'
+        });
       });
     },
     methods: {

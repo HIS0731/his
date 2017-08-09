@@ -73,7 +73,7 @@
           return callback(new Error('此处值不能为空！'));
         }
         setTimeout(() => {
-          if (!Number.isInteger(value)) {
+          if (/^\d+$/.test(value) === false) {
             callback(new Error('请输入数字值！'));
           } else {
             callback();
@@ -158,12 +158,11 @@
           applyman: [
             {validator: validatevalue, trigger: 'blur'}
           ],
-          checked: '1',
           otc_value: [
-            {validator: validatevalue, trigger: 'click'}
+            {validator: validatevalue, trigger: 'change'}
           ],
           form_value: [
-            {validator: validatevalue, trigger: 'blur'}
+            {validator: validatevalue, trigger: 'change'}
           ],
           date: [
             {validator: validatevalue, trigger: 'blur'}
@@ -186,11 +185,13 @@
               type: 'success'
             });
             // 测试
-            console.log(this.applytable);
+            // console.log(this.applytable);
             // 提交数据到后台（暂时没有后台接口）
             // this.$http.post('', {applytable: 'this.applytable'}).then(response => {}, response => {});
           } else {
-            console.log('提交失败!!');
+            this.$notify.error({
+              message: '提交失败'
+            });
             return false;
           }
         });
@@ -213,7 +214,9 @@
           }
         }, response => {
           // error callback
-          alert('数据请求失败!');
+          drugapplyThis.$notify.error({
+            message: '数据请求失败'
+          });
         });
       }
     }

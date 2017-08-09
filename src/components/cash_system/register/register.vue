@@ -22,8 +22,8 @@
         </el-form-item>
       </p>
       <p v-else></p>
-      <el-form-item label="科室">
-        <el-select v-model="department_value" placeholder="请选择科室">
+      <el-form-item label="科室" prop="department_value">
+        <el-select v-model="departmentvalue" placeholder="请选择科室">
           <el-option v-for="items in register.department" :key="items.value" :label="items.text " :value="items.value">
           </el-option>
         </el-select>
@@ -50,6 +50,7 @@
         </el-form-item>
       </p>
       <el-button type="primary" class="submitBtn" @click="submitForm('registerForm')">提交挂号</el-button>
+      <el-button type="reset" @click="resetForm('registerForm')">重置</el-button>
     </el-form>
   </div>
 </template>
@@ -67,9 +68,10 @@
           doctor_value: '',
           visit_time: '',
           expense: '',
-          visit_date: ''
+          visit_date: '',
+          department_value: ''
         },
-        department_value: '',
+        departmentvalue: '',
         rules: {
           patientName: [
             { required: true, message: '请输入患者姓名', trigger: 'blur' }
@@ -95,32 +97,37 @@
     created () {
       this.visit_time = this.compute_visitTime();
       this.visit_date = new Date().toLocaleDateString();
-      console.log(this.visit_date);
+      // console.log(this.visit_date);
       let registerThis = this;
       registerThis.$http.get('../../static/department.json').then((response) => {
         // 把json接口获取的数据赋给当前对象
-        this.register.department = response.data.department;
+        registerThis.register.department = response.data.department;
       }, response => {
         // error callback
-        alert('数据请求失败');
+        registerThis.$notify.error({
+          message: '数据请求失败'
+        });
       });
     },
     methods: {
       submitForm (formName) {
-        this.$refs[formName].validate((valid) => {
+        this.$refs.registerForm.validate((valid) => {
           if (valid) {
             this.$notify({
               message: '提交成功',
               type: 'success'
             });
           } else {
-            console.log('error submit!!');
+            this.$notify.error({
+              message: '提交失败'
+            });
             return false;
           }
         });
       },
       resetForm (formName) {
-        this.$refs[formName].resetFields();
+        this.$refs.registerForm.resetFields();
+        this.departmentvalue = '';
       },
       compute_visitTime () {
         var hour = new Date().getHours();
@@ -139,27 +146,30 @@
       }
     },
     watch: {
-      department_value: function () {
+      departmentvalue: function () {      // mark: 为什么监听的属性只能是一个字符串???
         let registerThis = this;
+        registerThis.register.department_value = registerThis.departmentvalue;
         registerThis.$http.get('../../static/doctor/doctor.json').then((response) => {
           // 把json接口获取的数据赋给当前对象
-          console.log('dsf', this.department_value);
+          // console.log('dsf', this.department_value);
           for (let i = 0; i < response.data.doctorlist.length; i++) {
-            if (this.department_value === response.data.doctorlist[i].officeId) {
+            if (registerThis.departmentvalue === response.data.doctorlist[i].officeId) {
               registerThis.register.doctor = [];
               registerThis.register.doctor.push(response.data.doctorlist[i]);
               if (response.data.doctorlist[i].isexpert === 'yes') {
-                this.register.expense = 12;
+                registerThis.register.expense = 12;
               } else if (response.data.doctorlist[i].isexpert === 'no') {
-                this.register.expense = 8;
+                registerThis.register.expense = 8;
               }
             } else {
-              this.register.doctor_value = '';
+              registerThis.register.doctor_value = '';
             }
           }
         }, response => {
           // error callback
-          alert('数据请求失败');
+          registerThis.$notify.error({
+            message: '数据请求失败'
+          });
         });
       }
     }
