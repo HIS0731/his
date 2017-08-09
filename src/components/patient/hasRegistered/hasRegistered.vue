@@ -27,7 +27,9 @@ import Vue from 'vue';
 export default {
   data () {
     return {
-      tableData: []
+      tableData: [],
+      input: '',
+      select: ''
     };
   },
   created () {

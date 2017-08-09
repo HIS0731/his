@@ -1,6 +1,7 @@
 <template>
   <div class="departure">
-    <h1 style="text-align: center;">员工离职申请表</h1>
+    <h1 style="text-align: center;font-size: 24px;
+    margin-bottom: 25px;">员工离职申请表</h1>
     <el-form :data="ruleForm" label-width="100px" class="demo-ruleForm" ref="ruleForm">
       <h2 style="margin-bottom:20px;">员工基本信息:</h2>
       <div>
@@ -8,10 +9,10 @@
           <el-input v-model="ruleForm.name"></el-input>
         </el-form-item>
         <el-form-item label="班组/科室" prop="department">
-          <el-input v-model="ruleForm.group"></el-input>
+          <el-input v-model="ruleForm.department"></el-input>
         </el-form-item>
         <el-form-item label="职务/岗位" prop="jobs">
-          <el-input v-model="ruleForm.group"></el-input>
+          <el-input v-model="ruleForm.jobs"></el-input>
         </el-form-item>
       </div>
       <div>
@@ -84,7 +85,7 @@ export default {
         leaveDate: '',
         organization: '',
         education: '',
-        category: '',
+        category: [],
         departments: '',
         applicationTime: '',
         approvedTime: '',
@@ -122,6 +123,11 @@ export default {
         departmentManager: '',
         director: ''
       };
+    },
+    pickerOptions: {
+      disabledDate (time) {
+        return time.getTime() < Date.now - 8.64e7;
+      }
     }
 
     // resetForm (formName) {

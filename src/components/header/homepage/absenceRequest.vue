@@ -43,7 +43,7 @@
       <div>
         <h2 style="margin:20px 0px;">请（休）假详情:</h2>
         <el-form-item label="原因" prop="reason">
-          <el-input type="textarea"></el-input>
+          <el-input type="textarea" v-model="ruleForm.reason"></el-input>
         </el-form-item>
         <el-form-item label="请假时间" prop="absenceTime" class="demonstration">
           <el-date-picker v-model="ruleForm.absenceTime" type="daterange" placeholder="选择日期" :picker-options="pickerOptions">
@@ -119,6 +119,11 @@ export default {
         departmentManager: '',
         director: ''
       };
+    },
+    pickerOptions: {
+      disabledDate (time) {
+        return time.getTime() < Date.now - 8.64e7;
+      }
     }
 
     // resetForm (formName) {

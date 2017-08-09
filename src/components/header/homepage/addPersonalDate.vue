@@ -19,8 +19,8 @@
         <el-form-item label="民族" prop="nation">
           <el-input v-model="ruleForm.nation"></el-input>
         </el-form-item>
-        <el-form-item label="电话" prop="phone">
-          <el-input v-model="ruleForm.phone"></el-input>
+        <el-form-item label="QQ" prop="qq">
+          <el-input v-model="ruleForm.qq"></el-input>
         </el-form-item>
         <el-form-item label="紧急电话" prop="PHONE">
           <el-input v-model="ruleForm.PHONE"></el-input>
@@ -56,7 +56,7 @@
         <el-form-item label="所学专业" prop="profession">
           <el-input v-model="ruleForm.profession"></el-input>
         </el-form-item>
-        <el-form-item label="毕业时" prop="graduationTime" class="demonstration">
+        <el-form-item label="毕业时间" prop="graduationTime" class="demonstration">
           <el-date-picker v-model="ruleForm.graduationTime" type="date" placeholder="选择日期" :picker-options="pickerOptions"></el-date-picker>
         </el-form-item>
         <h3 style="margin-bottom:20px;">获的哪些证书:</h3>
@@ -64,24 +64,24 @@
           <el-input v-model="ruleForm.getCertificate"></el-input>
         </el-form-item>
         <el-form-item label="获取时间" prop="getTime">
-          <el-input v-model="ruleForm.getTime"></el-input>
+          <el-date-picker v-model="ruleForm.getTime" type="date" placeholder="选择日期" :picker-options="pickerOptions"></el-date-picker>
         </el-form-item>
         <el-form-item label="证书编号" prop="certificateNumber">
           <el-input v-model="ruleForm.certificateNumber"></el-input>
         </el-form-item>
         <h3 style="margin-bottom:20px;">现在职位情况:</h3>
-        <el-form-item label="现在职位" prop="certificateNumber">
-          <el-input v-model="ruleForm.certificateNumber"></el-input>
+        <el-form-item label="现在职位" prop="job">
+          <el-input v-model="ruleForm.job"></el-input>
         </el-form-item>
         <el-form-item label="所在科室" prop="department">
           <el-input v-model="ruleForm.department"></el-input>
         </el-form-item>
         <el-form-item label="入职时间:" prop="hiredate">
-          <el-input v-model="ruleForm.hiredate"></el-input>
+          <el-date-picker v-model="ruleForm.hiredate" type="date" placeholder="选择日期" :picker-options="pickerOptions"></el-date-picker>
         </el-form-item>
         <el-form-item class="center">
           <el-button type="primary" @click="onSubmit">立即创建</el-button>
-          <el-button @click="resetForm('ruleForm')">重置</el-button>
+          <el-button @click="offReset">重置</el-button>
         </el-form-item>
     </el-form>
   </div>
@@ -95,6 +95,7 @@ export default {
         age: '',
         phone: '',
         nation: '',
+        qq: '',
         PHONE: '',
         registration: '',
         email: '',
@@ -107,6 +108,7 @@ export default {
         getCertificate: '',
         getTime: '',
         certificateNumber: '',
+        job: '',
         department: '',
         hiredate: ''
       }
@@ -116,8 +118,34 @@ export default {
     onSubmit () {
       console.log('您修改后的参数为：', JSON.stringify(this.ruleForm));
     },
-    resetForm (formName) {
-      this.$refs[formName].resetFields();
+    offReset () {
+      this.ruleForm = {
+        name: '',
+        age: '',
+        phone: '',
+        nation: '',
+        qq: '',
+        PHONE: '',
+        registration: '',
+        email: '',
+        height: '',
+        sex: 2,
+        politics: '',
+        school: '',
+        profession: '',
+        graduationTime: '',
+        getCertificate: '',
+        getTime: '',
+        certificateNumber: '',
+        job: '',
+        department: '',
+        hiredate: ''
+      };
+    },
+    pickerOptions: {
+      disabledDate (time) {
+        return time.getTime() < Date.now - 8.64e7;
+      }
     }
   }
 };

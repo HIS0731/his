@@ -90,10 +90,10 @@
           <el-submenu index="7">
             <template slot="title">
               <i class="icon-patient"></i>
-              <span slot="title">患者</span>
+              <span slot="title">患者管理系统</span>
             </template>
             <el-menu-item-group>
-              <el-menu-item index="7-1" v-if="type === '01'  || type === '04'"><router-link to="addPatient">增加患者</router-link></el-menu-item>
+              <el-menu-item index="7-1" v-if="type === '01'  || type === '04'"><router-link to="addPatient">建立患者档案</router-link></el-menu-item>
               <el-menu-item index="7-2"><router-link to="hasPatient">查看患者列表信息</router-link></el-menu-item>
               <el-menu-item index="7-3"><router-link to="hasRegistered">查看患者挂号列表信息</router-link></el-menu-item>
               <el-menu-item index="7-4" v-if="type === '01' || type === '02'"><router-link to="addHospitalized">建立住院患者档案</router-link></el-menu-item>
