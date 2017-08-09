@@ -150,8 +150,7 @@
             message: '医生信息修改成功',
             type: 'success'
           });
-          console.log(this.doctorlistedit);
-          console.log('---------', this.doctorlist[this.Index]);
+          console.log('编辑后完成转化格式的日期', this.doctorlistedit.date);
           // }, function () {
           //   this.$message.error('医生信息修改失败');
           // });

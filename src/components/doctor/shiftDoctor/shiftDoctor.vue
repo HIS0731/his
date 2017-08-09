@@ -33,7 +33,7 @@
       </el-table-column>
       <el-table-column fixed="right" prop="operate" label="操作" width="180"> 
         <template scope="scope">
-          <el-button @click.native.prevent="edictDoctor(scope.$index, shiftList)" type="primary" size="small">编辑</el-button>
+          <el-button @click.native.prevent="edictDoctor(scope.$index, scope.row)" type="primary" size="small">编辑</el-button>
           <el-button @click.native.prevent="delectDoctor(scope.$index, shiftList)" type="danger" size="small">删除</el-button>
         </template>
       </el-table-column>     
@@ -114,12 +114,12 @@
           // console.log(index, row);
           this.dialogFormVisible = true;
           // this.form = row;
-          console.log('tt', rows[index]);
-          this.form = rows[index];
+          console.log('tt', rows);
+          this.form = rows;
           // 深拷贝
           // this.form = JSON.parse(JSON.stringify(rows[index]));
           this.Index = index;
-          this.form2 = rows[index];
+          this.form2 = rows;
           // rows[index] = this.form;
         },
         // 删除某行数据
@@ -129,7 +129,6 @@
         },
         // 事件格式转化
         updateDoctor () {
-          // mark 实际应该用get
           console.log('修改时间格式', this.form.date);
           let year = this.form.date.getFullYear();
           let month = this.form.date.getMonth() + 1;
