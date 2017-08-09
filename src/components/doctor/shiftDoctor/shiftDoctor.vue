@@ -4,6 +4,7 @@
     <div class="search">
      <el-input  style="width: 200px;" placeholder="医生姓名"></el-input>
      <el-button  type="primary" icon="search" @click="">搜索</el-button>
+     <el-button class="filter-item" type="primary" icon="document" @click="handleDownload">导出</el-button>
     </div>
     <el-table :data="shiftList" border style="width: 100%;">
       <el-table-column fixed prop="date" label="轮班日期" width="120">
@@ -134,16 +135,8 @@
           let month = this.form.date.getMonth() + 1;
           let day = this.form.date.getDate();
           let dateFormat = year + '-' + month + '-' + day;
-        //   // console.log(this.doctorlistedit);
           this.form.date = dateFormat;
         },
-        //   // this.$http.get('../../static/doctor.json', this.doctorlistedit).then(function () {
-        //   this.doctorlist[this.Index] = this.doctorlistedit;
-        //   this.$message({
-        //     message: '轮班信息修改成功',
-        //     type: 'success'
-        //   });
-        // },
         // Dialog 对话框 的确定按钮触发的事件
         submitForm (formName) {
           console.log('this.shiftList[this.Index]的数据', this.shiftList[this.Index]);
@@ -168,6 +161,23 @@
         //   this.$refs[formName].resetFields();
         //   alert(99);
         // },
+        // 导出信息表
+        handleDownload () {
+          // 导出
+          var vm = this;
+          require.ensure([], () => {
+            const { export_json_to_excel } = require('vendor/Export2Excel');
+            const tHeader = ['轮班日期', '时段', '姓名', '性别', '科室', '电话', '出勤情况', '主任签名'];
+            const filterVal = ['date', 'dates', 'name', 'sex', 'office', 'number', 'attendance', 'signatory'];
+            const shiftList = vm.shiftList;
+            const data = vm.formatJson(filterVal, shiftList);
+            export_json_to_excel(tHeader, data, '医生轮班信息列表excel');
+          });
+        },
+        formatJson (filterVal, jsonData) {
+          return jsonData.map(v => filterVal.map(j => v[j]));
+        },
+        // 导出信息表
         handleSizeChange (val) {
           console.log(`每页 ${val} 条`);
         },

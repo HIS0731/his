@@ -39,7 +39,7 @@
         <!-- </el-table-column> -->
       </el-table>
       <el-dialog title="添加人员流动信息" :visible.sync="dialogFormVisible">
-        <el-form class="small-space" :model="form" label-position="left" label-width="70px" style='width: 400px; margin-left:50px;'>
+        <el-form class="small-space" :model="form" label-position="left" label-width="70px" style='width: 400px; padding-left:50px;'>
           <el-form-item label="姓名">
             <el-input v-model="form.name"></el-input>
           </el-form-item>
@@ -181,4 +181,7 @@
 .staffFlow .replyBtn
   float:right
   padding-bottom:50px
+.staffFlow .el-dialog--small
+  width: auto
+  padding-right:50px
 </style>

@@ -116,36 +116,35 @@
 <style lang="stylus-loader" rel="stylesheet/stylus">
   .home
     padding:0 20px 0 30px
-    h2
+  .home h2
       font-size: 30px
       text-align: center
       line-height: 90px
       font-weight: 800
-    h3
+  .home h3
       padding-right:20px
       text-align: right
       font-size: 14px
-      color:#fff
-    h4
+  .home h4
       font-size: 18px
       line-height:50px
-    h5
+  .home h5
       padding-bottom:20px
-    p
+  .home p
       color:#475669
       text-indent: 2em
       line-height: 20px
       font-size:16px
       padding: 17px 0
-    strong
+  .home strong
       font-weight: 500
       font-size: 24px
       line-height:80px
-    b
+  .home b
       font-weight: 500
       font-size: 24px
       line-height:80px
-    .homeHead
+  .homeHead
       width:100%
       height:120px
       background-color:rgba(50,65,85,0.3)

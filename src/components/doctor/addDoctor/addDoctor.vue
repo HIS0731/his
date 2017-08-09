@@ -1,6 +1,7 @@
 <template>
     <div class="addDoctor">
-      <el-form ref="form" :model="form" :rules="rules" label-width="80px" class="demo-ruleForm">
+      <span class="tittle">添加医生信息</span>
+      <el-form ref="form" :model="form" :rules="rules" label-width="80px" class="addForm">
         <el-form-item label="姓名" prop="name">
           <el-input v-model="form.name"></el-input>
         </el-form-item>
@@ -31,9 +32,9 @@
         <el-form-item label="科室" prop="office">
           <el-input v-model="form.office"></el-input>
         </el-form-item>
-        <el-form-item>
-          <el-button type="primary" @click="submitForm('form')">增加</el-button>
-          <el-button @click="resetForm ('form')">取消</el-button>
+        <el-form-item class="buttonAdd">
+          <el-button type="primary" @click="submitForm('form')">增 加</el-button>
+          <el-button type="danger" @click="resetForm ('form')">重 置</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -52,10 +53,11 @@
             profession: '',
             office: ''
           },
+          // 验证规则
           rules: {
             name: [
               { required: true, message: '请输入姓名', trigger: 'blur' },
-              { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
+              { min: 2, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
             ],
             sex: [
               { required: true, message: '请选择性别', trigger: 'change' }
@@ -79,16 +81,28 @@
         };
       },
       methods: {
+        // 增加的方法
         submitForm (form) {
+        // 规则验证
           this.$refs[form].validate((valid) => {
             if (valid) {
-              alert('submit!');
+        // 提示信息
+              this.$message({
+                showClose: true,
+                message: '添加成功！',
+                type: 'success'
+              });
             } else {
-              console.log('error submit!!');
+              this.$message({
+                showClose: true,
+                message: '添加失败！',
+                type: 'error'
+              });
               return false;
             }
           });
         },
+        // 重置方法
         resetForm (form) {
           this.$refs[form].resetFields();
         }
@@ -100,4 +114,15 @@
 <style lang="stylus-loader" rel="stylesheet/stylus">
 .addDoctor .el-input
   width:384px
+.addDoctor .tittle
+  display:block
+  text-align: center
+  font-size:24px
+  font-weight:600
+  line-height:80px
+.addDoctor .addForm
+  width:470px
+  margin:auto
+.addDoctor .addForm .buttonAdd
+  text-align: center;
 </style>

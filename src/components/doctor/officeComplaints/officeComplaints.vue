@@ -114,10 +114,18 @@
         },
         save () {
           if (this.textarea === '') {
-            alert('请输入不少于一个字符！');
+            this.$message({
+              showClose: true,
+              message: '保存失败！',
+              type: 'error'
+            });
           } else {
-            alert('保存成功！');
-          };
+            this.$message({
+              showClose: true,
+              message: '保存成功！',
+              type: 'success'
+            });
+          }
         }
       },
       created () {

@@ -6,6 +6,7 @@
      <el-button  type="primary" icon="search" @click="">搜索</el-button>
      <el-button class="filter-item" type="primary" icon="document" @click="handleDownload">导出</el-button>
     </div>
+    <!-- 表格 -->
     <el-table :data="doctorlist" border style="width: 100%;">
       <el-table-column fixed prop="index" label="序号" width="100">
         <template scope="scope">
@@ -36,6 +37,8 @@
         </template>
       </el-table-column>     
     </el-table>
+    <!-- 表格 -->
+    <!-- dialog对话框 -->
     <el-dialog title="医生信息修改" :visible.sync="dialogFormVisible">
       <el-form>
         <el-form-item label="姓名" :label-width="formLabelWidth">
@@ -72,6 +75,7 @@
         <el-button type="primary" @click="updateDoctor">确 定</el-button>
       </div>
     </el-dialog>
+    <!-- dialog对话框 -->
     <div class="block">
       <span class="demonstration">调整每页显示条数</span>
       <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page.sync="currentPage" :page-sizes="[10, 20, 30, 40]" :page-size="10" layout="sizes, prev, pager, next" :total="100">
@@ -85,18 +89,22 @@
     export default {
       data () {
         return {
+          // 获取json存放在doctorlist里面
           doctorlist: [],
+          // 对话框的修改存放
           doctorlistedit: [],
           dialogFormVisible: false,
+          // 表单input的限制长度
           formLabelWidth: '60px',
+          // 获取当前行的序号存放在Index
           Index: '',
           currentPage: 5
         };
       },
       methods: {
-        // 导出信息表
+        // 导出信息表的具体方法
         handleDownload () {
-          // 导出
+        // 导出
           var vm = this;
           require.ensure([], () => {
             const { export_json_to_excel } = require('vendor/Export2Excel');
@@ -111,20 +119,24 @@
           return jsonData.map(v => filterVal.map(j => v[j]));
         },
         // 导出信息表
+        // 点击编辑按钮执行的方法
         edictDoctor (index) {
-          // console.log(index, row);
           this.dialogFormVisible = true;
-          this.Index = index;             // mark
-          this.doctorlistedit = this.doctorlist[index];
+          this.Index = index;             // 存放当前行的序号
+          this.doctorlistedit = this.doctorlist[index];  // 获取当前行的数据
+          // 编辑前的日期
+          console.log('编辑前的日期', this.doctorlistedit.date);
         },
+        // 点击删除按钮执行的方法
         delectDoctor (index, rows) {
-          console.log(rows[index]);
-          rows.splice(index, 1);
+          console.log('该行对象内容', rows[index]);    // 打印该行对象内容
+          rows.splice(index, 1);    // 1代表从当前列表开始删除的行数
         },
         updateDoctor () {
           this.dialogFormVisible = false;
-          // mark 实际应该用get
-          console.log(this.doctorlistedit.date);
+          // 编辑后没转化格式的日期
+          console.log('编辑后没转化格式的日期', this.doctorlistedit.date);
+          // 转换时间格式
           let year = this.doctorlistedit.date.getFullYear();
           let month = this.doctorlistedit.date.getMonth() + 1;
           let day = this.doctorlistedit.date.getDate();
