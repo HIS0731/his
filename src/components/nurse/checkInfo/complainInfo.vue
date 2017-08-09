@@ -62,11 +62,19 @@
         let vm = this;
         console.log('单个删除选择的row: ', index, row);
         vm.table.splice(index, 1);
+        this.$message({
+          message: '删除成功！',
+          type: 'success'
+        });
       },
       submit () {
         this.dialogVisible = false;
         console.log('回复的内容：', this.textarea);
         this.textarea = '';
+        this.$message({
+          message: '已回复，查看控制台！',
+          type: 'success'
+        });
       }
     },
     created () {

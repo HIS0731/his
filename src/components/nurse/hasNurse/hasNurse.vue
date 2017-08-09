@@ -197,11 +197,19 @@ export default {
       this.tableEdit.date = dateFormat;
       // console.log(dateFormat);
       this.table[index] = this.tableEdit;
+      this.$message({
+        message: '个人信息修改成功！',
+        type: 'success'
+      });
     },
     handleDelete (index, row) {
       let vm = this;
       console.log('单个删除选择的row: ', index, '-----', row);
       vm.table.splice(index, 1);
+      this.$message({
+        message: '删除成功！',
+        type: 'success'
+      });
     },
     handleDelAll () {
       // let vm = this;
@@ -252,6 +260,10 @@ export default {
       console.log('添加后的信息：', vm.form, vm.table);
       vm.table.push(vm.form);
       this.dialogFormVisible = false;
+      this.$message({
+        message: '个人信息添加成功！',
+        type: 'success'
+      });
     },
     formClear () {
       this.form = {

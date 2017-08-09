@@ -160,6 +160,10 @@
         console.log('修改后的信息：', vm.form, vm.table);
         vm.table.push(vm.form);
         this.dialogFormVisible = false;
+        this.$message({
+          message: '添加成功！',
+          type: 'success'
+        });
       },
       formClear () {
         this.form = {
@@ -197,6 +201,10 @@
         let vm = this;
         console.log('单个删除选择的row: ', index, '-----', row);
         vm.table.splice(index, 1);
+        this.$message({
+          message: '删除成功！',
+          type: 'success'
+        });
       }
     },
     created () {

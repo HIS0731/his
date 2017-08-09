@@ -137,6 +137,8 @@
 </script>
 
 <style lang="stylus-loader" rel="stylesheet/stylus">
+  .patientCount
+    height:1100px
   .patientCount .title
     p
       font-size:24px
@@ -145,5 +147,5 @@
  .patientCount .tableCount
     float:left
     padding-bottom:20px
-    padding-left:20px
+    padding-left:80px
 </style>
