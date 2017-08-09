@@ -51,6 +51,7 @@
               <span slot="title">挂号收银</span>
               <el-menu-item index="4-1"><router-link to="register">挂号</router-link></el-menu-item>
               <el-menu-item index="4-2"><router-link to="registerManage">管理挂号信息</router-link></el-menu-item>
+              <el-menu-item index="4-3"><router-link to="takecash">缴费办理</router-link></el-menu-item>
             </el-menu-item-group>
           </el-submenu>
           <el-submenu index="5" v-if="type === '01' || type === '05'">

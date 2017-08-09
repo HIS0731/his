@@ -1,6 +1,6 @@
 <template>
   <div class="register">
-    <p class="reguster-title">挂 号 办 理</p>
+    <p class="register-title">挂 号 办 理</p>
     <el-form :model="register" :rules="rules" ref="registerForm" label-width="100px" class="register-ruleForm">
       <el-form-item label="患者姓名" prop="patientName" class="register-name">
         <el-input v-model="register.patientName"></el-input>
@@ -127,7 +127,6 @@
       },
       resetForm (formName) {
         this.$refs.registerForm.resetFields();
-        this.departmentvalue = '';
       },
       compute_visitTime () {
         var hour = new Date().getHours();
@@ -178,7 +177,7 @@
 
 <style lang="stylus-loader" rel="stylesheet/stylus">
   .register 
-    .reguster-title
+    .register-title
       font-weight: bold
       font-size: 28px
       width: 50%

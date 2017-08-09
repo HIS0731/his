@@ -13,6 +13,7 @@ import drugApplyW from '@/components/pharmacy/drugApplyW/drugApplyW';
 import prescriptionManageW from '@/components/pharmacy/prescriptionManageW/prescriptionManageW';
 import register from '@/components/cash_system/register/register';
 import registerManage from '@/components/cash_system/registerManage/registerManage';
+import takecash from '@/components/cash_system/takecash/takecash';
 import home from '@/components/home/home';
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-default/index.css';
@@ -61,6 +62,7 @@ export default new Router({
         { path: '/prescriptionManageW', name: 'prescriptionManageW', component: prescriptionManageW },
         { path: '/register', name: 'register', component: register },
         { path: '/registerManage', name: 'registerManage', component: registerManage },
+        { path: '/takecash', name: 'takecash', component: takecash },
         { path: '/addPatient', name: 'addPatient', component: addPatient },
         { path: '/hasPatient', name: 'hasPatient', component: hasPatient },
         { path: '/hasRegistered', name: 'hasRegistered', component: hasRegistered },
