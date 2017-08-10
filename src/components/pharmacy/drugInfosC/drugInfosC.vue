@@ -2,12 +2,11 @@
   <div class="drugInfosC">
     <!-- 搜索条件 -->
     <div class="filter-container">
-      <el-input placeholder="药品名">
-      </el-input>
-
-      <el-button type="primary" icon="search">搜索</el-button>
+      <el-input placeholder="药品名" v-model="searchValue"></el-input>
+      <el-button type="primary" icon="search" @click="search()">搜索</el-button>
 
       <el-button type="primary" icon="document" @click="handleDownload">导出</el-button>
+      <el-button type="primary" icon="view" @click="showAll">显示全部</el-button>
     </div>
     <!-- 药物信息列表 -->
     <el-table :data="tableData" border style="width: 100%; text-align:left">
@@ -59,8 +58,10 @@
     data () {
       return {
         tableData: [],
+        assistanttableData: [],
         dialogVisible: false,
-        drugdetails: ''
+        drugdetails: '',
+        searchValue: ''
       };
     },
     mounted () {
@@ -71,6 +72,7 @@
         // console.log(druginfosThis.tableData, response);
         // 把json接口获取的数据赋给当前对象
         druginfosThis.tableData = response.data.tableDataC;
+        druginfosThis.assistanttableData = response.data.tableDataC;
       }, response => {
         // error callback
         druginfosThis.$notify.error({
@@ -90,6 +92,30 @@
         // console.log(index);
         this.dialogVisible = true;
         this.drugdetails = this.tableData[index];
+      },
+      // 搜索
+      search () {
+        let intendedSearch = this;
+        intendedSearch.$http.get('../../static/drugs.json', {params: {drugname: intendedSearch.searchValue}}).then((response) => {
+          // 遍历接口里的所有信息，查找drugname为搜索框里输入的内容的数据，然后把所有找到的数据push进this.tableData里
+          // 在把查找到的数据存进this.tableData里之前，需要把它置为空
+          intendedSearch.tableData = [];
+          for (let i = 0; i < response.data.tableDataC.length; i++) {
+            if (response.data.tableDataC[i].drugname === intendedSearch.searchValue) {
+              intendedSearch.tableData.push(response.data.tableDataC[i]);
+            }
+          };
+        }, response => {
+          // error callback
+          intendedSearch.$notify.error({
+            message: '数据请求失败'
+          });
+        });
+      },
+      // 显示全部数据
+      showAll () {
+        this.tableData = this.assistanttableData;
+        this.searchValue = '';
       },
       // 把数据表格导出到excel表
       handleDownload () {

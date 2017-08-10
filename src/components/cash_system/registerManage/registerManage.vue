@@ -2,10 +2,10 @@
   <div class="registerManage">
     <!-- 搜索条件 -->
     <div class="filter-container">
-      <el-input placeholder="患者姓名">
-      </el-input>
-
-      <el-button type="primary" icon="search">搜索</el-button>
+      <el-input placeholder="处方编号" v-model="searchNumber"></el-input>
+      <el-input placeholder="患者姓名" v-model="searchName"></el-input>
+      <el-button type="primary" icon="search" @click="search">搜索</el-button>
+      <el-button type="primary" icon="view" @click="showAll">显示全部</el-button>
 
       <el-button type="primary" icon="document" @click="handleDownload">导出</el-button>
     </div>
@@ -57,8 +57,11 @@
     data () {
       return {
         patients: [],
+        intendedpatients: [],
         dialogVisible: false,
-        patientsdetails: ''
+        patientsdetails: '',
+        searchNumber: '',
+        searchName: ''
       };
     },
     mounted () {
@@ -69,12 +72,49 @@
         console.log(registerThis.patients, response);
         // 把json接口获取的数据赋给当前对象
         registerThis.patients = response.data.tableData;
+        registerThis.intendedpatients = response.data.tableData;
       }, response => {
         // error callback
         alert('数据请求失败');
       });
     },
     methods: {
+      // 搜索
+      search () {
+        let search = this;
+        search.$http.get('../../static/patientList.json', {params: {number: search.searchNumber, name: search.searchName}}).then((response) => {
+          // 把数组置空，以便存放搜索到的符合条件的数据
+          search.patients = [];
+          // 遍历后台数据是否有和传入的参数相同的，有的话就找出来push进prescriptionC[]
+          for (let i = 0; i < response.data.tableData.length; i++) {
+            // 两个条件都有输入值的时候，判断是否有同时符合这两个条件的数据
+            if (search.searchNumber && search.searchName) {
+              if (response.data.tableData[i].number === search.searchNumber && response.data.tableData[i].name === search.searchName) {
+                search.patients.push(response.data.tableData[i]);
+              }
+            } else {
+              if (search.searchNumber && response.data.tableData[i].number === search.searchNumber) {
+                // 只有第一个输入值的时候
+                search.patients.push(response.data.tableData[i]);
+              } else if (search.searchName && response.data.tableData[i].name === search.searchName) {
+                // 只有第二个输入值的时候
+                search.patients.push(response.data.tableData[i]);
+              }
+            }
+          }
+        }, (response) => {
+          // error callback
+          search.$notify.error({
+            message: '数据请求失败'
+          });
+        });
+      },
+      // 显示全部数据
+      showAll () {
+        this.patients = this.intendedpatients;
+        this.searchNumber = '';
+        this.searchNamer = '';
+      },
       // 确认是否要关闭dialog
       handleClose (done) {
         this.$confirm('确认关闭？').then(_ => {
@@ -113,7 +153,7 @@
   .registerManage .filter-container
     padding-bottom:30px
     .el-input
-      width: 400px
+      width: 200px
   .registerManage .el-table-column
     font-weight: bold
   .registerManage .patientsdetail

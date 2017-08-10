@@ -58,6 +58,18 @@
 <script type="text/ecmascript-6">
   export default {
     data () {
+      // 验证输入身份证号格式是否正确的方法
+      let checkCertificate = (rule, value, callback) => {
+        if (/^\d+$/.test(value) !== false) {
+          if (value.length !== 18) {
+            callback(new Error('身份证号应为18位数！'));
+          } else {
+            callback();
+          }
+        } else {
+          callback(new Error('请输入数字值！'));
+        }
+      };
       return {
         register: {
           patientName: '',
@@ -80,7 +92,7 @@
             { required: true, message: '请选择办理凭证', trigger: 'change' }
           ],
           cardNumber: [
-            { required: true, message: '请输入证件号码', trigger: 'blur' }
+            {required: true, validator: checkCertificate, trigger: 'blur'}
           ],
           department_value: [
             { required: true, message: '请至少选择一个科室', trigger: 'change' }
@@ -127,6 +139,7 @@
       },
       resetForm (formName) {
         this.$refs.registerForm.resetFields();
+        this.departmentvalue = '';
       },
       compute_visitTime () {
         var hour = new Date().getHours();

@@ -2,9 +2,10 @@
   <div class="prescriptionManageW">
     <!-- 搜索条件 -->
     <div class="filter-container">
-      <el-input placeholder="患者姓名">
-      </el-input>
-      <el-button type="primary" icon="search">搜索</el-button>
+      <el-input placeholder="处方编号" v-model="searchNumber"></el-input>
+      <el-input placeholder="患者姓名" v-model="searchName"></el-input>
+      <el-button type="primary" icon="search" @click="search">搜索</el-button>
+      <el-button type="primary" icon="view" @click="showAll">显示全部</el-button>
     </div>    
     <el-table :data="prescriptionW">
       <el-table-column type="expand">
@@ -72,7 +73,10 @@
     data () {
       return {
         prescriptionW: [],
-        drugs: []
+        intendedprescription: [],
+        drugs: [],
+        searchNumber: '',
+        searchName: ''
       };
     },
     mounted () {
@@ -83,6 +87,7 @@
         console.log(prescriptionWThis.prescriptionW, response);
         // 把json接口获取的数据赋给当前对象
         prescriptionWThis.prescriptionW = response.data.tableData;
+        prescriptionWThis.intendedprescription = response.data.tableData;
       }, response => {
         // error callback
         prescriptionWThis.$notify.error({
@@ -100,6 +105,42 @@
       });
     },
     methods: {
+      // 搜索
+      search () {
+        let search = this;
+        search.$http.get('../../static/patientList.json', {params: {number: search.searchNumber, name: search.searchName}}).then((response) => {
+          // 把数组置空，以便存放搜索到的符合条件的数据
+          search.prescriptionW = [];
+          // 遍历后台数据是否有和传入的参数相同的，有的话就找出来push进prescriptionC[]
+          for (let i = 0; i < response.data.tableData.length; i++) {
+            // 两个条件都有输入值的时候，判断是否有同时符合这两个条件的数据
+            if (search.searchNumber && search.searchName) {
+              if (response.data.tableData[i].number === search.searchNumber && response.data.tableData[i].name === search.searchName) {
+                search.prescriptionW.push(response.data.tableData[i]);
+              }
+            } else {
+              if (search.searchNumber && response.data.tableData[i].number === search.searchNumber) {
+                // 只有第一个输入值的时候
+                search.prescriptionW.push(response.data.tableData[i]);
+              } else if (search.searchName && response.data.tableData[i].name === search.searchName) {
+                // 只有第二个输入值的时候
+                search.prescriptionW.push(response.data.tableData[i]);
+              }
+            }
+          }
+        }, (response) => {
+          // error callback
+          search.$notify.error({
+            message: '数据请求失败'
+          });
+        });
+      },
+      // 显示全部数据
+      showAll () {
+        this.prescriptionW = this.intendedprescription;
+        this.searchNumber = '';
+        this.searchNamer = '';
+      },
       refuseprescriptionW: function (index) {
         // 这里应该有个操作可以提醒医生他的处方被驳回了
         this.$message({
@@ -136,7 +177,7 @@
   .prescriptionManageW .filter-container
     padding-bottom:30px
     .el-input
-      width: 400px  
+      width: 200px  
   .prescriptionManageW
     .form-expand
       /* background: #99FF66 */
