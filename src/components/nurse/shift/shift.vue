@@ -4,13 +4,16 @@
       <p>安逸医院护士值班表</p>
     </div>
     <div class="filter-container">
-      <el-input @keyup.enter.native="handleFilter" style="width: 200px;" class="filter-item" placeholder="姓名" v-model="listQuery.name"></el-input>
-      <el-select clearable class="filter-item" style="width: 130px" placeholder="科室" v-model="listQuery.type">
+      <el-input @keyup.enter.native="handleFilter" style="width: 200px;" class="filter-item" placeholder="请输入姓名" v-model="searchName"></el-input>
+      <el-input @keyup.enter.native="handleFilter" style="width: 200px;" class="filter-item" placeholder="请输入科室" v-model="searchDepartment"></el-input>
+      <!-- <el-select clearable class="filter-item" style="width: 130px" placeholder="科室" v-model="searchDepartment">
         <el-option v-for="item in typeOptions" :key="item.key" :label="item.display_name+'('+item.key+')'" :value="item.key">
         </el-option>
-      </el-select>
-      <el-button class="filter-item" type="primary" icon="search">搜索</el-button>
+      </el-select> -->
+      <el-button class="filter-item" type="primary" icon="search" @click="handelSearch">搜索</el-button>
+      <el-button  type="primary" icon="" @click="getAll">显示全部</el-button>
       <el-button class="filter-item" type="primary" @click="handelCreate"  icon="edit">添加</el-button>
+      <el-button class="filter-item" type="primary" @click="handleDelAll"  icon="edit">全部删除</el-button>
       <el-button class="filter-item" type="primary" icon="document" @click="handleDownload">导出</el-button>
     </div>
 
@@ -162,6 +165,9 @@
       return {
         table: [],
         tableEdit: [],
+        searchList: [],
+        searchName: '',
+        searchDepartment: '',
         listQuery: {
           type: null
         },
@@ -210,6 +216,30 @@
           type: 'success'
         });
       },
+      handelSearch () {
+        let intendedSearch = this;
+        intendedSearch.$http.get(api.table_shift, {params: {name: intendedSearch.searchName, department: intendedSearch.searchDepartment}}).then((response) => {
+          intendedSearch.table = [];
+          for (let i = 0; i < response.data.table.length; i++) {
+            if (response.data.table[i].name === intendedSearch.searchName && response.data.table[i].department === intendedSearch.searchDepartment) {
+              intendedSearch.table.push(response.data.table[i]);
+            } else if (response.data.table[i].name === intendedSearch.searchName) {
+              intendedSearch.table.push(response.data.table[i]);
+            } else if (response.data.table[i].department === intendedSearch.searchDepartment) {
+              intendedSearch.table.push(response.data.table[i]);
+            }
+          };
+        }, response => {
+            // error callback
+          intendedSearch.$notify.error({
+            message: '数据请求失败'
+          });
+        });
+      },
+      getAll () {
+        this.table = this.searchList;
+        this.searchName = '';
+      },
       handleDownload () {
         // 导出
         var vm = this;
@@ -233,6 +263,9 @@
           message: '删除成功！',
           type: 'success'
         });
+      },
+      handleDelAll () {
+        this.table = [];
       },
       handelCreate () {
         this.dialogFormVisible = true;
@@ -274,6 +307,7 @@
     created () {
       this.$http.get(api.table_shift).then((response) => {             // mark
         this.table = response.body.table;
+        this.searchList = response.body.table;
         console.log(this.table);
       }, response => {
         // error callback

@@ -2,15 +2,17 @@
     <div class="nurse_table">
       <!-- 已存在护士信息 -->
       <div class="filter-container">
-        <el-input @keyup.enter.native="handleFilter" style="width: 200px;" class="filter-item" placeholder="姓名" v-model="listQuery.name">
+        <el-input @keyup.enter.native="handleFilter" style="width: 200px;" class="filter-item" placeholder="姓名" v-model="searchName">
         </el-input>
-        <el-select clearable class="filter-item" style="width: 130px" placeholder="科室" v-model="listQuery.type">
+        <el-input @keyup.enter.native="handleFilter" style="width: 200px;" class="filter-item" placeholder="请输入科室" v-model="searchDepartment"></el-input>
+        <!-- <el-select clearable class="filter-item" style="width: 130px" placeholder="科室" v-model="listQuery.department">
           <el-option v-for="item in typeOptions" :key="item.key" :label="item.display_name+'('+item.key+')'" :value="item.key">
           </el-option>
-        </el-select>
-        <el-button class="filter-item" type="primary" icon="search">搜索</el-button>
+        </el-select> -->
+        <el-button class="filter-item" type="primary" icon="search" @click="handelSearch">搜索</el-button>
+        <el-button  type="primary" icon="" @click="getAll">显示全部</el-button>
         <el-button class="filter-item" type="primary" @click="handelCreate"  icon="edit">添加</el-button>
-       <!--  <el-button class="filter-item" type="primary" @click="handleDelAll"  icon="edit">批量删除</el-button> -->
+        <el-button class="filter-item" type="primary" @click="handleDelAll"  icon="edit">全部删除</el-button>
         <el-button class="filter-item" type="primary" icon="document" @click="handleDownload">导出</el-button>
       </div>
 
@@ -136,13 +138,16 @@ export default {
     return {
       table: [],
       tableEdit: [],
+      searchList: [],
+      searchName: '',
+      searchDepartment: '',
       total: null,
       listLoading: true,
       listQuery: {
         currPage: 1,
         // pageSize: 10,
         name: '',
-        type: null
+        department: ''
       },
       dialogFormVisible: false,
       dialogFormEditVisible: false,
@@ -213,20 +218,7 @@ export default {
       });
     },
     handleDelAll () {
-      // let vm = this;
-      // console.log('批量删除选择的row：', vm.multipleSelection);
-      // vm.table.splice(index, 1);
-      // let arr = [];
-      // var len = this.proData.length;
-      // for (var i = 0; i < len; i++) {
-      //   if (this.selectArr.indexOf(i) >= 0) {
-      //     console.log(this.selectArr.indexOf(i));
-      //   } else {
-      //     arr.push(proData[i]);
-      //   }
-      // }
-      // this.proData = arr;
-      // this.selectArr = [];
+      this.table = [];
     },
     handelCreate () {
       this.dialogFormVisible = true;
@@ -235,6 +227,30 @@ export default {
     // handleFilter () {
     //   // 姓名this.getList();
     // },
+    handelSearch () {
+      let intendedSearch = this;
+      intendedSearch.$http.get(api.hasNurse, {params: {name: intendedSearch.searchName, department: intendedSearch.searchDepartment}}).then((response) => {
+        intendedSearch.table = [];
+        for (let i = 0; i < response.data.table.length; i++) {
+          if (response.data.table[i].name === intendedSearch.searchName && response.data.table[i].department === intendedSearch.searchDepartment) {
+            intendedSearch.table.push(response.data.table[i]);
+          } else if (response.data.table[i].name === intendedSearch.searchName) {
+            intendedSearch.table.push(response.data.table[i]);
+          } else if (response.data.table[i].department === intendedSearch.searchDepartment) {
+            intendedSearch.table.push(response.data.table[i]);
+          }
+        };
+      }, response => {
+            // error callback
+        intendedSearch.$notify.error({
+          message: '数据请求失败'
+        });
+      });
+    },
+    getAll () {
+      this.table = this.searchList;
+      this.searchName = '';
+    },
     handleDownload () {
       // 导出
       var vm = this;
@@ -296,6 +312,7 @@ export default {
   created () {
     this.$http.get(api.hasNurse).then((response) => {             // mark
       this.table = response.body.table;
+      this.searchList = response.body.table;
       console.log(this.table);
     }, response => {
         // error callback
