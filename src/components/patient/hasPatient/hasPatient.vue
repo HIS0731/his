@@ -1,13 +1,13 @@
 <template>
   <div class="hasPatient">
     <div class="filter-container">
-      <el-input v-model="input" placeholder="搜索关键字" style="width:195px;"></el-input>
-      <el-select v-model="select" placeholder="搜索类型" style="width:150px;">
+      <el-input v-model="listQuery.title" placeholder="搜索关键字" style="width:195px;"></el-input>
+      <el-select v-model="listQuery.select" placeholder="搜索类型" style="width:150px;">
         <el-option label="名字" value="1"></el-option>
         <el-option label="主治医生" value="2"></el-option>
         <el-option label="日期" value="3"></el-option>
       </el-select>
-      <el-button type="primary" icon="search">搜索</el-button>
+      <el-button type="primary" icon="search" @click="handleSearch">搜索</el-button>
       <el-button type="primary" icon="edit" @click="handleCreate">添加</el-button>
       <el-button type="primary" icon="delete" @click="handleDelAll">批量删除</el-button>
       <el-button type="primary" @click="handleDownload"><i class="el-icon-document el-icon--left"></i>导出</el-button>
@@ -164,13 +164,14 @@
 </template>
 <script type="text/ecmascript-6">
 import Vue from 'vue';
-import {api} from '../../../global/api.js';
 export default {
   data () {
     return {
       tableData: [],
-      input: '',
-      select: '',
+      listQuery: {
+        select: '',
+        title: ''
+      },
       temp: {
         date: '',
         name: '',
@@ -201,17 +202,28 @@ export default {
     };
   },
   created () {
-    let me = this;
-    Vue.http.get(api.patientList).then(function (response) {
+    let vm = this;
+    Vue.http.get('../../static/patientList.json').then(function (response) {
       console.log(response);
       console.log('这是我们需要的json数据', response.tableData);
       // me.tableData = response.data.tableData;
-      me.tableData = response.body.tableData;
+      vm.tableData = response.data.tableData;
     }, function (response) {
       alert('请求失败了');
     });
   },
   methods: {
+    handleSearch () {
+      let me = this;
+      Vue.http.get('../../static/patientList1.json', {params: this.listQuery}).then(function (response) {
+        console.log(response);
+        console.log('这是我们需要的json数据', response.tableData);
+        // me.tableData = response.data.tableData;
+        me.tableData = response.data.tableData;
+      }, function (response) {
+        alert('请求失败了');
+      });
+    },
     handleEdit (index, row) {
       this.dialogFormEditVisible = true;
       console.log('选择的条数：', index, '选择row属性：', row);

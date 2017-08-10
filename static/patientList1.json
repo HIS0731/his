@@ -1,0 +1,41 @@
+{
+  "tableData": [
+    {
+      "date": "2017-1-1",
+      "number": "20171101",
+      "name": "李丽",
+      "sex": "女",
+      "region": "门诊",
+      "Name": "李四",
+      "Phone": "8337094",
+      "relation": "父女",
+      "illHistory": "没有",
+      "idCard": "440882199508132346",
+      "phone": 13414937050,
+      "age": 22,
+      "symptoms": "系统性红斑狼疮 狼疮性肾炎 （病情活动期）",
+      "disease": "内科",
+      "position": "尚志苑B2栋2楼",
+      "address": "广东省广州科技企业加速器",
+      "doctor": "王娟",
+      "pharmacist": "",
+      "prescription": {
+        "drug": [
+          {"sort": "", "drugname": "生地", "quantity": "20", "usage": ""},
+          {"sort": "", "drugname": "赤芍", "quantity": "15", "usage": ""},
+          {"sort": "", "drugname": "五味子", "quantity": "15", "usage": ""},
+          {"sort": "", "drugname": "怀牛膝", "quantity": "15", "usage": ""},
+          {"sort": "", "drugname": "苦参", "quantity": "15", "usage": ""},
+          {"sort": "", "drugname": "蒲公英", "quantity": "20", "usage": ""},
+          {"sort": "", "drugname": "紫花地丁", "quantity": "20", "usage": ""},
+          {"sort": "", "drugname": "花粉", "quantity": "15", "usage": ""},
+          {"sort": "", "drugname": "当归", "quantity": "15", "usage": ""},
+          {"sort": "", "drugname": "连翘", "quantity": "15", "usage": ""},
+          {"sort": "", "drugname": "黄芩", "quantity": "15", "usage": ""},
+          {"sort": "", "drugname": "甘草", "quantity": "10", "usage": ""}
+        ], 
+        "tips": "先将上药用适量水浸泡30分钟，再放文火上煎煮30分钟，每剂煎2次，将两次煎出的药液混合。每日1剂，早晚各服1次"
+      }
+    }
+  ]
+}

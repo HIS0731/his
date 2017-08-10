@@ -2,13 +2,13 @@
   <div>
     <h3 style="margin-bottom:20px;">以下是已经挂号的资料</h3>
     <div style="margin:20px 0px;">
-      <el-input v-model="input" placeholder="搜索关键字" style="width:195px;"></el-input>
-      <el-select v-model="select" placeholder="类型" style="width:150px;">
+      <el-input v-model="listQuery.title" placeholder="搜索关键字" style="width:195px;"></el-input>
+      <el-select v-model="listQuery.select" placeholder="类型" style="width:150px;">
         <el-option label="编号" value="1"></el-option>
         <el-option label="姓名" value="2"></el-option>
         <el-option label="日期" value="3"></el-option>
       </el-select>
-      <el-button type="primary" icon="search">搜索</el-button>
+      <el-button type="primary" icon="search" @click="handleSearch">搜索</el-button>
     </div>
     <el-table :data="tableData" border style="width:100%;">
       <el-table-column fixed label="日期" prop="date" width="150"></el-table-column>
@@ -29,8 +29,10 @@ export default {
   data () {
     return {
       tableData: [],
-      input: '',
-      select: ''
+      listQuery: {
+        select: '',
+        title: ''
+      }
     };
   },
   created () {
@@ -42,18 +44,19 @@ export default {
     }, function (response) {
       alert('请求失败了');
     });
+  },
+  methods: {
+    handleSearch () {
+      let me = this;
+      Vue.http.get('../../static/patientList1.json', {params: this.listQuery}).then(function (response) {
+        console.log(response);
+        console.log('这是我们需要的json数据', response.tableData);
+        // me.tableData = response.data.tableData;
+        me.tableData = response.data.tableData;
+      }, function (response) {
+        alert('请求失败了');
+      });
+    }
   }
-  // methods: {
-  //   getRegisteredData () {
-  //     let me = this;
-  //     Vue.http.get(api.patientList).then(function (response) {
-  //       console.log(response);
-  //       console.log('这是我们需要的数据:', response.tableData);
-  //       me.tableData = response.data.tableData;
-  //     }, function (response) {
-  //       alert('请求失败了');
-  //     });
-  //   }
-  // }
 };
 </script>
