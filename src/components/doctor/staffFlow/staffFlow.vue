@@ -84,6 +84,7 @@
 </template>
 
 <script type="text/ecmascript-6">
+    import {api} from '../../../global/api.js';
     export default {
       data () {
         return {
@@ -149,7 +150,7 @@
         }
       },
       created () {
-        this.$http.get('../../static/doctor/staffFlow.json').then((response) => {
+        this.$http.get(api.staffFlow).then((response) => {
           // mark
           this.staffFlowlist = response.body.staffFlowlist;
         }, response => {

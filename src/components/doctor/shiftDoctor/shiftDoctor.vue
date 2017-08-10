@@ -96,6 +96,7 @@
 </template>
 
 <script type="text/ecmascript-6">
+    import {api} from '../../../global/api.js';
     export default {
       data () {
         return {
@@ -186,7 +187,7 @@
       },
       // 获取json数据
       created () {
-        this.$http.get('../../static/doctor/shiftList.json').then((response) => {             // mark
+        this.$http.get(api.shiftList).then((response) => {             // mark
           this.shiftList = response.body.shiftList;
         }, response => {
           // error callback

@@ -68,6 +68,7 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import {api} from '../../../global/api.js';
   export default {
     data () {
       return {
@@ -78,7 +79,7 @@
     mounted () {
       let prescriptionWThis = this;
 
-      prescriptionWThis.$http.get('../../static/patientList.json').then((response) => {
+      prescriptionWThis.$http.get(api.patientList).then((response) => {
         // 测试语句，测试是否能获取response
         console.log(prescriptionWThis.prescriptionW, response);
         // 把json接口获取的数据赋给当前对象
@@ -89,7 +90,7 @@
           message: '数据请求失败'
         });
       });
-      prescriptionWThis.$http.get('../../static/drugs.json').then((response) => {
+      prescriptionWThis.$http.get(api.drugs).then((response) => {
         // 把json接口获取的数据赋给当前对象
         prescriptionWThis.drugs = response.data.tableDataW;
       }, response => {

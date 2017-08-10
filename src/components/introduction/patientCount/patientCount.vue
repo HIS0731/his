@@ -74,6 +74,7 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import {api} from '../../../global/api.js';
   export default {
     data () {
       return {
@@ -119,7 +120,7 @@
       // }
     },
     created () {
-      this.$http.get('../static/patientCount.json').then((response) => {             // mark
+      this.$http.get(api.patientCount).then((response) => {             // mark
         this.table1 = response.body.table1;
         this.table2 = response.body.table2;
         this.table3 = response.body.table3;

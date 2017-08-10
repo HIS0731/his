@@ -67,6 +67,7 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import {api} from '../../../global/api.js';
   export default {
     data () {
       return {
@@ -138,7 +139,7 @@
             message: '传给后台的信息是用户编辑的对象' + JSON.stringify(this.form),
             type: 'success'
           });
-          this.$http.post('../static/putInStorage.json', this.form, {emulateJSON: true}).then(function (response) {
+          this.$http.post(api.putInStorage, this.form, {emulateJSON: true}).then(function (response) {
             console.log(response.body);
             this.resetForm();
           }, function () {

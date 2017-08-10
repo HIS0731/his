@@ -55,6 +55,7 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import {api} from '../../../global/api.js';
   export default {
     data () {
       return {
@@ -66,7 +67,7 @@
     mounted () {
       let druginfosThis = this;
 
-      druginfosThis.$http.get('../../static/drugs.json').then((response) => {
+      druginfosThis.$http.get(api.drugs).then((response) => {
         // 测试语句，测试是否能获取response
         // console.log(druginfosThis.tableData, response);
         // 把json接口获取的数据赋给当前对象

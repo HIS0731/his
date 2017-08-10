@@ -59,6 +59,7 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import {api} from '../../../global/api.js';
   export default {
     data () {
       let validatevalue = (rule, value, callback) => {
@@ -205,7 +206,7 @@
       getinsufficientData: function () {
         let drugapplyThis = this;
 
-        drugapplyThis.$http.get('../../static/drugs.json', {params: {q: 1}}).then((response) => {
+        drugapplyThis.$http.get(api.drugs, {params: {q: 1}}).then((response) => {
           // 把json接口获取的数据
           for (let i = 0; i < response.data.tableDataC.length; i++) {
             if (response.data.tableDataC[i].quantity < 10) {

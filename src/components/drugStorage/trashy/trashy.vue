@@ -57,6 +57,7 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import {api} from '../../../global/api.js';
   export default {
     data () {
       return {
@@ -76,7 +77,7 @@
     },
     created () {
       // mark
-      this.$http.get('../static/trashy.json').then((response) => {             // mark
+      this.$http.get(api.trashy).then((response) => {             // mark
         this.trashyDrug = response.body.trashyDrug;
         console.log(this.trashyDrug);
       }, response => {
@@ -108,7 +109,7 @@
         if (toDelete) {
           this.$message('删除所有');
           // mark 实际上，应该使用post方法传数据
-          this.$http.get('../static/trashy.json', {emulateJSON: true}).then(function (response) {
+          this.$http.get(api.trashy, {emulateJSON: true}).then(function (response) {
             this.trashyDrug = [];
           }, function () {
             this.$message.error('后台接口有误,修改后台接口既可！');
@@ -117,7 +118,7 @@
       },
       toEditTrashy () {
         // mark 实际上，应该使用post方法传数据
-        this.$http.get('../static/trashy.json', this.form, {emulateJSON: true}).then(function (response) {
+        this.$http.get(api.trashy, this.form, {emulateJSON: true}).then(function (response) {
           this.$message({
             message: '编辑消耗药品信息成功',
             type: 'success'

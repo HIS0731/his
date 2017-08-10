@@ -18,6 +18,7 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import {api} from '../../../global/api.js';
   export default {
     data () {
       return {
@@ -26,7 +27,7 @@
     },
     created () {
       // mark
-      this.$http.get('../static/stockRemoval.json').then((response) => {             // mark
+      this.$http.get(api.stockRemoval).then((response) => {             // mark
         this.drug = response.body.drug;
         console.log(this.drug);
       }, response => {

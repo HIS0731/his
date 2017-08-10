@@ -2,9 +2,9 @@
     <div class="nurse_form">
       <!-- 增加新护士信息 -->
       <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" style="width:500px" class="demo-ruleForm">
-		  <el-form-item label="姓名" prop="name">
-    		<el-input v-model="ruleForm.name"></el-input>
- 		  </el-form-item>
+      <el-form-item label="姓名" prop="name">
+        <el-input v-model="ruleForm.name"></el-input>
+      </el-form-item>
       <el-form-item label="地址" prop="address">
         <el-input v-model="ruleForm.address"></el-input>
       </el-form-item>
@@ -17,14 +17,14 @@
       <el-form-item label="专业" prop="profession">
         <el-input v-model="ruleForm.profession"></el-input>
       </el-form-item>
- 		  <el-form-item label="科室" prop="department">
-    	 	<el-select v-model="ruleForm.department" placeholder="请选择科室">
-      			<el-option label="妇科" value="women"></el-option>
-      			<el-option label="儿科" value="child"></el-option>
+      <el-form-item label="科室" prop="department">
+        <el-select v-model="ruleForm.department" placeholder="请选择科室">
+            <el-option label="妇科" value="women"></el-option>
+            <el-option label="儿科" value="child"></el-option>
             <el-option label="助产科" value="birth"></el-option>
             <el-option label="急诊科" value="emergency"></el-option>
             <el-option label="精神科" value="spirit"></el-option>
-    		</el-select>
+        </el-select>
       </el-form-item>
       <el-form-item label="学历" prop="education">
         <el-select v-model="ruleForm.education" placeholder="请选择学历">
@@ -43,16 +43,16 @@
           </el-form-item>
         </el-col>
       </el-form-item>
-  		<el-form-item label="性别" prop="sex">
-    		<el-radio-group v-model="ruleForm.sex">
-      		<el-radio label="男"></el-radio>
-      		<el-radio label="女"></el-radio>
-      	</el-radio-group>
+      <el-form-item label="性别" prop="sex">
+        <el-radio-group v-model="ruleForm.sex">
+          <el-radio label="男"></el-radio>
+          <el-radio label="女"></el-radio>
+        </el-radio-group>
       </el-form-item>     
       <el-form-item>
-    		<el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
-    		<el-button @click="resetForm('ruleForm')">重置</el-button>
-  		</el-form-item>
+        <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
+        <el-button @click="resetForm('ruleForm')">重置</el-button>
+      </el-form-item>
       </el-form>
     </div>
 </template>

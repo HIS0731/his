@@ -49,6 +49,7 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import {api} from '../../../global/api.js';
   export default {
     data () {
       return {
@@ -78,7 +79,7 @@
       }
     },
     created () {
-      this.$http.get('../static/complainInfo.json').then((response) => {             // mark
+      this.$http.get(api.complainInfo).then((response) => {             // mark
         this.table = response.body.table;
         console.log(this.table);
       }, response => {

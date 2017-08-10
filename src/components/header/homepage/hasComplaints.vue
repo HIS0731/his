@@ -17,6 +17,7 @@
 </template>
 <script type="text/ecmascript-6">
 import Vue from 'vue';
+import {api} from '../../../global/api.js';
 export default {
   data () {
     return {
@@ -25,7 +26,7 @@ export default {
   },
   created () {
     let me = this;
-    Vue.http.get('../../static/complaints.json').then(function (response) {
+    Vue.http.get(api.complaints).then(function (response) {
       console.log(response);
       console.log('这是我们需要的数据:', response.tableData);
       me.tableData = response.data.tableData;

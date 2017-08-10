@@ -86,6 +86,7 @@
 </template>
 
 <script type="text/ecmascript-6">
+    import {api} from '../../../global/api.js';
     export default {
       data () {
         return {
@@ -143,7 +144,7 @@
           let dateFormat = year + '-' + month + '-' + day;
           // console.log(this.doctorlistedit);
           this.doctorlistedit.date = dateFormat;
-          // this.$http.get('../../static/doctor.json', this.doctorlistedit).then(function () {
+          // this.$http.get(api.doctor, this.doctorlistedit).then(function () {
           this.doctorlist[this.Index] = this.doctorlistedit;
           // this.doctorlist[this.Index].date = dateFormat;
           this.$message({
@@ -163,7 +164,7 @@
         }
       },
       created () {
-        this.$http.get('../../static/doctor/doctor.json').then((response) => {             // mark
+        this.$http.get(api.doctor).then((response) => {             // mark
           this.doctorlist = response.body.doctorlist;
         }, response => {
           // error callback

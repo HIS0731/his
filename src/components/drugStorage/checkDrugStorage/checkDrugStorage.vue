@@ -66,6 +66,7 @@
   </div>
 </template>
 <script type="text/ecmascript-6">
+  import {api} from '../../../global/api.js';
   export default {
     data () {
       return {
@@ -80,7 +81,7 @@
       };
     },
     created () {
-      this.$http.get('../static/Storage.json').then((response) => {             // mark
+      this.$http.get(api.Storage).then((response) => {             // mark
         this.drug = response.body.drug;
         // 信息总条数
         this.totalInformation = response.body.total;
@@ -95,7 +96,7 @@
           message: '传给后台的信息是用户输入数据 ' + this.selectInformation,
           type: 'success'
         });
-        this.$http.get('../static/Storage.json', this.selectInformation, {emulateJSON: true}).then(function (response) {
+        this.$http.get(api.Storage, this.selectInformation, {emulateJSON: true}).then(function (response) {
           this.selectArr = response.body.drug;
         }, function () {
           this.$message.error('后台接口有误,修改后台接口既可！');
@@ -113,7 +114,7 @@
           message: '传给后台的信息是选择的页码、显示条数以及当前显示的位置的id ' + showindex,
           type: 'success'
         });
-        this.$http.post('../static/Storage.json', showindex, {emulateJSON: true}).then(function (response) {
+        this.$http.post(api.Storage, showindex, {emulateJSON: true}).then(function (response) {
           this.drug = response.body.drug;
           // 信息总条数
           this.totalInformation = response.body.total;
