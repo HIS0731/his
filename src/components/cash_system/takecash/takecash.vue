@@ -130,11 +130,11 @@
           exactMoney: '',
           theChange: ''
         },
-        number: '',
-        isShow: '',
+        number: '',   // 处方编号 （被监听）
+        isShow: '',   // 存放处方编号在被监听的过程中的最终值
         showMoney: false,
         showChange: false,
-        patients: [],
+        patients: [],  // 存放患者信息
         rules: {
           patientName: [
             {required: true, validator: checkName, trigger: 'blur'}
@@ -169,36 +169,44 @@
     methods: {
       // 计算应收金额
       compute () {
+        this.showMoney = true;
         this.$refs.takecashForm.validate((valid) => {
-          if (valid) {
-            // 暂时写死数据
-            this.takecash.shouldMoney = 320;
-            this.showMoney = true;
-          } else {
+          if (!valid) {
             this.$notify.error({
-              message: '输入有误，无法计算！'
+              message: '请检查所有的必要信息填写！'
             });
-            return false;
           }
         });
       },
       // 重置
       resetForm (formName) {
         this.$refs.takecashForm.resetFields();
+        this.isShow = '';
+        this.number = '';
+        this.showMoney = false;
+        this.showChange = false;
       },
       // 找零
       change () {
-        if ((this.takecash.exactMoney - this.takecash.shouldMoney) < 0) {
-          this.takecash.theChange = '实收金额有误！';
-          this.showChange = true;
-        } else {
-          if (this.takecash.shouldMoney === '') {
-            this.showChange = false;
+        this.$refs.takecashForm.validate((valid) => {
+          if (valid) {
+            if ((this.takecash.exactMoney - this.takecash.shouldMoney) < 0) {
+              this.takecash.theChange = '实收金额有误！';
+              this.showChange = true;
+            } else {
+              if (this.takecash.shouldMoney === '') {
+                this.showChange = false;
+              } else {
+                this.takecash.theChange = this.takecash.exactMoney - this.takecash.shouldMoney;
+                this.showChange = true;
+              }
+            }
           } else {
-            this.takecash.theChange = this.takecash.exactMoney - this.takecash.shouldMoney;
-            this.showChange = true;
+            this.$notify.error({
+              message: '请检查所有的必要信息填写！'
+            });
           }
-        }
+        });
       }
     },
     // 实时监听number，当输入处方编号时，开始执行下面的操作
@@ -212,6 +220,8 @@
           if (this.patients[i].number === this.number) {
             this.takecash.prescription = this.patients[i].prescription.drug;
             this.isShow = this.patients[i].number;
+            // 暂时写死数据
+            this.takecash.shouldMoney = 320;
           }
         }
       }
