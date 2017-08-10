@@ -2,8 +2,9 @@
   <div class="editDoctor">
     <span class="tittle">医生信息表</span>
     <div class="search">
-     <el-input style="width: 200px;" placeholder="医生姓名"></el-input>
-     <el-button  type="primary" icon="search" @click="">搜索</el-button>
+     <el-input style="width: 200px;" placeholder="医生姓名" v-model="searchName"></el-input>
+     <el-button  type="primary" icon="search" @click="search">搜索</el-button>
+     <el-button  type="primary" icon="" @click="getAll">显示全部</el-button>
      <el-button class="filter-item" type="primary" icon="document" @click="handleDownload">导出</el-button>
     </div>
     <!-- 表格 -->
@@ -94,6 +95,9 @@
           doctorlist: [],
           // 对话框的修改存放
           doctorlistedit: [],
+          // 搜索相同名字时存放
+          searchList: [],
+          searchName: '',
           dialogFormVisible: false,
           // 表单input的限制长度
           formLabelWidth: '60px',
@@ -120,6 +124,31 @@
           return jsonData.map(v => filterVal.map(j => v[j]));
         },
         // 导出信息表
+        // 搜索
+        search () {
+          let intendedSearch = this;
+          intendedSearch.$http.get(api.doctor, {params: {name: intendedSearch.searchName}}).then((response) => {
+              // 遍历接口里的所有信息，查找drugname为搜索框里输入的内容的数据，然后把所有找到的数据push进this.tableData里
+              // 在把查找到的数据存进this.tableData里之前，需要把它置为空
+            intendedSearch.doctorlist = [];
+            for (let i = 0; i < response.data.doctorlist.length; i++) {
+              if (response.data.doctorlist[i].name === intendedSearch.searchName) {
+                intendedSearch.doctorlist.push(response.data.doctorlist[i]);
+              }
+            };
+            console.log(intendedSearch.searchList);
+          }, response => {
+            // error callback
+            intendedSearch.$notify.error({
+              message: '数据请求失败'
+            });
+          });
+        },
+        // 搜索
+        // 显示全部
+        getAll () {
+          this.doctorlist = this.searchList;
+        },
         // 点击编辑按钮执行的方法
         edictDoctor (index) {
           this.dialogFormVisible = true;
@@ -166,6 +195,7 @@
       created () {
         this.$http.get(api.doctor).then((response) => {             // mark
           this.doctorlist = response.body.doctorlist;
+          this.searchList = response.body.doctorlist;
         }, response => {
           // error callback
           alert('数据请求失败');
