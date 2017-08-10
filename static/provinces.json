@@ -1,94 +1,247 @@
 {
-  "provinces": [{
-    "value": "shanxi",
-    "label": "山西省"
-  },{
-    "value": "liaoning",
-    "label": "辽宁省"
-  },{
-    "value": "jilin",
-    "label": "吉林省"
-  },{
-    "value": "heilongjiang",
-    "label": "黑龙江省"
-  },{
-    "value": "jiangsu",
-    "label": "江苏省"
-  },{
-    "value": "zhejiang",
-    "label": "浙江省"
-  },{
-    "value": "anhui",
-    "label": "安徽省"
-  },{
-    "value": "fujian",
-    "label": "福建省"
-  },{
-    "value": "jiangxi",
-    "label": "江西省"
-  },{
-    "value": "shandong",
-    "label": "山东省"
-  },{
-    "value": "henan",
-    "label": "河南省"
-  },{
-    "value": "hebei",
-    "label": "河北省"
-  },{
-    "value": "hubei",
-    "label": "湖北省"
-  },{
-    "value": "hunan",
-    "label": "湖南省"
-  },{
-    "value": "guangdong",
-    "label": "广东省"
-  },{
-    "value": "hainan",
-    "label": "海南省"
-  },{
-    "value": "sichuang",
-    "label": "四川省"
-  },{
-    "value": "guizhou",
-    "label": "贵州省"
-  },{
-    "value": "yunnan",
-    "label": "云南省"
-  },{
-    "value": "shanxi",
-    "label": "陕西省"
-  },{
-    "value": "gansu",
-    "label": "甘肃省"
-  },{
-    "value": "qinghai",
-    "label": "青海省"
-  },{
-    "value": "taiwan",
-    "label": "台湾省"
-  },{
-    "value": "neimenggu",
-    "label": "内蒙古自治区"
-  },{
-    "value": "guangxi",
-    "label": "广西壮族自治区"
-  },{
-    "value": "xizang",
-    "label": "西藏自治区"
-  },{
-    "value": "ningxia",
-    "label": "宁夏回族自治区"
-  },{
-    "value": "xinjiang",
-    "label": "新疆维吾尔族自治区"
-  },{
-    "value": "xianggan",
-    "label": "香港特别行政区"
-  },{
-    "value": "aomen",
-    "label": "澳门特别行政区"
-  }]
-
+  "provinces": [
+    {
+      "value": "shanxi",
+      "label": "山西省",
+      "citys": [{
+        "value": "taiyuan",
+        "label": "太原市"
+      },{
+        "value": "datong",
+        "label": "大同市"
+      },{
+        "value": "yangquan",
+        "label": "阳泉市"
+      },{
+        "value": "changzhi",
+        "label": "长治市"
+      },{
+        "value": "jincheng",
+        "label": "晋城市"
+      },{
+        "value": "suzhou",
+        "label": "朔州市"
+      },{
+        "value": "jinzhong",
+        "label": "晋中市"
+      },{
+        "value": "yuncheng",
+        "label": "运城市"
+      },{
+        "value": "qizhou",
+        "label": "忻州市"
+      },{
+        "value": "linfen",
+        "label": "临汾市"
+      },{
+        "value": "lvliang",
+        "label": "吕梁市"
+      }]
+    },{
+      "value": "liaoning",
+      "label": "辽宁省",
+      "citys": [
+      {
+        "value": "shenyang",
+        "label": "沈阳市"
+      },{
+        "value": "dalian",
+        "label": "大连市"
+      },{
+        "value": "anshan",
+        "label": "鞍山市"
+      },{
+        "value": "fushun",
+        "label": "抚顺市"
+      },{
+        "value": "benxi",
+        "label": "本溪市"
+      },{
+        "value": "dangdong",
+        "label": "丹东市"
+      }, {
+        "value": "jinzhou",
+        "label": "锦州市"
+      },{
+        "value": "yingkou",
+        "label": "营口市"
+      },{
+        "value": "guxin",
+        "label": "阜新市"
+      },{
+        "value": "liaoyang",
+        "label": "辽阳市"
+      },{
+        "value": "panjin",
+        "label": "盘锦市"
+      },{
+        "value": "tieling",
+        "label": "铁岭市"
+      }, {
+        "value": "zhaoyang",
+        "label": "朝阳市"
+      },{
+        "value": "huludaoshi",
+        "label": "葫芦岛市"
+      }]
+    },{
+      "value": "jilin",
+      "label": "吉林省",
+      "citys": [
+      {
+        "value": "changchun",
+        "label": "长春市"
+      },{
+        "value": "jilin",
+        "label": "吉林市"
+      },{
+        "value": "siping",
+        "label": "四平市"
+      },{
+        "value": "liaoyuan",
+        "label": "辽源市"
+      },{
+        "value": "tonghua",
+        "label": "通化市"
+      },{
+        "value": "baishan",
+        "label": "白山市"
+      },{
+        "value": "songyuan",
+        "label": "松原市"
+      },{
+        "value": "baicheng",
+        "label": "松原市"
+      },{
+        "value": "yanbianchaoxianzizhiqu",
+        "label": "延边朝鲜族自治州"
+      }]
+    },{
+      "value": "heilongjiang",
+      "label": "黑龙江省",
+      "citys": [
+      {
+        "value": "haerbing",
+        "label": "哈尔滨市"
+      },{
+        "value": "qiqihaerbing",
+        "label": "齐齐哈尔市"
+      },{
+        "value": "jixi",
+        "label": "鸡西市"
+      },{
+        "value": "hegang",
+        "label": "鹤岗市"
+      },{
+        "value": "shuangyashan",
+        "label": "双鸭山市"
+      },{
+        "value": "daqing",
+        "label": "大庆市"
+      },{
+        "value": "yichun",
+        "label": "伊春市"
+      },{
+        "value": "jiamusi",
+        "label": "佳木斯市"
+      },{
+        "value": "qitaihe",
+        "label": "七台河市"
+      },{
+        "value": "mudanjiang",
+        "label": "牡丹江市"
+      },{
+        "value": "heiheng",
+        "label": "黑河市"
+      },{
+        "value": "suihua",
+        "label": "绥化市"
+      },{
+        "value": "daxinganling",
+        "label": "大兴安岭地区"
+      }]
+    },{
+      "value": "jiangsu",
+      "label": "江苏省",
+      "citys": [
+      {
+        "value": "nanjing",
+        "label": "南京市"
+      },{
+        "value": "quxi",
+        "label": "无锡市"
+      },{
+        "value": "xuzhou",
+        "label": "徐州市"
+      },{
+        "value": "changzhou",
+        "label": "常州市" 
+      },{
+        "value": "suzhou",
+        "label": "苏州市"
+      },{
+        "value": "nantong",
+        "label": "南通市"
+      },{
+        "value": "lainyungang",
+        "label": "连云港市"
+      },{
+        "value": "weian",
+        "label": "淮安市"
+      },{
+        "value": "yancheng",
+        "label": "盐城市"
+      },{
+        "value": "yangzhou",
+        "label": "扬州市"
+      },{
+        "value": "zhenjiang",
+        "label": "镇江市"
+      },{
+        "value": "taizhou",
+        "label": "泰州市" 
+      },{
+        "value": "suqian",
+        "label": "宿迁市" 
+      }]
+    },{
+      "value": "zhejiang",
+      "label": "浙江省",
+      "citys": [
+      {
+        "value": "hangzhou",
+        "label": "杭州市"  
+      },{
+        "value": "shining",
+        "label": "市宁波"
+      },{
+        "value": "wenzhou",
+        "label": "温州市"
+      },{
+        "value": "jiaxing",
+        "label": "嘉兴市"
+      },{
+        "value": "huzhou",
+        "label": "湖州市"
+      },{
+        "value": "shaoxing",
+        "label": "绍兴市"
+      },{
+        "value": "jinhua",
+        "label": "金华市"
+      },{
+        "value": "quzhou",
+        "label": "衢州市"
+      },{
+        "value": "zhoushan",
+        "label": "舟山市'"
+      },{
+        "value": "taizhou",
+        "label": "台州市'"
+      },{
+        "value": "lishui",
+        "label": "丽水市"
+      }]
+    }
+  ]
 }

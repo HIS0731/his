@@ -163,6 +163,7 @@
   </div>
 </template>
 <script type="text/ecmascript-6">
+import {api} from '../../../global/api.js';
 import Vue from 'vue';
 export default {
   data () {
@@ -203,7 +204,7 @@ export default {
   },
   created () {
     let vm = this;
-    Vue.http.get('../../static/patientList.json').then(function (response) {
+    Vue.http.get(api.patientList).then(function (response) {
       console.log(response);
       console.log('这是我们需要的json数据', response.tableData);
       // me.tableData = response.data.tableData;
@@ -215,11 +216,12 @@ export default {
   methods: {
     handleSearch () {
       let me = this;
-      Vue.http.get('../../static/patientList1.json', {params: this.listQuery}).then(function (response) {
-        console.log(response);
-        console.log('这是我们需要的json数据', response.tableData);
+      me.$http.get(api.patientList1, {params: {name: me.listQuery.title}}).then(function (response) {
+        // console.log(response);
+        console.log('这是我们需要的json数据', response.data.tableData);
         // me.tableData = response.data.tableData;
         me.tableData = response.data.tableData;
+        console.log(response.data.tableData);
       }, function (response) {
         alert('请求失败了');
       });
