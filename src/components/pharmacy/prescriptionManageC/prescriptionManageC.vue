@@ -109,7 +109,7 @@
       // 搜索
       search () {
         let search = this;
-        search.$http.get('../../static/patientList.json', {params: {number: search.searchNumber, name: search.searchName}}).then((response) => {
+        search.$http.get(api.patientList, {params: {number: search.searchNumber, name: search.searchName}}).then((response) => {
           // 把数组置空，以便存放搜索到的符合条件的数据
           search.prescriptionC = [];
           // 遍历后台数据是否有和传入的参数相同的，有的话就找出来push进prescriptionC[]
@@ -154,7 +154,7 @@
       acceptprescriptionC: function (index) {
         // 这里应该获取当前登陆的账户名，将其赋值给this.prescriptionC[index].pharmacist，从而获取当前操作的审核药师
         // 这里假装当前登陆的账户名是 “唐静”，暂时写死数据为该名字
-        this.prescriptionC[index].pharmacist = '唐静';
+        this.prescriptionC[index].pharmacist = sessionStorage.getItem('easeHis');
         this.$message({
           message: '该处方已被' + this.prescriptionC[index].pharmacist + '审核药师处理！',
           type: 'success'

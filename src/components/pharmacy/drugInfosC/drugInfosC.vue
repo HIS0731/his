@@ -97,7 +97,7 @@
       // 搜索
       search () {
         let intendedSearch = this;
-        intendedSearch.$http.get('../../static/drugs.json', {params: {drugname: intendedSearch.searchValue}}).then((response) => {
+        intendedSearch.$http.get(api.drugs, {params: {drugname: intendedSearch.searchValue}}).then((response) => {
           // 遍历接口里的所有信息，查找drugname为搜索框里输入的内容的数据，然后把所有找到的数据push进this.tableData里
           // 在把查找到的数据存进this.tableData里之前，需要把它置为空
           intendedSearch.tableData = [];
