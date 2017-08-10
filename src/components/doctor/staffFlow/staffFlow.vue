@@ -155,7 +155,10 @@
           this.staffFlowlist = response.body.staffFlowlist;
         }, response => {
           // error callback
-          alert('数据请求失败');
+          this.$message({
+            message: '数据请求失败',
+            type: 'error'
+          });
         });
       }
     };
