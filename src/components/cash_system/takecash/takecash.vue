@@ -63,6 +63,7 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import {api} from '../../../global/api.js';
   export default {
     data () {
       // 验证患者姓名是否存在的方法
@@ -156,7 +157,7 @@
     },
     created () {
       let takecashThis = this;
-      takecashThis.$http.get('../../static/patientList.json').then((response) => {
+      takecashThis.$http.get(api.patientList).then((response) => {
         // 把json接口获取的数据赋给当前对象
         takecashThis.patients = response.data.tableData;
       }, response => {
