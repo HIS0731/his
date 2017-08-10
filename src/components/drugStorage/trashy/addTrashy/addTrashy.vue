@@ -39,9 +39,6 @@
           name: [
             { required: true, message: '请输入药品名称', trigger: 'blur' }
           ],
-          amount: [
-            { required: true, message: '请输入药品数目', trigger: 'blur' }
-          ],
           handlers: [
             { required: true, message: '请输入确认人员', trigger: 'blur' }
           ],

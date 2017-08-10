@@ -93,9 +93,6 @@
           name: [
             { required: true, message: '请输入药品名称', trigger: 'blur' }
           ],
-          amount: [
-            { required: true, message: '请输入药品数目', trigger: 'blur' }
-          ],
           manufacturers: [
             { required: true, message: '请输入厂家', trigger: 'blur' }
           ],
@@ -107,9 +104,6 @@
           ],
           dosageForm: [
             { required: true, message: '请输入药品剂型', trigger: 'blur' }
-          ],
-          unitPrice: [
-            { required: true, message: '请输入药品单价', trigger: 'blur' }
           ],
           handlers: [
             { required: true, message: '请输入药品经手人', trigger: 'blur' }
