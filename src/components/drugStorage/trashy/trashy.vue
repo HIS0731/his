@@ -98,7 +98,7 @@
           message: '传给后台的信息是消息的id' + this.trashyDrug[index].id,
           type: 'success'
         });
-        this.$http.get(api.Storage, this.trashyDrug[index].id, {emulateJSON: true}).then(function (response) {
+        this.$http.get(api.Storage, {params: {id: this.trashyDrug[index].id}}).then(function (response) {
           this.trashyDrug.splice(index, 1);
         }, function () {
           this.$message.error('后台接口有误,修改后台接口既可！');
@@ -109,7 +109,7 @@
         if (toDelete) {
           this.$message('删除所有');
           // mark 实际上，应该使用post方法传数据
-          this.$http.get(api.trashy, {emulateJSON: true}).then(function (response) {
+          this.$http.get(api.trashy).then(function (response) {
             this.trashyDrug = [];
           }, function () {
             this.$message.error('后台接口有误,修改后台接口既可！');
@@ -117,8 +117,7 @@
         }
       },
       toEditTrashy () {
-        // mark 实际上，应该使用post方法传数据
-        this.$http.get(api.trashy, this.form, {emulateJSON: true}).then(function (response) {
+        this.$http.get(api.trashy, {params: {form: this.editForm}}).then(function (response) {
           this.$message({
             message: '编辑消耗药品信息成功',
             type: 'success'

@@ -57,8 +57,7 @@
     methods: {
       onSubmit () {
         console.log(this.form);
-        // mark 实际上，应该使用post方法传数据
-        this.$http.get(api.Storage, this.form, {emulateJSON: true}).then(function (response) {
+        this.$http.get(api.Storage, {params: {form: this.form}}).then(function (response) {
           this.$message({
             message: '信息添加成功',
             type: 'success'

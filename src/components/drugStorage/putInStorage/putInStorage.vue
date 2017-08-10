@@ -139,11 +139,11 @@
             message: '传给后台的信息是用户编辑的对象' + JSON.stringify(this.form),
             type: 'success'
           });
-          this.$http.post(api.putInStorage, this.form, {emulateJSON: true}).then(function (response) {
+          this.$http.get(api.putInStorage, {params: {form: this.form}}).then(function (response) {
             console.log(response.body);
             this.resetForm();
           }, function () {
-            this.$message.error('后台接口有误,修改后台接口既可！');
+            this.$message.error('POST方式 后台接口有误,修改后台接口既可！');
             this.resetForm();
           });
         }
