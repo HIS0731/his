@@ -12,7 +12,7 @@
           <el-submenu index="2" v-if="type === '01' || type === '03'">
             <template slot="title">
               <i class="icon-nurse"></i>
-              <span slot="title">护士管理系统</span>
+              <span slot="title" :class="{ 'toggle': isCollapse}">护士管理系统</span>
             </template>
             <el-menu-item-group>
               <span slot="title">护士人员信息管理</span>
@@ -176,7 +176,7 @@
       z-index:9999
       height:100%
       width:230px
-      transition: all 1s
+      transition: width 1s
       background-color:#324157
       overflow-y: scroll
       .el-menu--dark
@@ -184,6 +184,11 @@
       &.smallNav
         width:64px
         overflow-y: visible
+      [class^="icon-"], [class*=" icon-"]
+        z-index:999
+        display:inline-block
+        width:20px
+        height:20px
     .content
       padding-left:60px
       .tagcontent
