@@ -82,6 +82,7 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import {api} from '../../../global/api.js';
   export default {
     data () {
       return {
@@ -109,7 +110,7 @@
       }
     },
     created () {
-      this.$http.get('../static/staffIntroduction.json').then((response) => {             // mark
+      this.$http.get(api.staffIntroduction).then((response) => {             // mark
         this.table = response.body.table;
         this.table2 = response.body.table2;
         this.message = response.body.message;

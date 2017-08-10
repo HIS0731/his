@@ -163,4 +163,35 @@
 .innnerApp
   background-color:#fff
   min-height: 800px
+  .el-menu-item>a
+    display:inline-block
+    height:100%
+    width:100%
+    color:#bfcbd9
+    &.router-link-active
+      color: #20a0ff
+  .app-body
+    .menu
+      position:fixed
+      z-index:9999
+      height:100%
+      width:230px
+      transition: all 1s
+      background-color:#324157
+      overflow-y: scroll
+      .el-menu--dark
+        background-color: transparent
+      &.smallNav
+        width:64px
+        overflow-y: visible
+    .content
+      padding-left:60px
+      .tagcontent
+        padding:20px
+      .HISshow
+        opacity:1
+        transition:all 0.5s
+      .HISshow-enter,.HISshow-leave-active
+        opacity:0
+        transition:all 0.5s
 </style>

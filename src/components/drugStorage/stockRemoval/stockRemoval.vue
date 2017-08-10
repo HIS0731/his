@@ -18,6 +18,7 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import {api} from '../../../global/api.js';
   export default {
     data () {
       return {
@@ -25,21 +26,30 @@
       };
     },
     created () {
-      // mark
-      this.$http.get('../static/stockRemoval.json').then((response) => {             // mark
+      this.$http.get(api.stockRemoval).then((response) => {             // mark
         this.drug = response.body.drug;
         console.log(this.drug);
       }, response => {
-        // error callback
-        alert('数据请求失败');
+      // error callback
+        this.$message({
+          message: '数据请求失败',
+          type: 'error'
+        });
       });
     },
     methods: {
       handleChange (index, row) {
-        // mark post
         let time = new Date();
         this.drug[index].outOfTime = time.getFullYear() + '-' + time.getMonth() + '-' + time.getDay() + ' ' + time.getHours() + ':' + time.getMinutes() + ':' + time.getSeconds();
         console.log(index, this.drug, this.drug[index].id, this.drug[index].outOfTime);
+        this.$http.get(api.stockRemoval, {params: {id: this.drug[index].id, outOfTime: this.drug[index].outOfTime}}).then(function (response) {
+          this.$message({
+            message: '信息添加成功',
+            type: 'success'
+          });
+        }, function () {
+          this.$message.error('后台接口有误,修改后台接口既可！');
+        });
       }
     }
   };

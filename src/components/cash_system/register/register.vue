@@ -56,6 +56,7 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import {api} from '../../../global/api.js';
   export default {
     data () {
       // 验证输入身份证号格式是否正确的方法
@@ -111,7 +112,7 @@
       this.visit_date = new Date().toLocaleDateString();
       // console.log(this.visit_date);
       let registerThis = this;
-      registerThis.$http.get('../../static/department.json').then((response) => {
+      registerThis.$http.get(api.department).then((response) => {
         // 把json接口获取的数据赋给当前对象
         registerThis.register.department = response.data.department;
       }, response => {
@@ -161,7 +162,7 @@
       departmentvalue: function () {      // mark: 为什么监听的属性只能是一个字符串???
         let registerThis = this;
         registerThis.register.department_value = registerThis.departmentvalue;
-        registerThis.$http.get('../../static/doctor/doctor.json').then((response) => {
+        registerThis.$http.get(api.doctor).then((response) => {
           // 把json接口获取的数据赋给当前对象
           // console.log('dsf', this.department_value);
           for (let i = 0; i < response.data.doctorlist.length; i++) {

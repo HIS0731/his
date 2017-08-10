@@ -14,13 +14,14 @@
           </el-form-item>
         </el-form>
         <p class="tips">本系统有六个测试的用户账号为root、doctor、nurse、checkstand、pharmacist、pharmacy，
-          密码为各自用户名，例如root用户的密码为root。其中最高权限是root用户</p>
+          密码为各自用户名，例如root用户的密码为root。其中最高权限是root用户 </p>
       </div>
     </div>
 </template>
 
 <script type="text/ecmascript-6">
   import {mapActions} from 'vuex'; // 引入vuex中各个模块的actions
+  import {api} from '../../global/api.js';
   export default {
     name: 'login',
     data () {
@@ -50,7 +51,8 @@
           });
           return;
         }
-        this.$http.get('../static/userLogin.json').then((response) => {
+        console.log(api);
+        this.$http.get(api.login).then((response) => {
           this.user = response.body.user;
           for (var i = 0; i < this.user.length; i++) {
             if (this.user[i].name === this.form.name && this.user[i].password === this.form.password) {

@@ -98,7 +98,7 @@ export default {
   methods: {
     onSubmit () {
       // let me = this;
-      // this.$http.post('../../static/patient/addPatient.json').then(function (response) {
+      // this.$http.post(api.addPatient).then(function (response) {
       //   console.log('这是我们需要的json数据', response.ruleForm);
       //   me.ruleForm = me.data.ruleForm;
       // }, function (response) {

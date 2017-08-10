@@ -61,6 +61,7 @@
 </template>
 
 <script type="text/ecmascript-6">
+    import {api} from '../../../global/api.js';
     export default {
       data () {
         return {
@@ -116,14 +117,14 @@
         }
       },
       created () {
-        this.$http.get('../../static/doctor/complaintPatient.json').then((response) => {             // mark
+        this.$http.get(api.complaintPatient).then((response) => {             // mark
           this.complaintList = response.body.complaintList;
           this.complaintPatientList = response.body.complaintPatientList;
         }, response => {
           // error callback
           alert('1数据请求失败');
         });
-        this.$http.get('../../static/doctor/registered.json').then((response) => {             // mark
+        this.$http.get(api.registered).then((response) => {             // mark
           this.patientList = response.body.tableData;
         }, response => {
           // error callback

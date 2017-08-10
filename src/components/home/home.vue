@@ -95,6 +95,7 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import {api} from '../../global/api.js';
   export default {
     data () {
       return {
@@ -102,12 +103,12 @@
       };
     },
     created () {
-      this.$http.get('../static/home.json').then((response) => {             // mark
+      this.$http.get(api.home).then((response) => {             // mark
         this.home = response.body.home;
         console.log(this.home.projectTeam.groupLeader);
       }, response => {
         // error callback
-        alert('数据请求失败');
+        this.$message.error('数据请求失败');
       });
     }
   };

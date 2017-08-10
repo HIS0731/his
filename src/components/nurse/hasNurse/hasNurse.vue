@@ -30,7 +30,7 @@
       <el-table-column prop="date" label="入职时间" sortable show-overflow-tooltip></el-table-column>
       <el-table-column align="center" label="操作">
       <template scope="scope">
-      	<el-button size="small" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
+        <el-button size="small" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
         <el-button size="small" type="danger" @click="handleDelete(scope.$index, scope.row)">删除</el-button>
       </template>
       </el-table-column>
@@ -130,6 +130,7 @@
 </template>
 
 <script type="text/ecmascript-6">
+import {api} from '../../../global/api.js';
 export default {
   data () {
     return {
@@ -293,7 +294,7 @@ export default {
     }
   },
   created () {
-    this.$http.get('../static/hasNurse.json').then((response) => {             // mark
+    this.$http.get(api.hasNurse).then((response) => {             // mark
       this.table = response.body.table;
       console.log(this.table);
     }, response => {
@@ -306,7 +307,7 @@ export default {
 
 <style lang="stylus-loader" rel="stylesheet/stylus">   
   .nurse_table
-   	padding:10 10px
+    padding:10 10px
     margin-top:50px
     .filter-container
       margin-bottom:20px
