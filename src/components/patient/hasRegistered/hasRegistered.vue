@@ -2,11 +2,11 @@
   <div>
     <h3 style="margin-bottom:20px;">以下是已经挂号的资料</h3>
     <div style="margin:20px 0px;">
-      <el-input v-model="input" placeholder="标题" style="width:195px;"></el-input>
+      <el-input v-model="input" placeholder="搜索关键字" style="width:195px;"></el-input>
       <el-select v-model="select" placeholder="类型" style="width:150px;">
-        <el-option label="类型一" value="1"></el-option>
-        <el-option label="类型二" value="2"></el-option>
-        <el-option label="类型三" value="3"></el-option>
+        <el-option label="编号" value="1"></el-option>
+        <el-option label="姓名" value="2"></el-option>
+        <el-option label="日期" value="3"></el-option>
       </el-select>
       <el-button type="primary" icon="search">搜索</el-button>
     </div>

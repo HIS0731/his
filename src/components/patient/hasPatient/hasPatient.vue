@@ -1,11 +1,11 @@
 <template>
   <div class="hasPatient">
     <div class="filter-container">
-      <el-input v-model="input" placeholder="标题" style="width:195px;"></el-input>
-      <el-select v-model="select" placeholder="类型" style="width:150px;">
-        <el-option label="类型一" value="1"></el-option>
-        <el-option label="类型二" value="2"></el-option>
-        <el-option label="类型三" value="3"></el-option>
+      <el-input v-model="input" placeholder="搜索关键字" style="width:195px;"></el-input>
+      <el-select v-model="select" placeholder="搜索类型" style="width:150px;">
+        <el-option label="名字" value="1"></el-option>
+        <el-option label="主治医生" value="2"></el-option>
+        <el-option label="日期" value="3"></el-option>
       </el-select>
       <el-button type="primary" icon="search">搜索</el-button>
       <el-button type="primary" icon="edit" @click="handleCreate">添加</el-button>
