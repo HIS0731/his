@@ -48,7 +48,7 @@ export default {
   methods: {
     handleSearch () {
       let me = this;
-      Vue.http.get('../../static/patientList1.json', {params: this.listQuery}).then(function (response) {
+      Vue.http.get(api.patientList1, {params: this.listQuery}).then(function (response) {
         console.log(response);
         console.log('这是我们需要的json数据', response.tableData);
         // me.tableData = response.data.tableData;

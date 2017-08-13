@@ -32,5 +32,7 @@ export const api = {
   'turnOver': url.staticPath + 'static/turnOver.json',
   'drugs': url.staticPath + 'static/drugs.json',
   'registered': url.staticPath + 'static/doctor/registered.json',
-  'trashy': url.staticPath + 'static/trashy.json'
+  'trashy': url.staticPath + 'static/trashy.json',
+  'provinces': url.staticPath + 'static/provinces.json',
+  'patientList1': url.staticPath + 'static/patientList1.json'
 };

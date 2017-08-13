@@ -12,9 +12,9 @@
           <router-link to="home"><el-dropdown-item>首页</el-dropdown-item></router-link>
           <el-dropdown-item>修改密码</el-dropdown-item>
             <el-dropdown-item>
-              <span class="el-dropdown-link">个人主页<i class="el-icon-caret-bottom el-icon--right"></i></span>
+              <span class="el-dropdown-link" @click="personalShow">个人主页<i class="el-icon-caret-bottom el-icon--right"></i></span>
             </el-dropdown-item>
-            <el-dropdown-item>
+            <el-dropdown-item :class="{ show: isShow }" class="personalDropdown">
               <el-dropdown-item><router-link to="addPersonalDate">新建个人档案</router-link></el-dropdown-item>
               <el-dropdown-item><router-link to="absenceRequest">申请休假</router-link></el-dropdown-item>
               <el-dropdown-item><router-link to="departure">申请离职</router-link></el-dropdown-item>
@@ -30,6 +30,11 @@
   import {mapGetters, mapActions} from 'vuex';
   // 引入vuex中各个模块的actions
   export default {
+    data () {
+      return {
+        isShow: false
+      };
+    },
     // 获取
     computed: mapGetters([
       'easeHis'
@@ -44,6 +49,9 @@
       userLog () {
         this.setUserInfo(this.form);
         this.$router.push({path: 'login'});
+      },
+      personalShow () {
+
       }
     }
   };
@@ -58,6 +66,11 @@
     padding: 0 20px
     color: #48576a
     font-size:12px
+    .el-dropdown-menu__item.personalDropdown  /* mark */
+      overflow:hidden
+      height:20px
+      .isShow
+        height:60px
     .el-button
       border-color:transparent
       padding:0
@@ -77,7 +90,7 @@
     .el-dropdown-menu__item:not(.is-disabled):hover
       background-color:#fff
     .el-dropdown-menu__item
-       a:hover,.el-icon--right
+       a:hover,.el-icon--right:hover
         color:#20a0ff
       .el-icon--right
         font-size:12px
