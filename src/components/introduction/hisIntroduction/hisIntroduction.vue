@@ -154,6 +154,7 @@
       handleClick (tab, event) {
         console.log(tab, event);
       },
+      // 查看更多
       check1 () {
         this.dialogVisible1 = true;
       },

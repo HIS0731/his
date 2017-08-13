@@ -21,47 +21,14 @@
     <el-table-column label="序号" width="120" fixed>
       <template scope="scope">{{ scope.$index }}</template>
     </el-table-column>
-    <el-table-column
-      prop="date"
-      fixed
-      label="日期"
-      width="120">
-    </el-table-column>
-    <el-table-column
-      prop="time"
-      label="时段"
-      width="200">
-    </el-table-column>
-    <el-table-column
-      prop="name"
-      label="姓名"
-      width="150">
-    </el-table-column>
-    <el-table-column
-      prop="sex"
-      label="性别"
-      width="150">
-    </el-table-column>
-    <el-table-column
-      prop="department"
-      label="科室"
-      width="150">
-    </el-table-column>
-    <el-table-column
-      prop="phone"
-      label="电话号码"
-      width="150">
-    </el-table-column>
-    <el-table-column
-      prop="attendence"
-      label="出勤情况"
-      width="120" v-model="listQuery.type">
-    </el-table-column>
-    <el-table-column
-      prop="signature"
-      label="护士长签名"
-      width="120">
-    </el-table-column>
+    <el-table-column prop="date" fixed label="日期" width="120"></el-table-column>
+    <el-table-column prop="time" label="时段" width="200"></el-table-column>
+    <el-table-column prop="name" label="姓名" width="150"></el-table-column>
+    <el-table-column prop="sex"  label="性别" width="150"></el-table-column>
+    <el-table-column prop="department" label="科室" width="150"></el-table-column>
+    <el-table-column prop="phone" label="电话号码" width="150"></el-table-column>
+    <el-table-column prop="attendence" label="出勤情况" width="120" v-model="listQuery.type"></el-table-column>
+    <el-table-column prop="signature" label="护士长签名" width="120"></el-table-column>
     <el-table-column align="center" label="操作">
       <template scope="scope">
         <el-button size="small" @click="handleEdit(scope.$index)">编辑</el-button>
@@ -69,7 +36,7 @@
       </template>
     </el-table-column>
   </el-table>
-  
+ <!--  添加信息表单 -->
   <el-dialog title="添加信息" :visible.sync="dialogFormVisible">
         <el-form class="small-space" :model="form" label-position="left" label-width="70px" style='width: 400px; margin-left:50px;'>
           <el-form-item label="姓名">
@@ -108,7 +75,7 @@
           <el-button type="primary" @click="resetForm('form')">重置</el-button>
         </div>
       </el-dialog>
-
+      <!-- 编辑信息表单 -->
       <el-dialog title="修改值班信息" :visible.sync="dialogFormEditVisible">
         <el-form class="small-space" :model="form" label-position="left" label-width="70px" style='width: 400px; margin-left:50px;'>
           <el-form-item label="姓名">
@@ -196,6 +163,7 @@
       };
     },
     methods: {
+      // 编辑
       handleEdit (index) {
         this.dialogFormEditVisible = true;
         this.Index = index;
@@ -216,6 +184,7 @@
           type: 'success'
         });
       },
+      // 搜索
       handelSearch () {
         let intendedSearch = this;
         intendedSearch.$http.get(api.table_shift, {params: {name: intendedSearch.searchName, department: intendedSearch.searchDepartment}}).then((response) => {
@@ -236,12 +205,13 @@
           });
         });
       },
+      // 显示全部
       getAll () {
         this.table = this.searchList;
         this.searchName = '';
       },
+      // 导出
       handleDownload () {
-        // 导出
         var vm = this;
         require.ensure([], () => {
           const { export_json_to_excel } = require('vendor/Export2Excel');
@@ -255,6 +225,7 @@
       formatJson (filterVal, jsonData) {
         return jsonData.map(v => filterVal.map(j => v[j]));
       },
+      // 删除
       handleDelete (index, row) {
         let vm = this;
         console.log('单个删除选择的row: ', index, '-----', row);
@@ -264,13 +235,16 @@
           type: 'success'
         });
       },
+      // 显示全部
       handleDelAll () {
         this.table = [];
       },
+      // 添加
       handelCreate () {
         this.dialogFormVisible = true;
         this.formClear();
       },
+      // 添加提交
       handleCreateSubmit () {
         let vm = this;
         console.log('修改后的信息：', vm.form, vm.table);
@@ -281,6 +255,7 @@
           type: 'success'
         });
       },
+      // 清空表单
       formClear () {
         this.form = {
           name: '',
@@ -292,6 +267,7 @@
           signature: ''
         };
       },
+      // 重置表单
       resetForm () {
         this.form = {
           name: '',

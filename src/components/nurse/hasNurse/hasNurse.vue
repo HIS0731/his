@@ -47,7 +47,7 @@
       @current-change="handleCurrentChange"  :page-sizes="[7,10,20,30]" :page-size="10" layout="total, sizes, prev, pager, next, jumper" :total="80">
          </el-pagination>
       </div>  
-
+      <!-- 添加信息功能的表单 -->
       <el-dialog title="添加信息" :visible.sync="dialogFormVisible">
         <el-form class="small-space" :model="form" label-position="left" label-width="70px" style='width: 400px; margin-left:50px;'>
           <el-form-item label="姓名">
@@ -84,7 +84,7 @@
           <el-button type="primary" @click="resetForm('form')">重置</el-button>
         </div>
       </el-dialog>
-
+      <!-- 编辑信息的表单 -->
       <el-dialog title="修改个人信息" :visible.sync="dialogFormEditVisible">
         <el-form class="small-space" :model="form" label-position="left" label-width="70px" style='width: 400px; margin-left:50px;'>
           <el-form-item label="姓名">
@@ -147,7 +147,7 @@ export default {
         currPage: 1,
         // pageSize: 10,
         name: '',
-        department: ''
+        type: ''
       },
       dialogFormVisible: false,
       dialogFormEditVisible: false,
@@ -185,6 +185,7 @@ export default {
     handleSelectionChange (val) {
       this.multipleSelection = val;
     },
+    // 编辑
     handleEdit (index, row) {
       this.dialogFormEditVisible = true;
       // this.Index = index;
@@ -193,6 +194,7 @@ export default {
       this.tableEdit = row;
       // this.tableEdit = JSON.parse(JSON.Stringify(this.tableEdit.row));
     },
+    // 编辑表单的提交
     handleEditSubmit (index) {
       this.dialogFormEditVisible = false;
       let oldDate = this.tableEdit.date;
@@ -208,6 +210,7 @@ export default {
         type: 'success'
       });
     },
+    // 单个删除
     handleDelete (index, row) {
       let vm = this;
       console.log('单个删除选择的row: ', index, '-----', row);
@@ -217,9 +220,11 @@ export default {
         type: 'success'
       });
     },
+    // 全部删除
     handleDelAll () {
       this.table = [];
     },
+    // 添加
     handelCreate () {
       this.dialogFormVisible = true;
       this.formClear();
@@ -227,6 +232,7 @@ export default {
     // handleFilter () {
     //   // 姓名this.getList();
     // },
+    // 搜索
     handelSearch () {
       let intendedSearch = this;
       intendedSearch.$http.get(api.hasNurse, {params: {name: intendedSearch.searchName, department: intendedSearch.searchDepartment}}).then((response) => {
@@ -247,12 +253,13 @@ export default {
         });
       });
     },
+    // 显示全部
     getAll () {
       this.table = this.searchList;
       this.searchName = '';
     },
+    // 导出
     handleDownload () {
-      // 导出
       var vm = this;
       require.ensure([], () => {
         const { export_json_to_excel } = require('vendor/Export2Excel');
@@ -282,6 +289,7 @@ export default {
         type: 'success'
       });
     },
+    // 清空表单
     formClear () {
       this.form = {
         name: '',
@@ -295,6 +303,7 @@ export default {
         date: ''
       };
     },
+    // 重置
     resetForm () {
       this.form = {
         name: '',

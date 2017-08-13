@@ -81,8 +81,8 @@ export default {
           {required: true, message: '请输入地址', trigger: 'blur'}
         ],
         age: [
-          {required: true, message: '请输入年龄', trigger: 'blur'},
-          {type: 'number', message: '年龄必须为数字值'}
+          {required: true, message: '请输入年龄', trigger: 'blur'}
+          // {type: 'number', message: '年龄必须为数字值'}
         ],
         position: [
           {required: true, message: '请输入职称', trigger: 'blur'}
@@ -106,6 +106,7 @@ export default {
     };
   },
   methods: {
+    // 提交
     submitForm (formName) {
       this.timeFormat();
       this.$refs[formName].validate((valid) => {
@@ -121,6 +122,7 @@ export default {
         }
       });
     },
+    // 重置
     resetForm (formName) {
       this.$refs[formName].resetFields();
     },
