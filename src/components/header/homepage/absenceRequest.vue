@@ -29,7 +29,7 @@
       </div>
       <div>
         <h2 style="margin-bottom:20px;">请（休）假类别:</h2>
-        <el-checkbox-group v-model="ruleForm.category">
+        <el-checkbox-group v-model="ruleForm.category" :min="1" :max="1">
           <el-checkbox label="公假"></el-checkbox>
           <el-checkbox label="婚假"></el-checkbox>
           <el-checkbox label="丧假"></el-checkbox>

@@ -28,7 +28,7 @@
       </div>
       <h2 style="margin-bottom:20px;">离职类别</h2>
       <div>
-        <el-checkbox-group v-model="ruleForm.category">
+        <el-checkbox-group v-model="ruleForm.category" :min="1" :max="1">
           <el-checkbox label="辞职"></el-checkbox>
           <el-checkbox label="辞退"></el-checkbox>
           <el-checkbox label="除名"></el-checkbox>
