@@ -81,6 +81,7 @@
       };
     },
     created () {
+      // 获取药品信息
       this.$http.get(api.Storage).then((response) => {             // mark
         this.drug = response.body.drug;
         // 信息总条数

@@ -35,23 +35,27 @@
         isShow: false
       };
     },
-    // 获取
+    // 获取vuex数据
     computed: mapGetters([
       'easeHis'
     ]),
     created: function () {
+      // 路由拦截
       if (!sessionStorage.getItem('easeHis')) {
         this.$router.push({path: 'login'});
       }
     },
     methods: {
-      ...mapActions({setUserInfo: 'setSignOut'}),  // 本组件注册VUEX输出的actions中的setSignOut方法
+      // 本组件注册VUEX输出的actions中的setSignOut方法
+      ...mapActions({setUserInfo: 'setSignOut'}),
+      // 退出登录
       userLog () {
         this.setUserInfo(this.form);
         this.$router.push({path: 'login'});
       },
+      // 个人主页下拉菜单切换
       personalShow () {
-
+        this.isShow = !this.isShow;
       }
     }
   };
@@ -66,7 +70,7 @@
     padding: 0 20px
     color: #48576a
     font-size:12px
-    .el-dropdown-menu__item.personalDropdown  /* mark */
+    .el-dropdown-menu__item.personalDropdown  
       overflow:hidden
       height:20px
       .isShow

@@ -26,6 +26,7 @@
       };
     },
     created () {
+      // 获取所有配送信息
       this.$http.get(api.stockRemoval).then((response) => {             // mark
         this.drug = response.body.drug;
         console.log(this.drug);
@@ -38,7 +39,9 @@
       });
     },
     methods: {
+      // 点击标记已经配送
       handleChange (index, row) {
+        // 获取当前时间，并且转换时间格式
         let time = new Date();
         this.drug[index].outOfTime = time.getFullYear() + '-' + time.getMonth() + '-' + time.getDay() + ' ' + time.getHours() + ':' + time.getMinutes() + ':' + time.getSeconds();
         console.log(index, this.drug, this.drug[index].id, this.drug[index].outOfTime);

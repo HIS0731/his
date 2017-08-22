@@ -37,7 +37,7 @@
     },
     methods: {
       ...mapActions({setUserInfo: 'setUserInfo'}),  // 本组件注册VUEX输出的actions中的setUserInfo方法
-      // 用户登录
+      // 用户登录验证不能为空
       _login () {
         if (!this.form.name || !this.form.password) {
           if (!this.form.name) {
@@ -52,6 +52,7 @@
           return;
         }
         console.log(api);
+        // 获取所有的用户信息
         this.$http.get(api.login).then((response) => {
           this.user = response.body.user;
           for (var i = 0; i < this.user.length; i++) {
@@ -74,6 +75,7 @@
           });
         });
       },
+      // 用户名文本框回车跳到密码文本框
       nextInput () {
         document.querySelector('#psw input').focus();
       }
@@ -92,11 +94,11 @@
       .title
         font-size: 35px
         text-align: center
-        color: rgba(0,0,0,0.3)
+        color: rgb(255,255,255)
         font-weight: 900
-        text-shadow: 2px 2px 1px #fff
         margin-bottom: 40px
         padding: 20px 0 10px 0
+        letter-spacing: 4px
     .el-form-item__content
       margin-right: 80px
     .el-button

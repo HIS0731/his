@@ -1,22 +1,37 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import VueResource from 'vue-resource';
+
+// 菜单组件
 import internal from '@/components/internal/internal';
+
+// 登录组件
 import login from '@/components/login/login';
+
+// 护士组件
 import addNurse from '@/components/nurse/addNurse/addNurse';
 import hasNurse from '@/components/nurse/hasNurse/hasNurse';
+import shift from '@/components/nurse/shift/shift';
+import turnOver from '@/components/nurse/turnOver/turnOver';
+import complainInfo from '@/components/nurse/checkInfo/complainInfo';
+
+// 药房组件
 import drugInfosC from '@/components/pharmacy/drugInfosC/drugInfosC';
 import drugApplyC from '@/components/pharmacy/drugApplyC/drugApplyC';
 import prescriptionManageC from '@/components/pharmacy/prescriptionManageC/prescriptionManageC';
 import drugInfosW from '@/components/pharmacy/drugInfosW/drugInfosW';
 import drugApplyW from '@/components/pharmacy/drugApplyW/drugApplyW';
 import prescriptionManageW from '@/components/pharmacy/prescriptionManageW/prescriptionManageW';
+
+// 收银台组件
 import register from '@/components/cash_system/register/register';
 import registerManage from '@/components/cash_system/registerManage/registerManage';
 import takecash from '@/components/cash_system/takecash/takecash';
+
+// 首页
 import home from '@/components/home/home';
-import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-default/index.css';
+
+// 患者系统组件
 import addPatient from '@/components/patient/addPatient/addPatient';
 import hasPatient from '@/components/patient/hasPatient/hasPatient';
 import hasRegistered from '@/components/patient/hasRegistered/hasRegistered';
@@ -25,26 +40,29 @@ import addPersonalDate from '@/components/header/homepage/addPersonalDate';
 import absenceRequest from '@/components/header/homepage/absenceRequest';
 import departure from '@/components/header/homepage/departure';
 import hasComplaints from '@/components/header/homepage/hasComplaints';
+
+// 药库组件
 import drugStorage from '@/components/drugStorage/putInStorage/putInStorage';
 import checkDrugStorage from '@/components/drugStorage/checkDrugStorage/checkDrugStorage';
 import stockRemoval from '@/components/drugStorage/stockRemoval/stockRemoval';
 import trashy from '@/components/drugStorage/trashy/trashy';
 import addTrashy from '@/components/drugStorage/trashy/addTrashy/addTrashy';
+
+// 医生系统组件
 import addDoctor from '@/components/doctor/addDoctor/addDoctor';
 import editDoctor from '@/components/doctor/editDoctor/editDoctor';
 import shiftDoctor from '@/components/doctor/shiftDoctor/shiftDoctor';
 import staffFlow from '@/components/doctor/staffFlow/staffFlow';
 import officeComplaints from '@/components/doctor/officeComplaints/officeComplaints';
-import shift from '@/components/nurse/shift/shift';
-import turnOver from '@/components/nurse/turnOver/turnOver';
-import complainInfo from '@/components/nurse/checkInfo/complainInfo';
+
+// 医院基本信息组件
 import hisIntroduction from '@/components/introduction/hisIntroduction/hisIntroduction';
 import staffIntroduction from '@/components/introduction/staffIntroduction/staffIntroduction';
 import patientCount from '@/components/introduction/patientCount/patientCount';
 import patientFeedback from '@/components/introduction/patientFeedback/patientFeedback';
 Vue.use(Router);
 Vue.use(VueResource);
-Vue.use(ElementUI);
+
 export default new Router({
   routes: [
     { path: '/internal',

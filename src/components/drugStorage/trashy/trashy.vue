@@ -76,7 +76,7 @@
       };
     },
     created () {
-      // mark
+      // 获取所有浪费药品的信息
       this.$http.get(api.trashy).then((response) => {             // mark
         this.trashyDrug = response.body.trashyDrug;
         console.log(this.trashyDrug);
@@ -86,11 +86,13 @@
       });
     },
     methods: {
+      // 编辑某一条
       handleEdit (index, row) {
         this.editIndex = index;
         this.editForm = this.trashyDrug[index];
         this.dialogFormVisible = true;
       },
+      // 根据id删除某一条
       handleDelete (index, row) {
         console.log(index, row);
         // mark 实际上，应该使用post方法传数据
@@ -104,11 +106,11 @@
           this.$message.error('后台接口有误,修改后台接口既可！');
         });
       },
+      // 删除所有信息
       deleteAll (toDelete) {
         this.tipsVisible = false;
         if (toDelete) {
           this.$message('删除所有');
-          // mark 实际上，应该使用post方法传数据
           this.$http.get(api.trashy).then(function (response) {
             this.trashyDrug = [];
           }, function () {
@@ -116,6 +118,7 @@
           });
         }
       },
+      // 发送用户编辑后信息
       toEditTrashy () {
         this.$http.get(api.trashy, {params: {form: this.editForm}}).then(function (response) {
           this.$message({

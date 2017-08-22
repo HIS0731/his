@@ -89,6 +89,7 @@
           specification: '',
           dosageForm: ''
         },
+        // 表单验证
         rules: {
           name: [
             { required: true, message: '请输入药品名称', trigger: 'blur' }
@@ -126,6 +127,7 @@
         if (!this.form.name || !this.form.manufacturers || !this.form.amount || !this.form.unitPrice || !this.form.temperature || !this.form.handlers || !this.form.qualityOfficer || !this.form.warehouseman || !this.form.pattern || !this.form.date2 || !this.form.species || !this.form.productionData || !this.form.specification || !this.form.dosageForm) {
           this.$message.error('不能为空！');
         } else {
+          // 转换时间格式
           this.form.date2 = this.form.date2.getFullYear() + '-' + this.form.date2.getMonth() + '-' + this.form.date2.getDay() + ' ' + this.form.date2.getHours() + ':' + this.form.date2.getMinutes() + ':' + this.form.date2.getSeconds();
           this.form.productionData = this.form.productionData.getFullYear() + '-' + this.form.productionData.getMonth();
           console.log(this.form);
@@ -142,6 +144,7 @@
           });
         }
       },
+      // 重置输入表单
       resetForm () {
         this.date1 = '';
         this.form = {
@@ -173,6 +176,7 @@
       }
     },
     watch: {
+      // 单价或者数量变化--计算总价
       Amount (newValue, oldValue) {
         this.form.totalPrices = this.form.amount * this.form.unitPrice;
       },

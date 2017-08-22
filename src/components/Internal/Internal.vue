@@ -1,6 +1,7 @@
 <template>
   <div class="innnerApp">
     <div class="app-body">
+    <!-- 菜单开始 -->
       <div class="menu" :class="{ smallNav: isCollapse }">
         <el-menu default-active="1-4-1" class="el-menu-vertical-demo"  :collapse="isCollapse"  theme="dark">
           <el-menu-item index="1"  @click="navToggle">
@@ -106,7 +107,7 @@
               <span slot="title">医院基本信息</span>
             </template>
             <el-menu-item-group>
-              <el-menu-item index="8-1"><router-link to="hisIntroduction">医院基本介绍</router-link></el-menu-item>
+              <!-- <el-menu-item index="8-1"><router-link to="hisIntroduction">医院基本介绍</router-link></el-menu-item> -->
               <el-menu-item index="8-2"><router-link to="staffIntroduction">医生护士概况</router-link></el-menu-item>
               <el-menu-item index="8-3"><router-link to="patientCount">今周患者就诊数量统计</router-link></el-menu-item>
               <el-menu-item index="8-4"><router-link to="patientFeedback">患者反馈</router-link></el-menu-item>
@@ -114,13 +115,16 @@
           </el-submenu>
         </el-menu>
       </div>
+    <!-- 菜单结束 -->
+      <!-- 内容显示区块 -->
       <div class="content" @mouseover="navColse">
-      <v-header></v-header>
-      <div class="tagcontent">
-        <transition name="HISshow">
-          <router-view></router-view>
-        </transition>
-      </div>
+        <!-- 右侧头部区域 -->
+        <v-header></v-header>
+        <div class="tagcontent">
+          <transition name="HISshow">
+            <router-view></router-view>
+          </transition>
+        </div>
     </div>
   </div>
   </div>
@@ -137,14 +141,17 @@
       };
     },
     methods: {
+      // 左侧导航打开、关闭切换
       navToggle () {
         this.isCollapse = !this.isCollapse;
       },
+      // 左侧导航关闭
       navColse () {
         this.isCollapse = true;
       }
     },
     created: function () {
+      // 获取用户相关信息、判断用户是否登录
       if (sessionStorage.getItem('easeHis')) {
         this.userLogin = true;
         this.type = sessionStorage.getItem('easeHisType');

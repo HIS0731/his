@@ -35,6 +35,7 @@
           trashy: '',
           manufacturers: ''
         },
+        // 定义表单验证规则
         rules: {
           name: [
             { required: true, message: '请输入药品名称', trigger: 'blur' }
@@ -52,6 +53,7 @@
       };
     },
     methods: {
+      // 提交添加信息
       onSubmit () {
         console.log(this.form);
         this.$http.get(api.Storage, {params: {form: this.form}}).then(function (response) {
@@ -64,6 +66,7 @@
           this.$message.error('后台接口有误,修改后台接口既可！');
         });
       },
+      // 返回
       goback () {
         history.go(-1);
       }
